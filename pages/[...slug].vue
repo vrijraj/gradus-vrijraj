@@ -3,53 +3,90 @@
     <template v-slot:prepend>
       <v-btn to="/" icon><v-icon>mdi-keyboard-backspace</v-icon></v-btn>
     </template>
-    <v-app-bar-title>Application Bar</v-app-bar-title>
+    <v-app-bar-title>{{data.title}}</v-app-bar-title>
   </v-app-bar>
-  <v-navigation-drawer floating elevation="0">
-    {{ finalData.body.toc }}
-    <div class="d-flex px-2 my-2">
-      <v-btn
-        class="flex-grow-1"
-        color="grey"
-        height="40"
-        variant="flat"
-      ></v-btn>
 
-      <v-avatar
-        class="ms-2"
-        color="surface-variant"
-        variant="flat"
-        rounded
-      ></v-avatar>
+  <!-- Left Sidebar -->
+  <v-navigation-drawer floating elevation="0">
+    <div
+      v-for="(item, index) in finalData.body.toc"
+      :key="index"
+      class="d-flex justify-space-between mb-6 bg-surface-variant"
+      @click="currentNode++"
+      style="cursor: pointer"
+    >
+      <div>Right Rectange</div>
+      <div>{{ item.title }}</div>
+      <div>Dot</div>
     </div>
+
+    <template v-slot:append>
+      <div class="pa-2">
+        <a href=""> <v-icon>mdi-bug-outline</v-icon> Report a Bug</a>
+
+        <!-- Author -->
+        <v-list>
+          <v-list-item>
+            <v-list-item-title>John Leider</v-list-item-title>
+            <v-list-item-subtitle>john@google.com</v-list-item-subtitle>
+            <template v-slot:prepend>
+              <v-avatar size="30">
+                <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+              </v-avatar>
+            </template>
+            <template v-slot:append>
+              <!-- <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn> -->
+            </template>
+          </v-list-item>
+        </v-list>
+      </div>
+    </template>
   </v-navigation-drawer>
+  <!-- Left Sidebar -->
+
   <v-main
-    class="d-flex align-center justify-center mx-10 mt-3"
+    class="d-flex align-center justify-center mx-15 mt-3"
     style="min-height: 300px"
   >
     <v-btn @click="currentNode--" variant="flat" icon
       ><v-icon>mdi-arrow-left</v-icon></v-btn
     >
     <v-container
-      style="background-color: white; border-radius: 12px"
-      class="mx-2 mt-0"
+      style="background-color: white; border-radius: 12px !important"
+      class="mx-5 mt-0 pa-0"
     >
-
       <div
-        class="pa-4"
+        class="pa-8"
         style="background-color: #e8f0fe"
         v-if="currentNode == 0"
       >
-      <v-btn @click="aiDrawer = !aiDrawer">AI Chat</v-btn>
-        <h2>
+        <v-btn class="float-right" variant="tonal" @click="aiDrawer = !aiDrawer">AI Chat</v-btn>
+
+        <p style="font-size: 150%">
           <b>{{ data.title }}</b>
-        </h2>
-        <p>{{ data.description }}</p>
+        </p>
+        <p style="font-size:90%">{{ data.description }}</p>
+        <v-list class="px-0" style="width: 300px; background-color: #e8f0fe;">
+          <v-list-item>
+            <v-list-item-title>John Leider</v-list-item-title>
+            <v-list-item-subtitle>john@google.com</v-list-item-subtitle>
+            <template v-slot:prepend>
+              <v-avatar>
+                <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+              </v-avatar>
+            </template>
+            <template v-slot:append>
+              <!-- <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn> -->
+            </template>
+          </v-list-item>
+        </v-list>
       </div>
-      <div v-for="(node, i) in finalData" :key="`node-${i}`">
-        <ContentRenderer :value="node">
-          <ContentRendererMarkdown :value="node" />
-        </ContentRenderer>
+      <div class="pa-8">
+        <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
+          <ContentRenderer :value="node">
+            <ContentRendererMarkdown :value="node" />
+          </ContentRenderer>
+        </div>
       </div>
     </v-container>
     <v-btn @click="currentNode++" variant="flat" icon
@@ -57,7 +94,12 @@
     >
     <!-- {{ finalData }} -->
   </v-main>
-  <v-navigation-drawer floating location="right" elevation="0" v-model="aiDrawer">
+  <v-navigation-drawer
+    floating
+    location="right"
+    elevation="0"
+    v-model="aiDrawer"
+  >
     <div class="d-flex px-2 my-2">
       <v-btn
         class="flex-grow-1"
@@ -81,7 +123,7 @@
 
 <script setup>
 const route = useRoute();
-const aiDrawer = ref(false)
+const aiDrawer = ref(false);
 // Asynchronous data fetching
 const { data, error, refresh, status, pending, execute } = await useAsyncData(
   `${route.path}`,
@@ -92,7 +134,7 @@ console.log("data", data);
 
 //States
 // const isExpanded = useIsExpanded();
-const currentNode = ref(0);
+const currentNode = useCurrentNode();
 
 const getToc = () => {
   let menu = [];

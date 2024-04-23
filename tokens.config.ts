@@ -7,13 +7,16 @@ export default defineTheme({
       tight: '-0.0035em',
       wide: '0.-0035em'
     },
-    lead:'0px'
+    lead:'0px',
   },
   prose: {
     // This will change the fontSize of the `<ProseH1>` component
     h1: {
-      fontSize: '20px'
+      fontSize: '220%'
     },
+    li:{
+      margin:'0'
+    }
     // p:{
        
     // }
