@@ -10,13 +10,19 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-toolbar >
+          <v-toolbar>
             <v-text-field
+              v-model="search.value"
               hide-details="auto"
               variant="outlined"
               dense
-              label="First name"
+              label="Search"
             ></v-text-field>
+            <div v-if="Object.keys(res).length > 0">
+              <NuxtLink v-for="r in res.value" :to="r.id">{{
+                r.title
+              }}</NuxtLink>
+            </div>
             <v-spacer></v-spacer>
             <v-select
               label="Select"
@@ -24,12 +30,8 @@
               multiple
               dense
               :items="[
-                'California',
-                'Colorado',
-                'Florida',
-                'Georgia',
-                'Texas',
-                'Wyoming',
+               "firebase",
+               "node.js"
               ]"
             ></v-select>
           </v-toolbar>
@@ -63,9 +65,27 @@
   </v-main>
 </template>
 
-<script>
-export default {};
+<script setup>
+import debounce from "lodash.debounce";
+
+//Filter by tags
+const data = await queryContent("").where({ tags: ["firebase", "node.js"]}).find();
+
+const search = reactive({
+  value: "",
+});
+const res = ref([]);
+watch(
+  search,
+  debounce(async () => {
+    if (search.value.length < 3) {
+      res.value = [];
+      return;
+    }
+    res.value = await searchContent(search.value);
+    console.log(res.value);
+  }, 500)
+);
 </script>
 
-<style>
-</style>
+<style></style>

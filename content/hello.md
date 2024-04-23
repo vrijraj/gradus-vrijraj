@@ -7,7 +7,7 @@ categories: 'Technology'
 label: 
 duration: 23
 image: '/codelabs/hello.png'
-tags: ['firebase', 'node.js']
+tags: ['node.js']
 ---
 
 
