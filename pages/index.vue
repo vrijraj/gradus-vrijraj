@@ -18,48 +18,70 @@
               dense
               label="Search"
             ></v-text-field>
-            <div v-if="Object.keys(res).length > 0">
-              <NuxtLink v-for="r in res.value" :to="r.id">{{
-                r.title
-              }}</NuxtLink>
-            </div>
+
             <v-spacer></v-spacer>
             <v-select
               label="Select"
               variant="outlined"
               multiple
               dense
-              :items="[
-               "firebase",
-               "node.js"
-              ]"
+              :items="['firebase', 'nodejs']"
             ></v-select>
           </v-toolbar>
         </v-col>
       </v-row>
       <v-row>
-        <ContentList path="/" v-slot="{ list }" :query="{ draft: false }">
-          <v-col md="4" v-for="article in list" :key="article._path">
-            <v-card>
-              <v-img :src="article.image"></v-img>
-              <v-card-title>{{ article.title }}</v-card-title>
-              <v-card-text>
-                <p>{{ article.description }}</p>
-                <v-chip v-for="(tag, index) in article.tags" :key="index">{{
-                  tag
-                }}</v-chip>
-                <br />
-                <br />
-                <NuxtLink :to="article._path"
-                  ><v-btn variant="tonal">asd</v-btn></NuxtLink
-                >
-              </v-card-text>
-              <!-- {{ article }} -->
+        <!-- Search -->
+        <div v-if="Object.keys(res).length > 0">
+          <v-row>
+            <v-col md="4" v-for="article in res.value" :key="index">
+              <v-card>
+                <v-img :src="article.image"></v-img>
+                <v-card-title>{{ article.title }}</v-card-title>
+                <v-card-text>
+                  <p>{{ article.description }}</p>
+                  <v-chip v-for="(tag, index) in article.tags" :key="index">{{
+                    tag
+                  }}</v-chip>
+                  <br />
+                  <br />
+                  <NuxtLink :to="article._path"
+                    ><v-btn variant="tonal">asd</v-btn></NuxtLink
+                  >
+                </v-card-text>
+                <!-- {{ article }} -->
 
-              <!-- <v-btn :to="article._path"></v-btn> -->
-            </v-card>
-          </v-col>
-        </ContentList>
+                <!-- <v-btn :to="article._path"></v-btn> -->
+              </v-card>
+            </v-col>
+          </v-row>
+          <!-- <NuxtLink v-for="r in res.value" :to="r.id">{{ r.title }}</NuxtLink> -->
+        </div>
+
+        <v-row>
+          <ContentList path="/" v-slot="{ list }" :query="{ draft: false }">
+            <v-col md="4" v-for="article in list" :key="article._path">
+              <v-card>
+                <v-img :src="article.image"></v-img>
+                <v-card-title>{{ article.title }}</v-card-title>
+                <v-card-text>
+                  <p>{{ article.description }}</p>
+                  <v-chip v-for="(tag, index) in article.tags" :key="index">{{
+                    tag
+                  }}</v-chip>
+                  <br />
+                  <br />
+                  <NuxtLink :to="article._path"
+                    ><v-btn variant="tonal">asd</v-btn></NuxtLink
+                  >
+                </v-card-text>
+                <!-- {{ article }} -->
+
+                <!-- <v-btn :to="article._path"></v-btn> -->
+              </v-card>
+            </v-col>
+          </ContentList>
+        </v-row>
       </v-row>
     </v-container>
   </v-main>
@@ -69,7 +91,9 @@
 import debounce from "lodash.debounce";
 
 //Filter by tags
-const data = await queryContent("").where({ tags: ["firebase", "node.js"]}).find();
+const data = await queryContent("")
+  .where({ tags: ["firebase", "node.js"] })
+  .find();
 
 const search = reactive({
   value: "",
