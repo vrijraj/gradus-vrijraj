@@ -19,7 +19,6 @@
   <!-- Left Sidebar -->
   <v-navigation-drawer
     floating
-    app
     elevation="0"
     width="300"
     v-model="stepDrawer"

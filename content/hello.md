@@ -1,7 +1,7 @@
 ---
-title: 'How to Deploy a Gemini-powered chat app on firebase'
+title: 'Send notifications for a web app using Cloud Messaging and Cloud Functions'
 description: 'Learn why variables are useful in programming, as well as how to define and update variables in your Kotlin code.'
-slug: 'hello'
+slug: 'firebase-cloud-functions'
 author: 'Vrijraj Singh'
 categories: 'Technology'
 label: 
@@ -11,7 +11,11 @@ tags: ['node.js']
 ---
 
 
-# welcome to our guideeeee 
+# Overview
+
+In this codelab, you'll learn how to use Cloud Functions for Firebase to add functionality to a chat web app by sending notifications to users of the chat app.
+
+
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
   // ...
@@ -24,22 +28,24 @@ Button 2
 :: -->
 
 ::Alert
-loremLorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur beatae laborum, alias quia ratione deserunt ducimus
+This codelab is meant as a sequel to the Firebase Web Codelab, in which you learn how to build a chat app using the Firebase Web SDK. If you would like to learn how to use the Firebase platform on the Web by building a chat app, follow the Firebase Web Codelab first. If you already know how to use the Firebase platform and CLI and want to learn about the Firebase SDK for Cloud Functions, you're at the right place. We'll show you how to clone the completed Firebase Web Codelab below.
 ::
 
 ::card
 The content of the card
 ::
 
+##### What you'll learn
+- Create Google Cloud Functions using the Firebase SDK.
+- Trigger Cloud Functions based on Auth, Cloud Storage, and Cloud Firestore events.
+- Add Firebase Cloud Messaging support to your web app.
 
-## Subheading in Introduction
-
-This is a sub-section within the introduction.
-
-- Item 1
-- Item 2
-- Item 3
-
+##### What you'll need
+1. A credit card. Cloud Functions for Firebase requires the Firebase Blaze plan, which means you will have to enable billing on your Firebase project using a credit card.
+1. The IDE/text editor of your choice such as WebStorm, Atom or Sublime.
+1. A terminal to run shell commands with NodeJS v9 installed.
+1. A browser such as Chrome.
+1. The sample code. See next step for this.
 
 
 According to the officials [ExpressJS Website](https://expressjs.com/), Express is a Fast, unopinionated, minimalist web framework for Node.js
