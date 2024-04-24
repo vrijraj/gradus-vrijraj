@@ -1,5 +1,5 @@
 <template>
-  <v-container style="background-color: white; max-width: 300px;border-radius: 12px;" class="">
+  <v-container style="background-color: white; max-width: 300px;border-radius: 12px; border: 1px solid #dee5f1;" class="">
     <v-row>
       <v-col class="">
         <p class="mb-2">AI Chat Panel</p>
