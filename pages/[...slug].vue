@@ -128,8 +128,7 @@
     <!-- <ai-chat/> -->
   </v-navigation-drawer>
 
-  <!-- --{{ finalData }} -->
-  <!--  -->
+  <CoreBottomNav class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"/>
 </template>
 
 <script setup>

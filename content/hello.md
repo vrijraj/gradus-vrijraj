@@ -19,6 +19,18 @@ export default defineNuxtConfig({
 });
 ```
 
+<!-- ::button
+Button 2
+:: -->
+
+::Alert
+loremLorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur beatae laborum, alias quia ratione deserunt ducimus
+::
+
+::card
+The content of the card
+::
+
 
 ## Subheading in Introduction
 
