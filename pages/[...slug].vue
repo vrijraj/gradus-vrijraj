@@ -3,7 +3,7 @@
     <Title>{{ metadata.title }} | Gradus</Title>
     <Meta name="description" :content="metadata.description" />
   </Head>
-  <v-app-bar :elevation="0">
+  <v-app-bar :elevation="0" color="" height="60">
     <template v-slot:prepend>
       <!-- <v-app-bar-nav-icon
         @click="stepDrawer = !stepDrawer"
@@ -14,6 +14,11 @@
       >
     </template>
     <v-app-bar-title>{{ data.title }}</v-app-bar-title>
+    <template v-slot:append>
+      <v-app-bar-title class="float-right">
+        <v-img src="/donotremove/logo.svg" width="120"></v-img>
+      </v-app-bar-title>
+    </template>
   </v-app-bar>
 
   <!-- Left Sidebar -->
@@ -107,6 +112,22 @@
           </v-list-item>
         </v-list>
       </div>
+      <!-- Header -->
+      <div
+        class="px-md-8 py-md-3 pa-4"
+        style="
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
+          border-bottom: 1px solid #e0e0e0;
+        "
+        v-if="currentNode != 0"
+      >
+        <p style="font-weight: 500">
+          <span class="mr-1">{{ currentNode + 1 }}.</span>
+          {{ finalData.body.toc[currentNode].title }}
+        </p>
+      </div>
+      <!-- Header -->
       <div class="pa-md-8 pa-4">
         <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
           <ContentRenderer :value="node">
