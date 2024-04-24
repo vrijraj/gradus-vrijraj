@@ -7,7 +7,7 @@
   </v-app-bar>
 
   <!-- Left Sidebar -->
-  <v-navigation-drawer floating elevation="0" width="300">
+  <v-navigation-drawer floating elevation="0" width="300" style="background-color: #F5F8FC">
     <!-- <div
       v-for="(item, index) in finalData.body.toc"
       :key="index"

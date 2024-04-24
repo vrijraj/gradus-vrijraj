@@ -11,7 +11,7 @@ tags: ['firebase', 'node.js']
 ---
 
 
-# welcome to our guideeeee 
+# Welcome to our guideeeee 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
   // ...
@@ -36,14 +36,14 @@ Finally, let's add the plugin to the `plugins` section of our `nuxt.config.ts` f
 
 
 
-# Section 2
+# Introduction Section 2
 
 This page corresponds to the `/` route of your website. You can delete it or create another file in the `content/` directory.
 
 Try to navigate to [/about](/about). These 2 pages are rendered by the `pages/[...slug].vue` component.
 
 
-# Section 3
+# Introduction Section 3
 
 The main content starts here. This section will dive deeper into the subject.
 
@@ -58,7 +58,7 @@ Sub-sections provide more detailed information.
 
 > This is a blockquote.
 
-# Section 4
+# Introduction Section 4
 
 In the conclusion, we'll summarize the key points and provide final thoughts.
 

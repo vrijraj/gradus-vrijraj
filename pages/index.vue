@@ -127,12 +127,12 @@
           <v-row class="py-0 my-0">
             <ContentList path="/" v-slot="{ list }" :query="{ draft: false }">
               <v-col md="2" v-for="article in list" :key="article._path">
-                <v-card>
+                <v-card elevation="0">
                   <v-img :src="article.image"></v-img>
                   <v-card-title>{{ article.title }}</v-card-title>
                   <v-card-text>
-                    <p>{{ article.description }}</p>
-                    <v-chip v-for="(tag, index) in article.tags" :key="index">{{
+                    <p class="mb-2">{{ article.description }}</p>
+                    <v-chip size="small" class="mr-2" v-for="(tag, index) in article.tags" :key="index">{{
                       tag
                     }}</v-chip>
                     <br />
