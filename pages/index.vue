@@ -1,4 +1,9 @@
 <template>
+  <Head>
+      <Title>Gradus</Title>
+      <Meta name="description" content="This is Descriptions" />
+  </Head>
+
   <v-main>
     <v-app-bar :elevation="0">
       <!-- <template v-slot:prepend>

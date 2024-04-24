@@ -7,11 +7,12 @@
         border: ${i == currentNode ? '1px solid #dee5f1' : '1px solid #DEE5F1'};
         background-color: ${i == currentNode ? '#DEE5F1' : '#EEF2F9'};
       `"
-      justify="center" align="center"
+      justify="center"
+      align="center"
       @click="currentNode = i"
     >
       <v-row justify="start" align="start">
-        <v-col md="1">
+        <v-col md="1" cols="1">
           <div
             :color="
               i == currentNode
@@ -31,7 +32,7 @@
             };`"
           ></div>
         </v-col>
-        <v-col md="1">
+        <v-col md="1" cols="1">
           <p class="mb-0" style="font-size: 100%; font-weight: 500">
             {{
               (i + 1).toLocaleString("en-US", {
@@ -41,10 +42,10 @@
             }}
           </p>
         </v-col>
-        <v-col md="8">
+        <v-col md="8" cols="8">
           <p class="mb-0" style="font-size: 90%">{{ n.title }}</p>
         </v-col>
-        <v-col md="1">
+        <v-col md="1" cols="1">
           <v-avatar
             :color="i == currentNode ? '#165FDC' : ''"
             class="mr-4"

@@ -18,13 +18,32 @@
         <div
           class="pa-3 text-left"
           style="
-            min-height: 400px;
+            max-height: 400px;
             background-color: #e7f0fe;
             border-radius: 12px;
-            font-size: 90%;
+            font-size: 87%;
+            overflow-y: scroll;
           "
         >
           <!-- {{ props.content }} -->
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
+            sapiente, assumenda vero reprehenderit architecto numquam error
+            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
+            illo maiores dolorum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
+            sapiente, assumenda vero reprehenderit architecto numquam error
+            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
+            illo maiores dolorum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
+            sapiente, assumenda vero reprehenderit architecto numquam error
+            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
+            illo maiores dolorum?
+          </p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
             sapiente, assumenda vero reprehenderit architecto numquam error

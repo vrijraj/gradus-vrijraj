@@ -1,6 +1,14 @@
 <template>
+  <Head>
+    <Title>{{ metadata.title }} | Gradus</Title>
+    <Meta name="description" :content="metadata.description" />
+  </Head>
   <v-app-bar :elevation="0">
     <template v-slot:prepend>
+      <!-- <v-app-bar-nav-icon
+        @click="stepDrawer = !stepDrawer"
+      ></v-app-bar-nav-icon> -->
+
       <v-btn to="/" icon size="small"
         ><v-icon>mdi-keyboard-backspace</v-icon></v-btn
       >
@@ -13,6 +21,7 @@
     floating
     elevation="0"
     width="300"
+    v-model="stepDrawer"
     style="background-color: #f5f8fc"
   >
     <SidebarChips :toc="finalData.body.toc" />
@@ -128,12 +137,22 @@
   </v-navigation-drawer>
 
   <CoreBottomNav class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none" />
-  <v-fab icon="$vuetify"></v-fab>
+  <v-fab
+    class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
+    @click="stepDrawer = !stepDrawer"
+    icon="mdi-format-list-checks"
+    location="bottom end"
+    size="50"
+    color="#E8F0FE"
+    app
+    appear
+  ></v-fab>
 </template>
 
 <script setup>
 const route = useRoute();
 const aiDrawer = ref(true);
+const stepDrawer = ref(true);
 // Asynchronous data fetching
 const { data, error, refresh, status, pending, execute } = await useAsyncData(
   `${route.path}`,
