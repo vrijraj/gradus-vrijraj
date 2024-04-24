@@ -1,17 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   //...
   build: {
-    transpile: ['vuetify'],
+    transpile: ["vuetify"],
   },
   devtools: { enabled: true },
-  modules: ['@nuxt/content',
+  modules: [
+    "@nuxt/content",
     (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
+      nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
     },
     //...
   ],
@@ -25,7 +26,9 @@ export default defineNuxtConfig({
   content: {
     documentDriven: true,
     experimental: {
-      search: true,
+      search: {
+        fields: ["title", "description", "tags"],
+      },
     },
     highlight: {
       theme: "github-light",
@@ -40,4 +43,4 @@ export default defineNuxtConfig({
     },
   },
   extends: "@nuxt-themes/typography",
-})
+});

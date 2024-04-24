@@ -8,7 +8,7 @@
 
   <!-- Left Sidebar -->
   <v-navigation-drawer floating elevation="0">
-    <div
+    <!-- <div
       v-for="(item, index) in finalData.body.toc"
       :key="index"
       class="d-flex justify-space-between mb-6 bg-surface-variant"
@@ -18,7 +18,8 @@
       <div>Right Rectange</div>
       <div>{{ item.title }}</div>
       <div>Dot</div>
-    </div>
+    </div> -->
+    <SidebarChips :toc="finalData.body.toc" />
 
     <template v-slot:append>
       <div class="pa-2">
@@ -48,7 +49,7 @@
     class="d-flex align-center justify-center mx-15 mt-3"
     style="min-height: 300px"
   >
-    <v-btn @click="currentNode--" variant="flat" icon
+    <v-btn @click="currentNode > 0 && currentNode--" variant="flat" icon
       ><v-icon>mdi-arrow-left</v-icon></v-btn
     >
     <v-container
@@ -91,7 +92,7 @@
         </div>
       </div>
     </v-container>
-    <v-btn @click="currentNode++" variant="flat" icon
+    <v-btn @click="currentNode < groupedContent.length - 1 && currentNode++" variant="flat" icon
       ><v-icon>mdi-arrow-right</v-icon></v-btn
     >
     <!-- {{ finalData }} -->
