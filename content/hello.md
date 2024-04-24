@@ -54,12 +54,22 @@ Finally, let's add the plugin to the `plugins` section of our `nuxt.config.ts` f
 
 
 
-# Section 2
+# Get the sample code
+
+Clone the GitHub repository from the command line:
+
+```js
+git clone https://github.com/firebase/friendlychat
+```
+
+Using your IDE, open or import the android_studio_folder.pngcloud-functions-start directory from the sample code directory. This directory contains the starting code for the codelab which consists of a fully functional Chat Web App.
+
+
+
 
 This page corresponds to the `/` route of your website. You can delete it or create another file in the `content/` directory.
 
 Try to navigate to [/about](/about). These 2 pages are rendered by the `pages/[...slug].vue` component.
-
 
 # Section 3
 
