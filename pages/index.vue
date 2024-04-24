@@ -12,7 +12,7 @@
         <v-col md="11">
           <v-container fluid>
             <v-row justify="center" align="center">
-              <v-col md="8">
+              <v-col md="8" cols="12">
                 <h1 style="font-size: xx-large">Welcome to CodeLabs</h1>
                 <p class="mb-3">
                   This is a collection of well curated articles
@@ -34,7 +34,7 @@
                   ><v-icon size="large">mdi-youtube</v-icon></v-btn
                 >
               </v-col>
-              <v-col md="4" class="text-center">
+              <v-col md="4" cols="12" class="text-center">
                 <v-img
                   width="70%"
                   :src="'/donotremove/gradus-background.svg'"
@@ -132,9 +132,13 @@
                   <v-card-title>{{ article.title }}</v-card-title>
                   <v-card-text>
                     <p class="mb-2">{{ article.description }}</p>
-                    <v-chip size="small" class="mr-2" v-for="(tag, index) in article.tags" :key="index">{{
-                      tag
-                    }}</v-chip>
+                    <v-chip
+                      size="small"
+                      class="mr-2"
+                      v-for="(tag, index) in article.tags"
+                      :key="index"
+                      >{{ tag }}</v-chip
+                    >
                     <br />
                     <br />
                     <NuxtLink :to="article._path"

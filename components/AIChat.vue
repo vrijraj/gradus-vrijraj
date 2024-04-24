@@ -1,22 +1,22 @@
 <template>
-  <v-container style="background-color: white; max-width: 300px">
+  <v-container style="background-color: white; max-width: 300px;border-radius: 12px;" class="">
     <v-row>
-      <v-col class="text-center">
-        <h1>AI Chat</h1>
+      <v-col class="">
+        <p class="mb-2">AI Chat Panel</p>
         <div
           class="pa-3 text-left"
           style="
             min-height: 600px;
             background-color: #e7f0fe;
             border-radius: 12px;
-            font-size: 95%;
+            font-size: 90%;
           "
         >
           <!-- {{ props.content }} -->
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut sapiente, assumenda vero reprehenderit architecto numquam error doloremque et ea repudiandae hic dolores voluptas sequi in dolorem illo maiores dolorum?</p>
           {{ finalResult }}
         </div>
-        <v-btn @click="getData" :loading="loader" variant="tonal" class="mt-3">Summerize the Content</v-btn>
+        <v-btn @click="getData" rounded :loading="loader" variant="tonal" class="mt-3">Summerize the Content</v-btn>
       </v-col>
     </v-row>
   </v-container>
