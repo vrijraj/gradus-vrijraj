@@ -1,13 +1,13 @@
 <template>
   <v-container v-for="(n, i) in toc" :key="i" cols="12" class="mb-0 mt-2">
     <v-row
-      class="pa-4 mx-1"
-      style="
-        background-color: #dee5f1;
-        cursor: pointer;
-        min-height: 40px;
-        border-radius: 10px;
-      "
+      class="py-4 px-2 mx-1 mb-n5"
+      style="cursor: pointer; min-height: 40px; border-radius: 10px"
+      :style="`
+        border: ${i == currentNode ? '1px solid #dee5f1' : '1px solid #DEE5F1'};
+        background-color: ${i == currentNode ? '#DEE5F1' : '#EEF2F9'};
+      `"
+      justify="center" align="center"
       @click="currentNode = i"
     >
       <v-row justify="start" align="start">
