@@ -3,7 +3,7 @@
     <template v-slot:prepend>
       <v-btn to="/" icon><v-icon>mdi-keyboard-backspace</v-icon></v-btn>
     </template>
-    <v-app-bar-title>{{data.title}}</v-app-bar-title>
+    <v-app-bar-title>{{ data.title }}</v-app-bar-title>
   </v-app-bar>
 
   <!-- Left Sidebar -->
@@ -61,13 +61,15 @@
         style="background-color: #e8f0fe"
         v-if="currentNode == 0"
       >
-        <v-btn class="float-right" variant="tonal" @click="aiDrawer = !aiDrawer">AI Chat</v-btn>
+        <v-btn class="float-right" variant="tonal" @click="aiDrawer = !aiDrawer"
+          >AI Chat</v-btn
+        >
 
         <p style="font-size: 150%">
           <b>{{ data.title }}</b>
         </p>
-        <p style="font-size:90%">{{ data.description }}</p>
-        <v-list class="px-0" style="width: 300px; background-color: #e8f0fe;">
+        <p style="font-size: 90%">{{ data.description }}</p>
+        <v-list class="px-0" style="width: 300px; background-color: #e8f0fe">
           <v-list-item>
             <v-list-item-title>John Leider</v-list-item-title>
             <v-list-item-subtitle>john@google.com</v-list-item-subtitle>
@@ -95,27 +97,17 @@
     >
     <!-- {{ finalData }} -->
   </v-main>
+
   <v-navigation-drawer
+    app
     floating
+    width="300"
     location="right"
     elevation="0"
     v-model="aiDrawer"
   >
-    <div class="d-flex px-2 my-2">
-      <v-btn
-        class="flex-grow-1"
-        color="grey"
-        height="40"
-        variant="flat"
-      ></v-btn>
-
-      <v-avatar
-        class="ms-2"
-        color="surface-variant"
-        variant="flat"
-        rounded
-      ></v-avatar>
-    </div>
+    <AIChat :content="finalData.body"></AIChat>
+    <!-- <ai-chat/> -->
   </v-navigation-drawer>
 
   <!-- --{{ finalData }} -->
@@ -124,7 +116,7 @@
 
 <script setup>
 const route = useRoute();
-const aiDrawer = ref(false);
+const aiDrawer = ref(true);
 // Asynchronous data fetching
 const { data, error, refresh, status, pending, execute } = await useAsyncData(
   `${route.path}`,

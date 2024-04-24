@@ -8,6 +8,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.8.0",
     "@mdi/font": "^7.4.47",
     "@nuxt-themes/typography": "^1.0.1",
     "@nuxt/content": "^2.12.1",
