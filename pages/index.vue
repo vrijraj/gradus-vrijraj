@@ -1,11 +1,13 @@
 <template>
   <v-main>
     <v-app-bar :elevation="0">
-      <template v-slot:prepend>
+      <!-- <template v-slot:prepend>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      </template>
+      </template> -->
 
-      <v-app-bar-title>Application Bar</v-app-bar-title>
+      <v-app-bar-title>
+        <v-img src="/donotremove/logo.svg" width="120"></v-img>
+      </v-app-bar-title>
     </v-app-bar>
     <v-container fluid style="background-color: #e8f0fe">
       <v-row justify="center" align="center">
@@ -126,7 +128,12 @@
         <v-col md="11" class="py-0 my-0">
           <v-row class="py-0 my-0">
             <ContentList path="/" v-slot="{ list }" :query="{ draft: false }">
-              <v-col md="2" v-for="article in list" :key="article._path">
+              <v-col
+                md="2"
+                cols="12"
+                v-for="article in list"
+                :key="article._path"
+              >
                 <v-card elevation="0">
                   <v-img :src="article.image"></v-img>
                   <v-card-title>{{ article.title }}</v-card-title>

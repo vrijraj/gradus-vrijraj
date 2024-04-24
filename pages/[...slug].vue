@@ -53,7 +53,7 @@
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-left</v-icon></v-btn
     >
-    
+
     <v-container
       fluid
       style="
@@ -61,11 +61,10 @@
         border-radius: 12px !important;
         border: 1px solid #dee5f1;
       "
-      class="mx-5 mt-0 pa-0 mb-10"
+      class="mx-3 mt-0 pa-0 mb-5"
     >
-   
       <div
-        class="pa-8"
+        class="pa-md-8 pa-4"
         style="
           background-color: #e8f0fe;
           border-top-left-radius: 12px;
@@ -96,7 +95,7 @@
           </v-list-item>
         </v-list>
       </div>
-      <div class="pa-8" >
+      <div class="pa-md-8 pa-4">
         <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
           <ContentRenderer :value="node">
             <ContentRendererMarkdown :value="node" />
@@ -128,7 +127,8 @@
     <!-- <ai-chat/> -->
   </v-navigation-drawer>
 
-  <CoreBottomNav class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"/>
+  <CoreBottomNav class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none" />
+  <v-fab icon="$vuetify"></v-fab>
 </template>
 
 <script setup>
@@ -140,7 +140,7 @@ const { data, error, refresh, status, pending, execute } = await useAsyncData(
   () => queryContent(route.path).findOne()
 );
 
-console.log("data", data);
+// console.log("data", data);
 
 //States
 // const isExpanded = useIsExpanded();
