@@ -1,10 +1,9 @@
 <template>
-  <v-row>
     <v-col v-for="(n, i) in toc" :key="i" cols="12">
       <v-sheet
         @click="currentNode = i"
-        class="d-flex align-center justify-center py-1 my-2"
-        rounded="xl"
+        class="d-flex align-center justify-center py-1 my-1"
+        rounded
         :color="i == currentNode ? '#DEE5F1' : '#EEF2F9'"
         :elevation="i == currentNode ? 2 : 0"
         style="cursor: pointer; border: 2px solid #dee5f1"
@@ -40,7 +39,6 @@
         ></v-avatar>
       </v-sheet>
     </v-col>
-  </v-row>
 </template>
 <script setup>
 defineProps(["toc"]);
