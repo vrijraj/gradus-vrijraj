@@ -2,6 +2,7 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   //...
+  ssr: false,
   build: {
     transpile: ["vuetify"],
   },
@@ -43,4 +44,12 @@ export default defineNuxtConfig({
     },
   },
   extends: "@nuxt-themes/typography",
+  nitro: {
+    // prerender: {
+    //   crawlLinks: true,
+    // },
+    // firebase: {
+    //   gen: 2
+    // }
+  }
 });

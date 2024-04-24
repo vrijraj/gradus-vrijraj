@@ -19,6 +19,7 @@
   <!-- Left Sidebar -->
   <v-navigation-drawer
     floating
+    app
     elevation="0"
     width="300"
     v-model="stepDrawer"
@@ -81,9 +82,12 @@
         "
         v-if="currentNode == 0"
       >
-        <v-btn class="float-right" variant="tonal" @click="aiDrawer = !aiDrawer"
-          >AI Chat</v-btn
-        >
+        <v-btn
+          class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
+          variant="tonal"
+          @click="aiDrawer = !aiDrawer"
+          >AI Chat
+        </v-btn>
 
         <p style="font-size: 150%">
           <b>{{ data.title }}</b>
@@ -151,15 +155,21 @@
 
 <script setup>
 const route = useRoute();
-const aiDrawer = ref(true);
-const stepDrawer = ref(true);
+const aiDrawer = ref(false);
+const stepDrawer = ref(false);
+
 // Asynchronous data fetching
 const { data, error, refresh, status, pending, execute } = await useAsyncData(
   `${route.path}`,
   () => queryContent(route.path).findOne()
 );
 
-// console.log("data", data);
+onMounted(() => {
+  if (window.screen.width > 500) {
+    aiDrawer.value = true;
+    stepDrawer.value = true;
+  }
+});
 
 //States
 // const isExpanded = useIsExpanded();
