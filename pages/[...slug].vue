@@ -29,7 +29,9 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <a href="" class="mx-4" style="font-size: 80%;"> <v-icon>mdi-bug-outline</v-icon> Report a Bug</a>
+        <a href="" class="mx-4" style="font-size: 80%">
+          <v-icon>mdi-bug-outline</v-icon> Report a Bug</a
+        >
 
         <!-- Author -->
         <v-list>
@@ -51,9 +53,7 @@
   </v-navigation-drawer>
   <!-- Left Sidebar -->
 
-  <v-main
-    class="d-flex align-center justify-center mx-md-15 mx-0 mt-3"
-  >
+  <v-main class="d-flex align-center justify-center mx-md-15 mx-0 mt-3">
     <v-fab
       @click="currentNode > 0 && currentNode--"
       variant="flat"
@@ -65,7 +65,6 @@
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-left</v-icon></v-fab
     >
-    
 
     <v-container
       fluid
@@ -145,7 +144,7 @@
       appear
       color="#DEE5F1"
       location="bottom right"
-      style="left:0 !important"
+      style="left: 0 !important"
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-right</v-icon></v-fab
     >
@@ -163,7 +162,7 @@
   <v-navigation-drawer
     floating
     app
-    width="300"
+    :width="aiDrawerWidth"
     location="right"
     elevation="0"
     v-model="aiDrawer"
@@ -192,7 +191,7 @@
 <script setup>
 const route = useRoute();
 const aiDrawer = useAIChat();
-// const aiDrawer = ref(false);
+const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
 
 // Asynchronous data fetching
@@ -205,6 +204,7 @@ onMounted(() => {
   if (window.screen.width > 500) {
     aiDrawer.value = true;
     stepDrawer.value = true;
+    aiDrawerWidth.value = 300;
   }
 });
 
