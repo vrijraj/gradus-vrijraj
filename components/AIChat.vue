@@ -25,7 +25,7 @@
             overflow-y: scroll;
           "
         >
-          {{ finalResult }}
+        <div v-html="finalResult"></div>
         </div>
         <v-btn
           @click="getData"
@@ -46,6 +46,7 @@ import {
   HarmCategory,
   HarmBlockThreshold,
 } from "@google/generative-ai";
+import marked from 'marked';
 
 const props = defineProps({
   content: Object,
@@ -86,12 +87,19 @@ const safetySettings = [
     threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
   },
 ];
+// // Provide me a summary from the below MD file content in the paragraph format only
 const parts = [
   {
     text: `
-  ${props.content}   
-  Parse this content into readable format and summaries me in paragraph
-  remove ... from response from the results`,
+      You are a Markdown Content Expert.
+      Your task is extract content from the markdown file and answers according to user queries.
+      
+      Give me a exact content from this markdown code without explaining anything, make sure to provide it in the paragraph format only
+
+      ${JSON.stringify(props.content)}
+
+      Please deliver the response in propert formated text.
+    `,
   },
 ];
 
@@ -104,11 +112,10 @@ const getData = async () => {
       generationConfig,
       safetySettings,
     });
-    const response = result.response;
+
     loader.value = false;
-    console.log(response.text(), "response");
-    finalResult.value = response.text();
-    // finalResult.value = JSON.parse(response.text().replace(/\n/g, ""));
+    finalResult.value = marked(result.response.text());
+
   } catch (error) {
     console.log(error);
     loader.value = false;
