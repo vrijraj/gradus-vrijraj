@@ -10,7 +10,7 @@
   >
     <v-row>
       <v-col class="">
-        <v-btn class="float-right mt-n1" icon size="x-small" variant="flat"
+        <v-btn class="float-right mt-n1" icon size="x-small" variant="flat" @click="aiDrawer=false"
           ><v-icon>mdi-close</v-icon></v-btn
         >
         <p class="mb-3">AI Chat Panel</p>
@@ -18,7 +18,7 @@
         <div
           class="pa-3 text-left"
           style="
-            max-height: 400px;
+            max-height: 500px;
             background-color: #e7f0fe;
             border-radius: 12px;
             font-size: 87%;
@@ -78,6 +78,7 @@ const props = defineProps({
 
 let loader = ref(false);
 let finalResult = ref([]);
+const aiDrawer = useAIChat();
 
 const MODEL_NAME = "gemini-1.5-pro-latest";
 const API_KEY = "AIzaSyCKmk8zCAY_pcjqI_haNsm3yPqiJqvu21I";

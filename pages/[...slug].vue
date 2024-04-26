@@ -11,7 +11,7 @@
     </template>
     <v-app-bar-title>{{ data.title }}</v-app-bar-title>
     <template v-slot:append>
-      <v-app-bar-title class="float-right">
+      <v-app-bar-title class="float-right mr-3">
         <v-img src="/donotremove/logo.svg" width="120"></v-img>
       </v-app-bar-title>
     </template>
@@ -29,7 +29,7 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <a href=""> <v-icon>mdi-bug-outline</v-icon> Report a Bug</a>
+        <a href="" class="mx-4" style="font-size: 80%;"> <v-icon>mdi-bug-outline</v-icon> Report a Bug</a>
 
         <!-- Author -->
         <v-list>
@@ -53,16 +53,20 @@
 
   <v-main
     class="d-flex align-start justify-start mx-md-15 mx-0 mt-3"
-    style="min-height: 300px"
+    style="min-height: 300px;"
   >
-    <v-btn
+    <v-fab
       @click="currentNode > 0 && currentNode--"
       variant="flat"
       icon
+      app
+      appear
       color="#DEE5F1"
+      location="bottom start"
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-      ><v-icon>mdi-arrow-left</v-icon></v-btn
+      ><v-icon>mdi-arrow-left</v-icon></v-fab
     >
+    
 
     <v-container
       fluid
@@ -70,6 +74,7 @@
         background-color: white;
         border-radius: 12px !important;
         border: 1px solid #dee5f1;
+        min-height: 90vh;
       "
       class="mx-3 mt-0 pa-0 mb-5"
     >
@@ -132,19 +137,32 @@
         </div>
       </div>
     </v-container>
-    <v-btn
+
+    <v-fab
+      @click="currentNode < groupedContent.length - 1 && currentNode++"
+      variant="flat"
+      icon
+      app
+      appear
+      color="#DEE5F1"
+      location="bottom right"
+      class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
+      ><v-icon>mdi-arrow-right</v-icon></v-fab
+    >
+    <!-- <v-btn
       @click="currentNode < groupedContent.length - 1 && currentNode++"
       variant="flat"
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       icon
       color="#DEE5F1"
       ><v-icon>mdi-arrow-right</v-icon></v-btn
-    >
+    > -->
     <!-- {{ finalData }} -->
   </v-main>
 
   <v-navigation-drawer
     floating
+    app
     width="300"
     location="right"
     elevation="0"
@@ -154,8 +172,11 @@
   >
     <AIChat :content="finalData.body"></AIChat>
   </v-navigation-drawer>
-  <CoreBottomNav :contentLength="groupedContent.length" class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none" />
-  
+  <CoreBottomNav
+    :contentLength="groupedContent.length"
+    class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
+  />
+
   <v-fab
     class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
     @click="stepDrawer = !stepDrawer"
@@ -170,7 +191,7 @@
 
 <script setup>
 const route = useRoute();
-const aiDrawer = ref(false);
+const aiDrawer = useAIChat();
 // const aiDrawer = ref(false);
 const stepDrawer = ref(false);
 

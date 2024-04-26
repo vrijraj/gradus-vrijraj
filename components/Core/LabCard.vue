@@ -1,9 +1,11 @@
 <template>
+  <NuxtLink :to="item._path"
+        >
   <v-card elevation="0">
     <v-img :src="item.image"></v-img>
     <v-card-title>{{ item.title }}</v-card-title>
     <v-card-text>
-      <p class="mb-2">{{ item.description }}</p>
+      <p class="mb-10">{{ item.description }}</p>
       <v-chip
         size="small"
         variant="outlined"
@@ -12,13 +14,14 @@
         :key="index"
         >{{ tag }}</v-chip
       >
-      <br />
-      <br />
-      <NuxtLink :to="item._path"
+      <!-- <br />
+      <br /> -->
+      <!-- <NuxtLink :to="item._path"
         ><v-btn rounded variant="tonal">View</v-btn></NuxtLink
-      >
+      > -->
     </v-card-text>
   </v-card>
+  </NuxtLink>
 </template>
 
 <script setup>
