@@ -209,7 +209,6 @@ onMounted(() => {
 });
 
 //States
-// const isExpanded = useIsExpanded();
 const currentNode = useCurrentNode();
 
 const getToc = () => {
@@ -229,6 +228,8 @@ const groupedContent = computed(() => {
   const sections = [];
   let currentSection = [];
 
+  // data.value.body.children.find()
+
   let styleEl = data.value.body.children.find((node) => node.tag === "style");
 
   data.value?.body?.children.forEach((node) => {
@@ -236,7 +237,10 @@ const groupedContent = computed(() => {
       sections.push(currentSection);
       currentSection = [];
     }
-    currentSection.push(styleEl);
+    if (styleEl != undefined) {
+      currentSection.push(styleEl);
+    }
+
     currentSection.push(node);
   });
 

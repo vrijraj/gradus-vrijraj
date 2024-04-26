@@ -3,13 +3,12 @@
     <Title>{{ codeLabData.name }} | Gradus</Title>
     <Meta name="description" :content="codeLabData.desc" />
   </Head>
-
-  <v-main>
-    <v-app-bar :elevation="0">
+  <v-app-bar :elevation="0">
       <v-app-bar-title>
         <v-img src="/donotremove/logo.svg" width="120"></v-img>
       </v-app-bar-title>
     </v-app-bar>
+  <v-main>
     <v-container fluid style="background-color: #e8f0fe">
       <v-row justify="center" align="center">
         <v-col md="11">
@@ -76,7 +75,7 @@
       <!-- Search Header -->
 
       <!-- Search -->
-      <v-row justify="center" align="center">
+      <!-- <v-row justify="center" align="center">
         <v-col md="11">
           <v-container fluid>
             <div v-if="Object.keys(res).length > 0">
@@ -89,11 +88,10 @@
                   <CoreLabCard :item="article" />
                 </v-col>
               </v-row>
-              <!-- <NuxtLink v-for="r in res.value" :to="r.id">{{ r.title }}</NuxtLink> -->
             </div>
           </v-container>
         </v-col>
-      </v-row>
+      </v-row> -->
       <!-- Search -->
 
       <!-- All Data -->
@@ -102,8 +100,9 @@
           <v-row class="py-0 my-0">
             <ContentList path="/" v-slot="{ list }" :query="{ draft: false }">
               <v-col
-                md="2"
+                md="3"
                 lg="3"
+                sm="4"
                 cols="12"
                 v-for="article in list"
                 :key="article._path"

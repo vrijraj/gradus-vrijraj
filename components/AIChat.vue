@@ -25,31 +25,6 @@
             overflow-y: scroll;
           "
         >
-          <!-- {{ props.content }} -->
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
-            sapiente, assumenda vero reprehenderit architecto numquam error
-            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
-            illo maiores dolorum?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
-            sapiente, assumenda vero reprehenderit architecto numquam error
-            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
-            illo maiores dolorum?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
-            sapiente, assumenda vero reprehenderit architecto numquam error
-            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
-            illo maiores dolorum?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
-            sapiente, assumenda vero reprehenderit architecto numquam error
-            doloremque et ea repudiandae hic dolores voluptas sequi in dolorem
-            illo maiores dolorum?
-          </p>
           {{ finalResult }}
         </div>
         <v-btn
@@ -90,6 +65,8 @@ const generationConfig = {
   topP: 1,
   maxOutputTokens: 30720,
 };
+
+console.log('props.content', props.content);
 
 const safetySettings = [
   {
