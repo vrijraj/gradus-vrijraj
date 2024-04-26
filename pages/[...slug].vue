@@ -52,8 +52,7 @@
   <!-- Left Sidebar -->
 
   <v-main
-    class="d-flex align-start justify-start mx-md-15 mx-0 mt-3"
-    style="min-height: 300px;"
+    class="d-flex align-center justify-center mx-md-15 mx-0 mt-3"
   >
     <v-fab
       @click="currentNode > 0 && currentNode--"
@@ -146,6 +145,7 @@
       appear
       color="#DEE5F1"
       location="bottom right"
+      style="left:0 !important"
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-right</v-icon></v-fab
     >

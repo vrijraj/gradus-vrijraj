@@ -18,7 +18,7 @@
         <div
           class="pa-3 text-left"
           style="
-            max-height: 500px;
+            max-height: 300px;
             background-color: #e7f0fe;
             border-radius: 12px;
             font-size: 87%;
