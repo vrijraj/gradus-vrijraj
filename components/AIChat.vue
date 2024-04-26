@@ -90,7 +90,7 @@ const parts = [
   {
     text: `
   ${props.content}   
-  Parse this content and summaries me in paragraph
+  Parse this content into readable format and summaries me in paragraph
   remove ... from response from the results`,
   },
 ];

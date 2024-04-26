@@ -3,6 +3,7 @@ title: 'How to use Vuetify'
 description: 'Learn why variables are useful in programming, as well as how to define and update variables in your Kotlin code.'
 slug: 'how-to-use-vueitfy'
 author: 'Vrijraj Singh'
+date: 23-10-2024
 categories: 'Technology'
 label: 
 duration: 30

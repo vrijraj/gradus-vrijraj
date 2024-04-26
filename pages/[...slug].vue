@@ -65,7 +65,6 @@
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-left</v-icon></v-fab
     >
-
     <v-container
       fluid
       style="
