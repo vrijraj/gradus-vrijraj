@@ -12,7 +12,9 @@
     <v-app-bar-title>{{ data.title }}</v-app-bar-title>
     <template v-slot:append>
       <v-app-bar-title class="float-right mr-3">
-        <v-img src="/donotremove/logo.svg" width="120"></v-img>
+        <v-avatar size="30">
+          <v-img src="/logo.png" width="120"></v-img>
+        </v-avatar>
       </v-app-bar-title>
     </template>
   </v-app-bar>
@@ -84,10 +86,9 @@
         "
         v-if="currentNode == 0"
       >
-        <!-- <v-img src="/public/donotremove/ai-logo.svg"></v-img> -->
         <v-btn
           class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-          variant="tonal"
+          variant="flat"
           @click="aiDrawer = !aiDrawer"
           rounded
           size="small"
@@ -127,7 +128,7 @@
         "
         v-if="currentNode != 0"
       >
-        <p style="font-weight: 500">
+        <p style="font-weight: 400">
           <span class="mr-1">{{ currentNode + 1 }}.</span>
           {{ finalData.body.toc[currentNode].title }}
         </p>
@@ -163,19 +164,10 @@
       appear
       color="#DEE5F1"
       location="bottom right"
-      style="left: 0 !important"
+      :style="aiDrawer?'left: 0 !important':''"
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-right</v-icon></v-fab
     >
-    <!-- <v-btn
-      @click="currentNode < groupedContent.length - 1 && currentNode++"
-      variant="flat"
-      class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-      icon
-      color="#DEE5F1"
-      ><v-icon>mdi-arrow-right</v-icon></v-btn
-    > -->
-    <!-- {{ finalData }} -->
   </v-main>
 
   <v-navigation-drawer
