@@ -74,7 +74,7 @@
         border: 1px solid #dee5f1;
         min-height: 90vh;
       "
-      class="mx-3 mt-0 pa-0 mb-5"
+      class="mx-3 mt-0 pa-0 mb-0"
     >
       <div
         class="pa-md-8 pa-4"
