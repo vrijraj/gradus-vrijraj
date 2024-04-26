@@ -5,10 +5,6 @@
   </Head>
   <v-app-bar :elevation="0" color="" height="60">
     <template v-slot:prepend>
-      <!-- <v-app-bar-nav-icon
-        @click="stepDrawer = !stepDrawer"
-      ></v-app-bar-nav-icon> -->
-
       <v-btn to="/" icon size="small"
         ><v-icon>mdi-keyboard-backspace</v-icon></v-btn
       >
@@ -157,10 +153,9 @@
     style="background-color: #f5f8fc"
   >
     <AIChat :content="finalData.body"></AIChat>
-    <!-- <ai-chat/> -->
   </v-navigation-drawer>
-
-  <CoreBottomNav class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none" />
+  <CoreBottomNav :contentLength="groupedContent.length" class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none" />
+  
   <v-fab
     class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
     @click="stepDrawer = !stepDrawer"
@@ -176,6 +171,7 @@
 <script setup>
 const route = useRoute();
 const aiDrawer = ref(false);
+// const aiDrawer = ref(false);
 const stepDrawer = ref(false);
 
 // Asynchronous data fetching

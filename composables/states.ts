@@ -5,3 +5,5 @@ export const useIsExpanded = () => useState<boolean>("isExpanded", () => false);
 export const useCurrentNode = () => useState<number>("currentNode", () => 0);
 
 export const useFilter = () => useState("filter", () => []);
+
+export const useAIChat = () => useState('aiDrawer', ()=> false)
