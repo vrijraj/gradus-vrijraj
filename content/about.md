@@ -3,7 +3,7 @@ title: 'How to Deploy a Gemini-powered chat app on Cloud Run'
 description: 'Learn why variables are useful in programming, as well as how to define and update variables in your Kotlin code.'
 slug: 'hello'
 author: 'Vrijraj Singh'
-date: 23-10-2024
+date: 2024-10-23
 categories: 'Technology'
 label: 
 duration: 23

@@ -38,8 +38,10 @@
         <!-- Author -->
         <v-list>
           <v-list-item>
-            <v-list-item-title>John Leider</v-list-item-title>
-            <v-list-item-subtitle>john@google.com</v-list-item-subtitle>
+            <v-list-item-title>{{ metadata.author }}</v-list-item-title>
+            <v-list-item-subtitle>{{
+              formatDate(metadata.date)
+            }}</v-list-item-subtitle>
             <template v-slot:prepend>
               <v-avatar size="30">
                 <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -93,7 +95,7 @@
           rounded
           size="small"
         >
-          <v-avatar  size="x-small" >
+          <v-avatar size="x-small">
             <v-img src="/public/donotremove/ai-logo.svg"></v-img>
           </v-avatar>
           AI Chat
@@ -103,10 +105,10 @@
           <b>{{ data.title }}</b>
         </p>
         <p style="font-size: 90%">{{ data.description }}</p>
+        <p>Last Updated: {{ formatDate(metadata.date) }}</p>
         <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
           <v-list-item>
-            <v-list-item-title>John Leider</v-list-item-title>
-            <v-list-item-subtitle>john@google.com</v-list-item-subtitle>
+            <v-list-item-title>{{ metadata.author }}</v-list-item-title>
             <template v-slot:prepend>
               <v-avatar>
                 <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -140,7 +142,7 @@
           rounded
           size="small"
         >
-          <v-avatar  size="x-small" >
+          <v-avatar size="x-small">
             <v-img src="/public/donotremove/ai-logo.svg"></v-img>
           </v-avatar>
           AI Chat
@@ -164,7 +166,7 @@
       appear
       color="#DEE5F1"
       location="bottom right"
-      :style="aiDrawer?'left: 0 !important':''"
+      :style="aiDrawer ? 'left: 0 !important' : ''"
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-right</v-icon></v-fab
     >
@@ -235,6 +237,12 @@ const getToc = () => {
   return menu;
 };
 
+function formatDate(dateString) {
+  const options = { month: "long", day: "numeric", year: "2-digit" };
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", options);
+}
+
 const groupedContent = computed(() => {
   const sections = [];
   let currentSection = [];
@@ -273,6 +281,7 @@ const metadata = computed(() => ({
   _partial: true,
   _locale: data.value?._locale,
   author: data.value?.author,
+  date: data.value?.date,
   duration: data.value?.duration,
   title: data.value?.title,
   description: data.value?.description,
