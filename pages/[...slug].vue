@@ -84,11 +84,18 @@
         "
         v-if="currentNode == 0"
       >
+        <!-- <v-img src="/public/donotremove/ai-logo.svg"></v-img> -->
         <v-btn
           class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
           variant="tonal"
           @click="aiDrawer = !aiDrawer"
-          >AI Chat
+          rounded
+          size="small"
+        >
+          <v-avatar  size="x-small" >
+            <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+          </v-avatar>
+          AI Chat
         </v-btn>
 
         <p style="font-size: 150%">
@@ -124,6 +131,19 @@
           <span class="mr-1">{{ currentNode + 1 }}.</span>
           {{ finalData.body.toc[currentNode].title }}
         </p>
+
+        <v-btn
+          class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
+          variant="flat"
+          @click="aiDrawer = !aiDrawer"
+          rounded
+          size="small"
+        >
+          <v-avatar  size="x-small" >
+            <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+          </v-avatar>
+          AI Chat
+        </v-btn>
       </div>
       <!-- Header -->
       <div class="pa-md-8 pa-4">
