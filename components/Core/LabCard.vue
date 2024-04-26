@@ -1,5 +1,5 @@
 <template>
-  <a :to="item._path">
+  <NuxtLink :to="item._path">
     <v-card elevation="0">
       <v-img :src="item.image"></v-img>
       <v-card-title>{{ item.title }}</v-card-title>
@@ -18,7 +18,7 @@
       > -->
       </v-card-text>
     </v-card>
-  </a>
+  </NuxtLink>
 </template>
 
 <script setup>

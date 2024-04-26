@@ -4,10 +4,10 @@
     <Meta name="description" :content="codeLabData.desc" />
   </Head>
   <v-app-bar :elevation="0">
-      <v-app-bar-title>
-        <v-img src="/donotremove/logo.svg" width="120"></v-img>
-      </v-app-bar-title>
-    </v-app-bar>
+    <v-app-bar-title>
+      <v-img src="/donotremove/logo.svg" width="120"></v-img>
+    </v-app-bar-title>
+  </v-app-bar>
   <v-main>
     <v-container fluid style="background-color: #e8f0fe">
       <v-row justify="center" align="center">
@@ -98,17 +98,19 @@
       <v-row justify="center" align="center" class="py-0 my-0">
         <v-col md="11" class="py-0 my-0">
           <v-row class="py-0 my-0">
-            <ContentList path="/" v-slot="{ list }" :query="{ draft: false }">
-              <v-col
-                md="3"
-                lg="3"
-                sm="4"
-                cols="12"
-                v-for="article in list"
-                :key="article._path"
-              >
-                <CoreLabCard :item="article" />
-              </v-col>
+            <ContentList path="/" :query="{ draft: false }">
+              <template v-slot="{ list }">
+                <v-col
+                  md="3"
+                  lg="3"
+                  sm="4"
+                  cols="12"
+                  v-for="article in list"
+                  :key="article._path"
+                >
+                  <CoreLabCard :item="article" />
+                </v-col>
+              </template>
             </ContentList>
           </v-row>
         </v-col>
