@@ -60,7 +60,7 @@
 <script setup>
 defineProps(["toc", "currentNode"]);
 
-const emitEvent = (newCurrentNode) => {
-  $emit('currentNodeChanged', newCurrentNode);
-};
+// const emitEvent = (newCurrentNode) => {
+//   $emit('currentNodeChanged', newCurrentNode);
+// };
 </script>

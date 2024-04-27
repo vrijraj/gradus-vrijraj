@@ -240,7 +240,7 @@ onMounted(() => {
 
 function getCurrentNodeFromUrl() {
   const url = new URLSearchParams(route.query);
-  const currnetNode = url.get("node");
+  const currnetNode = url.get("page");
   return currnetNode ? parseInt(currnetNode) : 0;
 }
 
