@@ -13,7 +13,7 @@
         <v-btn class="float-right mt-n1" icon size="x-small" variant="flat" @click="aiDrawer=false"
           ><v-icon>mdi-close</v-icon></v-btn
         >
-        <p class="mb-3">AI Chat Panel</p>
+        <p class="mb-3">AI Chat Panel <v-chip size="x-small" color="error">Experimental</v-chip></p>
 
         <div
           class="pa-3 text-left"
@@ -33,8 +33,9 @@
           rounded
           :loading="loader"
           variant="tonal"
+          color="primary"
           class="mt-3"
-          >Summerize the Content</v-btn
+          >Summerize Me</v-btn
         >
       </v-col>
     </v-row>

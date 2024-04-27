@@ -31,7 +31,7 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <a href="" class="mx-4" style="font-size: 80%">
+        <a href="mailto:vrijraj2396@gmail.com" class="mx-4" style="font-size: 80%">
           <v-icon>mdi-bug-outline</v-icon> Report a Bug</a
         >
 
@@ -39,12 +39,12 @@
         <v-list>
           <v-list-item>
             <v-list-item-title>{{ metadata.author }}</v-list-item-title>
-            <v-list-item-subtitle>{{
+            <!-- <v-list-item-subtitle>{{
               formatDate(metadata.date)
-            }}</v-list-item-subtitle>
+            }}</v-list-item-subtitle> -->
             <template v-slot:prepend>
               <v-avatar size="30">
-                <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                <v-img src="https://pbs.twimg.com/profile_images/1584518387392139264/6ENtnzmY_400x400.jpg"></v-img>
               </v-avatar>
             </template>
             <template v-slot:append>
@@ -104,21 +104,26 @@
         <p style="font-size: 150%">
           <b>{{ data.title }}</b>
         </p>
-        <p style="font-size: 90%">{{ data.description }}</p>
-        <p>Last Updated: {{ formatDate(metadata.date) }}</p>
-        <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
+        <p style="font-size: 95%">{{ data.description }}</p>
+        <p class="mt-4 mb-0" style="font-size: 95%">
+          <b>Last Updated:</b> {{ formatDate(metadata.date) }}
+        </p>
+        <p class="mt-1" style="font-size: 95%">
+          <b>Written By:</b> {{ metadata.author }}
+        </p>
+        <!-- <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
           <v-list-item>
             <v-list-item-title>{{ metadata.author }}</v-list-item-title>
-            <!-- <template v-slot:prepend>
+            <template v-slot:prepend>
               <v-avatar>
                 <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
               </v-avatar>
-            </template> -->
+            </template>
             <template v-slot:append>
-              <!-- <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn> -->
+              <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn>
             </template>
           </v-list-item>
-        </v-list>
+        </v-list> -->
       </div>
       <!-- Header -->
       <div
