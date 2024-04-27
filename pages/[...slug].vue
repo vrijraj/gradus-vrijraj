@@ -252,7 +252,7 @@ watch(
   currentNode,
   (newVal, oldVal) => {
     if (newVal !== oldVal) {
-      router.replace({ path: route.fullPath, query: { node: newVal } });
+      router.replace({ path: route.fullPath, query: { page: newVal } });
     }
   },
   { immediate: true }
