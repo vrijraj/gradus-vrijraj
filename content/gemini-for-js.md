@@ -7,7 +7,7 @@ date: 2024-10-23
 categories: 'Technology'
 label: 
 duration: 30
-image: '/codelabs/gemini.png'
+image: '/codelabs/gemini-for-js/gemini.png'
 tags: ['Gemini', 'JavaScript']
 draft: false
 ---
@@ -54,7 +54,7 @@ You can find more info about Gemini [here](https://blog.google/technology/ai/goo
 
 # What is AI Studio?
 AI Studio, A browser-based tool that allows developers to prototype and test generative AI models
-![Alt text](/codelabs/aistudio.png "AI Studio")
+![Alt text](/codelabs/gemini-for-js/aistudio.png "AI Studio")
 
 You access AI Studio [here](https://aistudio.google.com/).
 
