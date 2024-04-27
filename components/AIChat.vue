@@ -18,7 +18,8 @@
         <div
           class="pa-3 text-left"
           style="
-            max-height: 300px;
+            min-height: 300px;
+            max-height: 400px;
             background-color: #e7f0fe;
             border-radius: 12px;
             font-size: 87%;
@@ -46,7 +47,6 @@ import {
   HarmCategory,
   HarmBlockThreshold,
 } from "@google/generative-ai";
-import marked from 'marked';
 
 const props = defineProps({
   content: Object,
@@ -114,7 +114,7 @@ const getData = async () => {
     });
 
     loader.value = false;
-    finalResult.value = marked(result.response.text());
+    finalResult.value = (result.response.text());
 
   } catch (error) {
     console.log(error);
