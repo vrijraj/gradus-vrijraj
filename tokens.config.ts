@@ -28,22 +28,25 @@ export default defineTheme({
     },
     h5: {
       margin: '35px 0px 5px 0px',
-      lineHeight: '0'
     },
     h6: {
       margin: '30px 0px 5px 0px'
     },
     li: {
       margin: '0',
-      fontSize: '90%'
+      fontSize: '100%'
     },
-    // ol: {
-    //   margin: '2px',
-    //   fontSize: '90%'
-    // },
+    ol: {
+      margin: '2px',
+      fontSize: '100%',
+      li: {
+        margin: '3px',
+        fontSize: '100%'
+      }
+    },
     p: {
       margin: '2px 0',
-      fontSize: '95%'
+      fontSize: '100%'
     },
     img: {
       borderRadius: '12px'
