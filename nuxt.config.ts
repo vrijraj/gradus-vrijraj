@@ -34,7 +34,7 @@ export default defineNuxtConfig({
       },
     },
     highlight: {
-      theme: "github-light",
+      theme: "light-plus",
     },
     markdown: {
       anchorLinks: {

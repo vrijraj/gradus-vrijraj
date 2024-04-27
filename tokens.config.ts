@@ -3,11 +3,12 @@ import { defineTheme } from 'pinceau'
 export default defineTheme({
   typography: {
     // This will change the general line-break size
-    // letterSpacings: {
-    //   tight: '-0.0035em',
-    //   wide: '0.-0035em'
-    // },
+    letterSpacings: {
+      tight: '-0.0035em',
+      wide: '0.-0035em'
+    },
     // lead:'0px',
+
   },
   prose: {
     // This will change the fontSize of the `<ProseH1>` component
@@ -44,14 +45,51 @@ export default defineTheme({
       margin: '2px 0',
       fontSize: '95%'
     },
-    img:{
-      borderRadius:'12px'
+    img: {
+      borderRadius: '12px'
     },
-    source: {
-    },
+
     code: {
-      dark: defineTheme.name,
-      backgroundColor: 'Black'
+      block: {
+        fontSize: '15px',
+        margin: '20px 0',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: {
+          initial: '#e0e0e0',
+          dark: '{typography.color.secondary.800}'
+        },
+        borderRadius: '10px',
+        // color: {
+        //   initial: '#F8F9FA',
+        //   dark: '{typography.color.secondary.200}'
+        // },
+        backgroundColor: {
+          initial: '#F8F9FA',
+          dark: '{typography.color.secondary.900}'
+        },
+        backdropFilter: {
+          initial: 'contrast(1)',
+          dark: 'contrast(1)'
+        },
+        pre: {
+          // padding: '15px'
+        }
+      },
+      inline: {
+        borderRadius: '{typography.radii.3xs}',
+        padding: '0.2rem 0.375rem 0.2rem 0.375rem',
+        // fontSize: '{typography.fontSize.sm}',
+        fontWeight: '{typography.fontWeight.normal}',
+        color: {
+          initial: '{typography.color.secondary.700}',
+          dark: '{typography.color.secondary.200}'
+        },
+        backgroundColor: {
+          initial: '#E7EAED',
+          dark: '{typography.color.secondary.700}'
+        }
+      }
     }
   }
 })

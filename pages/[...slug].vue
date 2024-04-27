@@ -85,7 +85,8 @@
         background-color: white;
         border-radius: 12px !important;
         border: 1px solid #dee5f1;
-        min-height: 90vh;
+        min-height: 88vh;
+        max-width: 1000px;
       "
       class="mx-3 mt-0 pa-0 mb-0"
     >
