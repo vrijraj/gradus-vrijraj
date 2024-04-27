@@ -247,12 +247,15 @@ function getCurrentNodeFromUrl() {
 //States
 // const currentNode = useCurrentNode();
 const currentNode = ref(getCurrentNodeFromUrl());
+const totalNodes = ref(0);
 
 watch(
   currentNode,
   (newVal, oldVal) => {
-    if (newVal !== oldVal) {
+    if (newVal !== oldVal && newVal <= totalNodes.value) {
       router.replace({ path: route.fullPath, query: { page: newVal } });
+    } else if (newVal > totalNodes.value) {
+      currentNode.value = 0;
     }
   },
   { immediate: true }
@@ -268,6 +271,7 @@ const getToc = () => {
       });
     }
   });
+  totalNodes.value = menu.length;
   return menu;
 };
 
