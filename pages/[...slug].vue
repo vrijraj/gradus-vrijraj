@@ -27,11 +27,19 @@
     v-model="stepDrawer"
     style="background-color: #f5f8fc"
   >
-    <SidebarChips :toc="finalData.body.toc" />
+    <SidebarChips
+      :toc="finalData.body.toc"
+      :currentNode="currentNode"
+      @currentNodeChanged="(i) => (currentNode = i)"
+    />
 
     <template v-slot:append>
       <div class="pa-2">
-        <a href="mailto:vrijraj2396@gmail.com" class="mx-4" style="font-size: 80%">
+        <a
+          href="mailto:vrijraj2396@gmail.com"
+          class="mx-4"
+          style="font-size: 80%"
+        >
           <v-icon>mdi-bug-outline</v-icon> Report a Bug</a
         >
 
@@ -44,7 +52,9 @@
             }}</v-list-item-subtitle> -->
             <template v-slot:prepend>
               <v-avatar size="30">
-                <v-img src="https://pbs.twimg.com/profile_images/1584518387392139264/6ENtnzmY_400x400.jpg"></v-img>
+                <v-img
+                  src="https://pbs.twimg.com/profile_images/1584518387392139264/6ENtnzmY_400x400.jpg"
+                ></v-img>
               </v-avatar>
             </template>
             <template v-slot:append>
@@ -209,6 +219,7 @@
 
 <script setup>
 const route = useRoute();
+const router = useRouter();
 const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
@@ -227,8 +238,25 @@ onMounted(() => {
   }
 });
 
+function getCurrentNodeFromUrl() {
+  const url = new URLSearchParams(route.query);
+  const currnetNode = url.get("page");
+  return currnetNode ? parseInt(currnetNode) : 0;
+}
+
 //States
-const currentNode = useCurrentNode();
+// const currentNode = useCurrentNode();
+const currentNode = ref(getCurrentNodeFromUrl());
+
+watch(
+  currentNode,
+  (newVal, oldVal) => {
+    if (newVal !== oldVal) {
+      router.replace({ path: route.fullPath, query: { node: newVal } });
+    }
+  },
+  { immediate: true }
+);
 
 const getToc = () => {
   let menu = [];
