@@ -124,6 +124,9 @@
 // import debounce from "lodash.debounce";
 import codeLabData from "/assets/data/core.json";
 
+// import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
+// const query: QueryBuilderParams = { path: '/', where: [{ draft: false }], sort: [{ date: -1 }] }
+
 //Filter by tags
 // const data = await queryContent("")
 //   .where({ tags: ["firebase", "node.js"] })

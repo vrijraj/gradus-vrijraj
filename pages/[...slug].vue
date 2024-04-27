@@ -109,11 +109,11 @@
         <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
           <v-list-item>
             <v-list-item-title>{{ metadata.author }}</v-list-item-title>
-            <template v-slot:prepend>
+            <!-- <template v-slot:prepend>
               <v-avatar>
                 <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
               </v-avatar>
-            </template>
+            </template> -->
             <template v-slot:append>
               <!-- <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn> -->
             </template>

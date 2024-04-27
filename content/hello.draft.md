@@ -9,6 +9,7 @@ label:
 duration: 23
 image: '/codelabs/hello.png'
 tags: ['node.js']
+draft: true
 ---
 
 

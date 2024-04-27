@@ -33,11 +33,19 @@ export default defineTheme({
       margin: '30px 0px 5px 0px'
     },
     li: {
-      margin: '0'
-    },
-    p: {
       margin: '0',
+      fontSize: '90%'
+    },
+    // ol: {
+    //   margin: '2px',
+    //   fontSize: '90%'
+    // },
+    p: {
+      margin: '2px 0',
       fontSize: '95%'
+    },
+    img:{
+      borderRadius:'12px'
     },
     source: {
     },
