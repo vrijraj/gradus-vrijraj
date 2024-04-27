@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="item._path">
-    <v-card elevation="0">
+    <v-card elevation="0" rounded="lg" style="border: 1px solid #DEE5F1;">
       <v-img :src="item.image"></v-img>
       <v-card-title>{{ item.title }}</v-card-title>
       <v-card-text>
