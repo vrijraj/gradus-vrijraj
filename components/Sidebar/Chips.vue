@@ -9,7 +9,7 @@
       `"
       justify="center"
       align="center"
-      @click="currentNode = i"
+      @click="$emit('currentNodeChanged', i)"
     >
       <v-row justify="start" align="start">
         <v-col md="1" cols="1">
@@ -58,6 +58,9 @@
   </v-container>
 </template>
 <script setup>
-defineProps(["toc"]);
-const currentNode = useCurrentNode();
+defineProps(["toc", "currentNode"]);
+
+const emitEvent = (newCurrentNode) => {
+  $emit('currentNodeChanged', newCurrentNode);
+};
 </script>
