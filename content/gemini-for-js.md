@@ -107,6 +107,59 @@ You can get the API Key from AI Studio by clicking on `Get API`
 </html>
 ```
 
+#### This one is to cppppi
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">Get Response</button>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        // Fetch your API_KEY
+        const API_KEY = "keyyyyd";
+
+        // Access your API key (see "Set up your API key" above)
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        // ...
+
+        async function run() {
+            // For text-only input, use the gemini-pro model
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+            const prompt = "Write a story about a magic backpack."
+
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const text = response.text();
+            console.log(text);
+        }
+
+        run()
+
+        // ...
+    </script>
+</body>
+
+</html>
+```
 
 #### Generate text from text-only input
 When the prompt input includes only text, use the `gemini-pro` model with the generateContent method to generate text output:
