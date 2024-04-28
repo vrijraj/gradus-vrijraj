@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   //...
   // target: 'static',
   // ssr: false,
-  ssr: false,
+  // ssr: false,
   build: {
     transpile: ["vuetify"],
   },
@@ -18,6 +18,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
+    'nuxt-gtag'    
     //...
   ],
   vite: {
@@ -55,4 +56,7 @@ export default defineNuxtConfig({
     //   gen: 2
     // }
   },
+  gtag: {
+    id: 'G-WNF0K83TJ5'
+  }
 });
