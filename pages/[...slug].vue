@@ -163,15 +163,6 @@
           </v-avatar>
           AI Chat
         </v-btn>
-        <v-btn
-          class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
-          variant="flat"
-          @click="ahndle"
-          rounded
-          size="small"
-        >
-          click
-        </v-btn>
       </div>
       <!-- Header -->
       <div class="pa-md-8 pa-4">
@@ -341,15 +332,4 @@ const finalData = computed(() => ({
     toc: getToc(),
   },
 }));
-
-async function ahndle() {
-  const resp = await $fetch("api/openai", {
-    method: "POST",
-    body: JSON.stringify({
-      prompt: "Tell me a story",
-    }),
-  });
-
-  console.log(resp);
-}
 </script>
