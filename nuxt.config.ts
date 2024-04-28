@@ -16,7 +16,8 @@ export default defineNuxtConfig({
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }));
       });
-    }
+    },
+    'nuxt-gtag'
     //...
   ],
   vite: {
@@ -53,5 +54,8 @@ export default defineNuxtConfig({
     // firebase: {
     //   gen: 2
     // }
+  },
+  gtag: {
+    id: 'G-WNF0K83TJ5'
   }
 });
