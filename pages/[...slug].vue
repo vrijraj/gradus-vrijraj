@@ -339,6 +339,7 @@ useHead({
     { property: "og:url", content: 'https://gradus-app.vercel.app/'+metadata.value._path },
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: metadata.value.image },
+    { hid: 't-type', name: 'twitter:card', content: metadata.value.description },
   ],
 });
 
