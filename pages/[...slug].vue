@@ -325,7 +325,22 @@ const metadata = computed(() => ({
   description: data.value?.description,
   categories: data.value?.categories,
   slug: data.value?.slug,
+  image: data.value?.image
 }));
+
+useHead({
+  meta: [
+    { property: "og:title", content: metadata.value.title + ' - Gradus'},
+    {
+      property: "og:description",
+      content: metadata.value.description
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: window.location.origin+metadata.value._path },
+    { property: "og:locale", content: "en_US" },
+    { property: "og:image", content: metadata.value.image },
+  ],
+});
 
 const finalData = computed(() => ({
   body: {
