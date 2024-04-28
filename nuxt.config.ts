@@ -8,7 +8,8 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
-  devtools: { enabled: true },
+  devtools: { enabled: false },
+
   modules: [
     "@nuxt/content",
     (_options, nuxt) => {
@@ -16,7 +17,7 @@ export default defineNuxtConfig({
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }));
       });
-    }
+    },
     //...
   ],
   vite: {
@@ -53,5 +54,5 @@ export default defineNuxtConfig({
     // firebase: {
     //   gen: 2
     // }
-  }
+  },
 });

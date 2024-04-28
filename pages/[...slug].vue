@@ -163,6 +163,15 @@
           </v-avatar>
           AI Chat
         </v-btn>
+        <v-btn
+          class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
+          variant="flat"
+          @click="ahndle"
+          rounded
+          size="small"
+        >
+          click
+        </v-btn>
       </div>
       <!-- Header -->
       <div class="pa-md-8 pa-4">
@@ -225,9 +234,8 @@ const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
 
 // Asynchronous data fetching
-const { data, error, refresh, status, pending, execute } = await useAsyncData(
-  `${route.path}`,
-  () => queryContent(route.path).findOne()
+const { data } = await useAsyncData(`${route.path}`, () =>
+  queryContent(route.path).findOne()
 );
 
 onMounted(() => {
@@ -238,47 +246,13 @@ onMounted(() => {
   }
 });
 
-function getCurrentNodeFromUrl() {
-  const url = new URLSearchParams(route.query);
-  const currnetNode = url.get("page");
-  return currnetNode ? parseInt(currnetNode) : 0;
-}
-
-//States
-// const currentNode = useCurrentNode();
 const currentNode = ref(getCurrentNodeFromUrl());
 const totalNodes = ref(0);
 
-watch(
-  currentNode,
-  (newVal, oldVal) => {
-    if (newVal !== oldVal && newVal <= totalNodes.value) {
-      router.replace({ path: route.fullPath, query: { page: newVal } });
-    } else if (newVal > totalNodes.value) {
-      currentNode.value = 0;
-    }
-  },
-  { immediate: true }
-);
-
-const getToc = () => {
-  let menu = [];
-  data.value?.body?.children.forEach((node) => {
-    if (node.tag == "h1") {
-      menu.push({
-        title: node?.children[0].value,
-        link: node?.props.id,
-      });
-    }
-  });
-  totalNodes.value = menu.length;
-  return menu;
-};
-
-function formatDate(dateString) {
-  const options = { month: "long", day: "numeric", year: "2-digit" };
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", options);
+function getCurrentNodeFromUrl() {
+  const url = new URLSearchParams(route.query);
+  const node = url.get("page");
+  return node ? parseInt(node) : 0;
 }
 
 const groupedContent = computed(() => {
@@ -305,6 +279,39 @@ const groupedContent = computed(() => {
   // drawer.value = true;
   return sections;
 });
+
+//States
+// const currentNode = useCurrentNode();
+
+watch(
+  currentNode,
+  (newVal, oldVal) => {
+    if (newVal !== oldVal) {
+      router.replace({ path: route.fullPath, query: { page: newVal } });
+    }
+  },
+  { immediate: true }
+);
+
+const getToc = () => {
+  let menu = [];
+  data.value?.body?.children.forEach((node) => {
+    if (node.tag == "h1") {
+      menu.push({
+        title: node?.children[0].value,
+        link: node?.props.id,
+      });
+    }
+  });
+  totalNodes.value = menu.length;
+  return menu;
+};
+
+function formatDate(dateString) {
+  const options = { month: "long", day: "numeric", year: "2-digit" };
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", options);
+}
 
 // For seo
 const metadata = computed(() => ({
@@ -334,4 +341,15 @@ const finalData = computed(() => ({
     toc: getToc(),
   },
 }));
+
+async function ahndle() {
+  const resp = await $fetch("api/openai", {
+    method: "POST",
+    body: JSON.stringify({
+      prompt: "Tell me a story",
+    }),
+  });
+
+  console.log(resp);
+}
 </script>
