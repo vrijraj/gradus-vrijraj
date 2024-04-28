@@ -336,7 +336,7 @@ useHead({
       content: metadata.value.description
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: window.location.origin+metadata.value._path },
+    { property: "og:url", content: 'https://gradus-app.vercel.app/'+metadata.value._path },
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: metadata.value.image },
   ],
