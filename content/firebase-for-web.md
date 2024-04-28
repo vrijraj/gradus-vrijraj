@@ -1,9 +1,9 @@
 ---
-title: 'Firebase for Web'
+title: 'Share your Thought with Firebase'
 description: 'This CodeLab demonstrates use of Firebase for Web Developers'
-slug: 'firebase-for-web'
+slug: 'share-your-thought-with-firebase'
 author: 'Vrijraj Singh'
-date: 2024-10-23
+date: 2024-4-28
 categories: 'Technology'
 label: 
 duration: 30
@@ -16,15 +16,15 @@ draft: false
 In this lab session, you'll be leveraging the Firebase to create practical JavaScript utility tools.
 
 ##### What you'll do
-- You'll utilize Google AI Studio to familiarize yourself with the tools for accessing the Gemini model and crafting a utility use case.
-- You'll get the Prompt engineering concept to generate content, aiding in the comprehension of captured information.
+- You'll utilize Firebaes to build Share your thought web application
+- You'll get the Cloud Firestore concept to implement database query into your web app, aiding in the comprehension of captured information.
 
 ##### What you'll learn
-- How to use of Google AI Studio.
-- Propmt Engineering.
-- Add Gemini API to your web app.
+- How to use of Firebase.
+- Cloud Firestore Query.
+- Add Firebase to your web app.
 
-This lab is targeted to Web Developers and software developers of all levels, including beginners. Our focus will be on getting hands-on experience with the capabilities of Gemini AI in Web.
+This lab is targeted to Web Developers and software developers of all levels, including beginners. Our focus will be on getting hands-on experience with the capabilities of Firebase in Web.
 
 
 # What is Firebase?
@@ -47,18 +47,33 @@ You can find more info about Firebase [here](https://firebase.google.com/product
 Create a new Firebase project and follow the below instructions
 <br/>
 
-1. Create a Firebase project in the `Firebase console`.
-1. From the project overview page in the `Firebase console`, click Add Firebase to your web app. If your project already has an app, select Add App from the project overview page.
-Copy and paste your project’s customized code snippet in the <head> tag of your page, before other script tags.
-1. Copy and paste your project’s customized code snippet in the <head> tag of your page, before other script tags.
-1. Create a HTML page and include JS code from Firebase Web Console
-<br/>
-Be sure to paste the configuration code into your web page as described.
+##### 1. Project Setup
 
-```js
-<script src="https://www.gstatic.com/firebasejs/<version>/firebase.js"></script>
-<script>
-  // Initialize Firebase
+```text
+app Folder
+├── js                      # Test files (alternatively `spec` or `tests`)
+│       └──app.js           # Compiled files (alternatively `dist`)
+├── index.html                    # Documentation files (alternatively `doc`)
+└── README.md
+```
+
+##### 2. Setup Firebase Project and Get Keys
+1. Create a Firebase project in the [Firebase console](https://console.firebase.google.com/).
+1. From the project overview page in the `Firebase console`, click on `Settings` icon button and go to Project Settings.  
+1. In this page, you will find `Your Apps` section and here you can get the `SDK setup and configuration` (CDN code) 
+1. In `index.html`, Copy `SDK setup and configuration` and paste these scripts into the bottom of your <body> tag
+
+<br/>
+
+Be sure to paste the configuration code into your web page `js/app.js` as described.
+
+```js 
+// Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
   var config = {
     apiKey: "xxxxxxxxxxxxxxxxxxxxxxx",
     authDomain: "xxxxxxxxxx.firebaseapp.com",
@@ -68,56 +83,219 @@ Be sure to paste the configuration code into your web page as described.
     messagingSenderId: "xxxxxxxxxxxxxxxxxxxxxxx"
   };
   firebase.initializeApp(config);
-  // your code
-  </script>
+   // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
 ```
 
-#### Second Way! (If you are using Firebase Hosting)
+##### 3. Load Firebase Service's Library
 
-If you are building a web app and your web app is entirely static content, you can deploy it easily using Firebase Hosting.
+Now you can import the Library based on your use cases Such as if you want to use Cloud Firestore then import Cloud Firestore library.
 
-Firebase Hosting is a developer-focused static web hosting for modern front-end web applications. Using Firebase Hosting, you can deploy SSL-enabled web apps to your own domain on a global content-delivery network (CDN) from a single command.
+You can get the Library CDN [here](https://firebase.google.com/docs/web/learn-more?hl=en&authuser=0&_gl=1*1rgp6jp*_ga*MjAzNTIwMjY5Ny4xNzEzNTA2Mjcw*_ga_CW55HF8NVT*MTcxNDI3NTYyMi4xNy4xLjE3MTQyNzYyMjYuNDcuMC4w#libraries-cdn)
 
-<br/>
-Web apps hosted with Firebase Hosting can benefit from simpler project configuration. Paste the following code snippets into your application HTML to import the Firebase SDK and configure it automatically for the project your app is hosted on:
-
-```html
-    <!-- Firebase App is always required and must be first -->
-    <script src="/__/firebase/<version>/firebase-app.js"></script>
-
-    <!-- Add additional services you want to use -->
-    <script src="/__/firebase/<version>/firebase-auth.js"></script>
-    <script src="/__/firebase/<version>/firebase-database.js"></script>
-    <script src="/__/firebase/<version>/firebase-messaging.js"></script>
-    <script src="/__/firebase/<version>/firebase-functions.js"></script>
-
-    <!-- Comment out (or don't include) services you don't want to use -->
-    <!-- <script src="/__/firebase/<version>/firebase-storage.js"></script> -->
-
-    <script src="/__/firebase/init.js"></script>
+```js 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "xxxx",
+    authDomain: "xxxxxxx.firebaseapp.com",
+    databaseURL: "https://xxxxxxx.firebaseio.com",
+    projectId: "xxxxxxx",
+    storageBucket: "xxxxxxx.appspot.com",
+    messagingSenderId: "xxxx",
+    appId: "xxx"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+export {db, collection, addDoc, getDocs}
 ```
 
+##### 4. Add app.js into your web page 
 
-# Use of Cloud Firestore Database
-
-Cloud Firestore is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform. Like Firebase Realtime Database, it keeps your data in sync across client apps through realtime listeners and offers offline support for mobile and web so you can build responsive apps that work regardless of network latency or Internet connectivity.
-
-<br/>
-Cloud Firestore's NoSQL data model, you store data in documents that contain fields mapping to values. These documents are stored in collections, which are containers for your documents that you can use to organize your data and build queries. Documents support many different data types, from simple strings and numbers, to complex, nested objects. You can also create subcollections within documents and build hierarchical data structures that scale as your database grows.
-
-#### Create a Cloud Firestore project
-1. Open the Firebase Console and create a new project.
-1. In the Database section, click Try Firestore.
-1. Click Enable.
-
-#### Set up your development environment
-
-Add the required dependencies and client libraries to your app.
-
-1. Follow the instructions to add Firebase to your Web app.
-1. Add the Firebase and Cloud Firestore libraries to your app:
+Add your `app.js` file in your web page, before closing the body tag
 
 ```js
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+<script type="module" src="/js/app.js"></script>
+
+<script type="module">
+    import { db, collection, addDoc, getDocs } from '/js/app.js'
+</script>
 ```
+
+# Setup Cloud Firestore
+
+Here, we'll setup Cloud Firestore Database in the Firebase Project Console
+<br/>
+1. On the Project Overview page, in the left side you can find Cloud Firestore
+1. Click on Get Start Cloud Firestore Button and you need select Database region and you will find two options
+database type (Production / Dev)
+1. Use Dev Mode for the Development
+
+![Alt text](https://camo.githubusercontent.com/b07163debff5b1fdb6a90946b41c8a1e5f9914e7f384e514cbb739e85557397c/68747470733a2f2f66697265626173652e676f6f676c652e636f6d2f646f63732f6669726573746f72652f696d616765732f7374727563747572652d646174612e706e67 "Data Modeling")
+
+##### Add Data in Cloud Firestore
+
+Cloud Firestore stores data in Documents, which are stored in Collections. Cloud Firestore creates collections and documents implicitly the first time you add data to the document. You do not need to explicitly create collections or documents.
+
+Create a new collection and a document using the following example code.
+
+```js
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/<version>/firebase-firestore.js";
+// Your web app's Firebase configuration
+const firebaseConfig = { 
+    //... 
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
+try {
+    const ref = await addDoc(collection(db, 'users'), {name:'Vrijraj'})
+    console.log(ref);
+} catch (error) {
+    console.log('error', e)
+}
+```
+
+##### Read Data in Cloud Firestore by Document ID
+```js
+import { getFirestore, doc , getDoc } from "https://www.gstatic.com/firebasejs/<version>/firebase-firestore.js";
+// Your web app's Firebase configuration
+const firebaseConfig = { 
+    //... 
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
+let docid = "YOUR_DOC_ID" 
+
+const docRef = doc(db, "data", docid);
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+} else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+}
+```
+
+##### Read all documents in Cloud Firestore
+```js
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/<version>/firebase-firestore.js";
+// Your web app's Firebase configuration
+const firebaseConfig = { 
+    //... 
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
+const querySnapshot = await getDocs(collection(db, 'users'))
+let res = querySnapshot.docs.map(doc=> {
+    return {...doc.data(),...{docid:doc.id}}
+})
+
+console.log(res);
+```
+
+##### Update Data in Cloud Firestore by Document ID
+```js
+import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/<version>/firebase-firestore.js";
+// Your web app's Firebase configuration
+const firebaseConfig = { 
+    //... 
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
+let docid = 'YOUR_DOC_ID'
+const docRef = doc(db, 'data', docid)
+
+// set name 'name1' to 'name2'
+await updateDoc(docRef,{name:'name2'})
+```
+
+##### Delete document in Cloud Firestore by Document ID
+```js
+import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/<version>/firebase-firestore.js";
+// Your web app's Firebase configuration
+const firebaseConfig = { 
+    //... 
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
+let docid = 'YOUR_DOC_ID'
+await deleteDoc(doc(db, "data", docid));
+```
+
+# Add Data from Input 
+
+Now you can create one HTML Button and Input field, define some id such as `addBtn` and `msg`
+
+```html [index.html]
+<input type="text" placeholder="Add Your Msg" id="msg">
+<button id="addBtn">Button</button>
+```
+
+Then you we need to perform action and add data in firestore
+```js [index.html]
+document.getElementById('addBtn').addEventListener('click', addData)
+
+async function addData() {
+    try {
+        let dataToAdd = document.getElementById('msg').value
+        const ref = await addDoc(collection(db, 'users'), { name: dataToAdd })
+        console.log(ref);
+        alert('Data Added Successfully')
+    } catch (error) {
+        console.log('error', e)
+    }
+}
+```
+
+# Read All Data 
+
+Now you can create one more HTML Button and define some id such as `readBtn` and one div element for showing the results
+
+```html [index.html]
+<button id="readBtn">Read Data</button>
+
+<div id="res"></div>
+```
+Then you need to perform action when user click on `Read Data` button
+
+```js [index.html]
+document.getElementById('readBtn').addEventListener('click', readData)
+async function readData() {
+    try {
+        const querySnapshot = await getDocs(collection(db, 'users'))
+        let res = querySnapshot.docs.map(doc => {
+            return { ...doc.data(), ...{ docid: doc.id } }
+        })
+        res.forEach(ele=>{
+            document.getElementById('res').innerHTML += `
+                <p>${ele.name}</p>
+            ` 
+        })
+    } catch (error) {
+        console.log('error', e)
+    }
+}
+```
+
+# Conclusion
+
+We learned how to create a web application with Firebase. 
+<br>
+Enjoy coding with Firebase!
