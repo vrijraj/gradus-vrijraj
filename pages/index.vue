@@ -36,16 +36,16 @@
     </v-container>
     <v-container fluid>
       <!-- Search Header -->
-      <!-- <v-row
+      <v-row
         justify="center"
         align="center"
         style="border-bottom: 1px solid #e8f0fe"
       >
         <v-col md="11">
           <v-row>
-            <v-col md="2">
+            <!-- <v-col md="2">
               <v-text-field
-                v-model="search.value"
+                v-model="search"
                 hide-details="auto"
                 rounded
                 variant="outlined"
@@ -55,23 +55,22 @@
                 density="compact"
                 label="Search for any topic"
               ></v-text-field>
-            </v-col>
+            </v-col> -->
             <v-col md="2">
               <v-select
+                v-model="filter"
                 label="Choose Topic"
                 density="compact"
-                variant="outlined"
+                outlined
                 multiple
-                rounded
                 dense
-                bg-color="#E8F0FE"
-                prepand-inner-icon="mdi-magnify"
-                :items="['firebase', 'nodejs']"
+                :items="topics"
+                class="custom-bg-color"
               ></v-select>
             </v-col>
           </v-row>
         </v-col>
-      </v-row> -->
+      </v-row>
       <!-- Search Header -->
 
       <!-- Search -->
@@ -98,7 +97,13 @@
       <v-row justify="center" align="center" class="py-0 my-0">
         <v-col md="11" class="py-0 my-0">
           <v-row class="py-0 my-0">
-            <ContentList path="/" :query="{ draft: false }">
+            <!-- <CoreTaskbar /> -->
+            <ContentList
+              path="/"
+              :query="{
+                where: query,
+              }"
+            >
               <template v-slot="{ list }">
                 <v-col
                   md="3"
@@ -121,33 +126,20 @@
 </template>
 
 <script setup>
-// import debounce from "lodash.debounce";
 import codeLabData from "/assets/data/core.json";
 
-// import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
-// const query: QueryBuilderParams = { path: '/', where: [{ draft: false }], sort: [{ date: -1 }] }
+const filter = ref([]);
+const topics = ref(codeLabData.filters);
 
-//Filter by tags
-// const data = await queryContent("")
-//   .where({ tags: ["firebase", "node.js"] })
-//   .find();
+const query = ref({
+  $and: [
+    { draft: false },
+    {
+      $or: [{ tags: { $contains: filter } }],
+    },
+  ],
+});
 
-// const search = reactive({
-//   value: "",
-// });
-
-// const res = ref([]);
-// watch(
-//   search,
-//   debounce(async () => {
-//     if (search.value.length < 3) {
-//       res.value = [];
-//       return;
-//     }
-//     res.value = await searchContent(search.value);
-//     console.log(res.value);
-//   }, 500)
-// );
 </script>
 
 <style></style>
