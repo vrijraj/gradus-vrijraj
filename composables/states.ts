@@ -7,5 +7,3 @@ export const useCurrentNode = () => useState<number>("currentNode", () => 0);
 export const useFilter = () => useState("filter", () => []);
 
 export const useAIChat = () => useState('aiDrawer', ()=> false)
-
-export const useReadTime = () => useState("readTime", () => 0)
