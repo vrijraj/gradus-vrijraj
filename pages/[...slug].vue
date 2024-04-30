@@ -208,6 +208,7 @@
     style="background-color: #f5f8fc"
   >
     <AIChat :content="finalData.body"></AIChat>
+    <CoreShareBtn />
   </v-navigation-drawer>
   <CoreBottomNav
     :contentLength="groupedContent.length"
