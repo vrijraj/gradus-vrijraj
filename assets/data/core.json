@@ -8,5 +8,10 @@
         "github":"https://github.com/vrijraj",
         "youtube":"",
         "web":"https://vrijraj.xyz/"
-    }
+    },
+    "filters": [
+        "Firebase",
+        "JavaScript",
+        "Gemini"
+    ]
 }
