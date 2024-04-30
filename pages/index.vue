@@ -41,7 +41,7 @@
         align="center"
         style="border-bottom: 1px solid #e8f0fe"
       >
-        <v-col md="11">
+        <v-col md="11" class="red">
           <v-row>
             <!-- <v-col md="2">
               <v-text-field
@@ -61,11 +61,15 @@
                 v-model="filter"
                 label="Choose Topic"
                 density="compact"
-                outlined
+                variant="outlined"
+                clearable
+                rounded
                 multiple
+                bg-color="#E8F0FE"
                 dense
                 :items="topics"
                 class="custom-bg-color"
+                hide-details
               ></v-select>
             </v-col>
           </v-row>

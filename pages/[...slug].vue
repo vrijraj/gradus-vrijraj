@@ -122,6 +122,14 @@
         <p class="mt-1" style="font-size: 95%">
           <b>Written By:</b> {{ metadata.author }}
         </p>
+        <v-chip
+          size="small"
+          variant="outlined"
+          class="mr-2 mt-3"
+          v-for="(tag, index) in metadata.tags"
+          :key="index"
+          >{{ tag }}</v-chip
+        >
         <!-- <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
           <v-list-item>
             <v-list-item-title>{{ metadata.author }}</v-list-item-title>
