@@ -43,7 +43,7 @@
       >
         <v-col md="11" class="red">
           <v-row>
-            <!-- <v-col md="2">
+            <v-col md="2">
               <v-text-field
                 v-model="search"
                 hide-details="auto"
@@ -55,7 +55,7 @@
                 density="compact"
                 label="Search for any topic"
               ></v-text-field>
-            </v-col> -->
+            </v-col>
             <v-col md="2">
               <v-select
                 v-model="filter"
@@ -78,7 +78,7 @@
       <!-- Search Header -->
 
       <!-- Search -->
-      <!-- <v-row justify="center" align="center">
+      <v-row justify="center" align="center">
         <v-col md="11">
           <v-container fluid>
             <div v-if="Object.keys(res).length > 0">
@@ -94,7 +94,7 @@
             </div>
           </v-container>
         </v-col>
-      </v-row> -->
+      </v-row>
       <!-- Search -->
 
       <!-- All Data -->
@@ -131,9 +131,13 @@
 
 <script setup>
 import codeLabData from "/assets/data/core.json";
+import { useDebounce } from "@vueuse/core";
 
 const filter = ref([]);
 const topics = ref(codeLabData.filters);
+const search = ref("");
+const debouncedSearch = useDebounce(search, 500);
+const res = ref({});
 
 const query = ref({
   $and: [
@@ -144,6 +148,31 @@ const query = ref({
   ],
 });
 
+
+watchEffect(async () => {
+  if (debouncedSearch.value.length < 3) {
+    res.value = {};
+    return; // Exit if the debounced search term is less than 3 characters
+  }
+
+  const { data } = await useAsyncData("search", () =>
+    queryContent()
+      .where({
+        $and: [
+          { draft: false },
+          {
+            $or: [
+              { title: { $icontains: debouncedSearch.value } },
+              { description: { $icontains: debouncedSearch.value } },
+            ],
+          },
+        ],
+      })
+      .find()
+  );
+
+  res.value = data;
+});
 </script>
 
 <style></style>
