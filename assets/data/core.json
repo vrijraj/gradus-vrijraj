@@ -10,8 +10,9 @@
         "web":"https://vrijraj.xyz/"
     },
     "filters": [
-        "Firebase",
-        "JavaScript",
-        "Gemini"
+        "FIREBASE",
+        "JAVASCRIPT",
+        "GEMINI",
+        "GCP"
     ]
 }

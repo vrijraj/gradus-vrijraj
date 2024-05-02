@@ -78,7 +78,7 @@
       </v-row>
       <!-- Search Header -->
 
-      <!-- Search -->
+      <!-- All Data -->
       <v-row
         justify="center"
         align="center"
@@ -102,10 +102,15 @@
           </v-container>
         </v-col>
       </v-row>
-      <!-- Search -->
-
+      <v-row justify="center" align="center" class="px-0 mx-0 mt-3" v-else>
+        <v-col md="11" class="px-0">
+          <p>Nothing to show!</p>
+        </v-col>
+      </v-row>
       <!-- All Data -->
-      <v-row
+
+      <!-- All Data -- old -->
+      <!-- <v-row
         justify="center"
         align="center"
         class="py-0 my-0 mt-3"
@@ -134,7 +139,7 @@
             </ContentList>
           </v-row>
         </v-col>
-      </v-row>
+      </v-row> -->
       <!-- All Data -->
     </v-container>
   </v-main>
@@ -149,39 +154,40 @@ const topics = ref(codeLabData.filters);
 const search = ref("");
 const debouncedSearch = useDebounce(search, 500);
 const res = ref({});
+const query = ref({});
 
-const query = ref({
-  $and: [
-    { draft: false },
-    {
-      $or: [{ tags: { $contains: filter } }],
-    },
-  ],
-});
-
-watchEffect(async () => {
-  if (debouncedSearch.value.length < 3) {
-    res.value = {};
-    return; // Exit if the debounced search term is less than 3 characters
-  }
-
-  const { data } = await useAsyncData("search", () =>
-    queryContent()
-      .where({
-        $and: [
-          { draft: false },
-          {
-            $or: [
-              { title: { $icontains: debouncedSearch.value } },
-              { description: { $icontains: debouncedSearch.value } },
-            ],
-          },
-        ],
-      })
-      .find()
+const fetchData = async () => {
+  const { data } = await useAsyncData("allData", () =>
+    queryContent().where(query.value).sort({ title: 1 }).find()
   );
 
   res.value = data;
+};
+
+watchEffect(async () => {
+  const conditions = [{ draft: false }];
+
+  if (debouncedSearch.value.length >= 3) {
+    conditions.push({
+      $or: [
+        { title: { $icontains: debouncedSearch.value } },
+        { description: { $icontains: debouncedSearch.value } },
+      ],
+    });
+
+    if (filter.value.length) {
+      conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
+    }
+  } else if (filter.value.length) {
+    conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
+  }
+
+  query.value = conditions.length > 1 ? { $and: conditions } : conditions[0];
+  fetchData();
+});
+
+onMounted(async () => {
+  fetchData();
 });
 </script>
 
