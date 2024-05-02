@@ -1,52 +1,84 @@
 <template>
-  <div>
-    <v-btn
-      class="d-flex"
-      location="bottom end"
-      size="50"
-      color="#E8F0FE"
-	  z-index="1000"
-      app
-      appear
-      icon
-      @click="dialog = true"
-    >
-      <v-icon>mdi-share-variant</v-icon>
-    </v-btn>
+  <v-btn
+    color="#252726"
+    @click="dialog = true"
+    class="mx-3"
+    size="small"
+    variant="text"
+    rounded
+    prepend-icon="mdi-share-variant-outline"
+    >Share
+  </v-btn>
 
-    <v-dialog v-model="dialog" max-width="400">
-      <v-card>
-        <v-card-title class="text-h5">Share</v-card-title>
-        <v-card-text>
-          <div class="d-flex align-center justify-space-between mb-4">
-            <v-text-field v-model="url" label="Link" readonly outlined dense />
-            <v-btn icon @click="copyLink">
-              <v-icon @click="copyLink">mdi-content-copy</v-icon>
-            </v-btn>
-          </div>
-          <v-alert v-if="alert.show" :type="alert.type" dense dismissible>{{
-            alert.message
-          }}</v-alert>
-          <div class="d-flex justify-space-around">
-            <v-btn icon @click="shareOnWhatsApp">
+  <v-dialog v-model="dialog" rounded max-width="400">
+    <v-card style="border-radius: 12px !important">
+      <v-card-title class="text-h5"
+        >Share
+
+        <v-btn
+          class="float-right"
+          icon
+          size="small"
+          variant="flat"
+          @click="dialog = false"
+          ><v-icon>mdi-close</v-icon></v-btn
+        >
+      </v-card-title>
+      <v-card-text>
+        <div class="d-flex justify-space-around mb-4">
+          <v-btn @click="shareOnWhatsApp" variant="tonal" size="small" rounded>
+            <template v-slot:prepend>
               <v-icon large color="green">mdi-whatsapp</v-icon>
-            </v-btn>
-            <v-btn icon @click="shareOnTwitter">
+            </template>
+            WhatsApp
+          </v-btn>
+          <v-btn @click="shareOnTwitter" variant="tonal" size="small" rounded>
+            <template v-slot:prepend>
               <v-icon large color="blue">mdi-twitter</v-icon>
-            </v-btn>
-            <v-btn icon @click="shareOnLinkedIn">
-              <v-icon large color="blue darken-2">mdi-linkedin</v-icon>
-            </v-btn>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" text @click="dialog.value = false"
-            >Close</v-btn
+            </template>
+            Twitter/X
+          </v-btn>
+          <v-btn @click="shareOnLinkedIn" variant="tonal" size="small" rounded>
+            <template v-slot:prepend>
+              <v-icon large color="blue">mdi-linkedin</v-icon>
+            </template>
+            LinkedIn
+          </v-btn>
+        </div>
+
+        <span style="font-size: 90%" class="mb-4">Share Link</span>
+        <div class="d-flex align-center justify-space-between mb-4 mt-1">
+          <v-text-field
+            variant="outlined"
+            v-model="url"
+            rounded
+            readonly
+            outlined
+            density="compact"
+          />
+          <v-btn
+            icon
+            @click="copyLink"
+            class="mt-n5 ml-3"
+            size="small"
+            variant="tonal"
           >
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </div>
+            <v-icon @click="copyLink">mdi-content-copy</v-icon>
+          </v-btn>
+        </div>
+        <!--  -->
+        <v-alert
+          v-if="alert.show"
+          class="pa-2 mb-4"
+          :type="alert.type"
+          dense
+          dismissible
+        >
+          {{ alert.message }}</v-alert
+        >
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup>

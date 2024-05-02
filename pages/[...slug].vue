@@ -12,6 +12,7 @@
     <v-app-bar-title>{{ data.title }}</v-app-bar-title>
     <template v-slot:append>
       <v-app-bar-title class="float-right mr-3">
+        <CoreShareBtn />
         <v-avatar size="30">
           <v-img src="/logo.png" width="120"></v-img>
         </v-avatar>
@@ -227,7 +228,7 @@
     style="background-color: #f5f8fc"
   >
     <AIChat :content="finalData.body"></AIChat>
-    <CoreShareBtn />
+    
   </v-navigation-drawer>
   <CoreBottomNav
     :contentLength="groupedContent.length"
