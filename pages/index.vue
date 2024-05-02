@@ -78,13 +78,16 @@
       <!-- Search Header -->
 
       <!-- Search -->
-      <v-row justify="center" align="center">
-        <v-col md="11">
-          <v-container fluid>
+      <v-row justify="center" align="center" class="px-0 mx-0">
+        <v-col md="11" class="px-0">
+          <v-container fluid class="px-0">
             <div v-if="Object.keys(res).length > 0">
-              <v-row>
+              <v-row class="">
                 <v-col
-                  md="4"
+                md="3"
+                  lg="3"
+                  sm="4"
+                  cols="12"
                   v-for="(article, index) in res.value"
                   :key="index"
                 >
@@ -101,7 +104,6 @@
       <v-row justify="center" align="center" class="py-0 my-0">
         <v-col md="11" class="py-0 my-0">
           <v-row class="py-0 my-0">
-            <!-- <CoreTaskbar /> -->
             <ContentList
               path="/"
               :query="{
