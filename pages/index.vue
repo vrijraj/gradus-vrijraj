@@ -11,7 +11,7 @@
   <v-main>
     <v-container fluid style="background-color: #e8f0fe">
       <v-row justify="center" align="center">
-        <v-col md="11">
+        <v-col md="11" class="px-0">
           <v-container fluid>
             <v-row justify="center" align="center">
               <v-col md="8" cols="12">
@@ -41,9 +41,9 @@
         align="center"
         style="border-bottom: 1px solid #e8f0fe"
       >
-        <v-col md="11" class="red">
+        <v-col md="11">
           <v-row>
-            <v-col md="2">
+            <v-col md="3" lg="2">
               <v-text-field
                 v-model="search"
                 hide-details="auto"
@@ -53,10 +53,11 @@
                 bg-color="#E8F0FE"
                 append-inner-icon="mdi-magnify"
                 density="compact"
+                @click:clear="search = ''"
                 label="Search for any topic"
               ></v-text-field>
             </v-col>
-            <v-col md="2">
+            <v-col md="3" lg="2">
               <v-select
                 v-model="filter"
                 label="Choose Topic"
@@ -78,30 +79,38 @@
       <!-- Search Header -->
 
       <!-- Search -->
-      <v-row justify="center" align="center" class="px-0 mx-0">
+      <v-row
+        justify="center"
+        align="center"
+        class="px-0 mx-0 mt-3"
+        v-if="Object.keys(res).length > 0"
+      >
         <v-col md="11" class="px-0">
           <v-container fluid class="px-0">
-            <div v-if="Object.keys(res).length > 0">
-              <v-row class="">
-                <v-col
+            <v-row class="">
+              <v-col
                 md="3"
-                  lg="3"
-                  sm="4"
-                  cols="12"
-                  v-for="(article, index) in res.value"
-                  :key="index"
-                >
-                  <CoreLabCard :item="article" />
-                </v-col>
-              </v-row>
-            </div>
+                lg="3"
+                sm="4"
+                cols="12"
+                v-for="(article, index) in res.value"
+                :key="index"
+              >
+                <CoreLabCard :item="article" />
+              </v-col>
+            </v-row>
           </v-container>
         </v-col>
       </v-row>
       <!-- Search -->
 
       <!-- All Data -->
-      <v-row justify="center" align="center" class="py-0 my-0">
+      <v-row
+        justify="center"
+        align="center"
+        class="py-0 my-0 mt-3"
+        v-if="!Object.keys(res).length || !search.length"
+      >
         <v-col md="11" class="py-0 my-0">
           <v-row class="py-0 my-0">
             <ContentList
@@ -149,7 +158,6 @@ const query = ref({
     },
   ],
 });
-
 
 watchEffect(async () => {
   if (debouncedSearch.value.length < 3) {

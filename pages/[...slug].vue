@@ -67,7 +67,7 @@
   </v-navigation-drawer>
   <!-- Left Sidebar -->
 
-  <v-main class="d-flex align-center justify-center mx-md-15 mx-0 mt-3">
+  <v-main class="d-flex align-center justify-center mx-md-16 mx-0 mt-3" px>
     <v-fab
       @click="currentNode > 0 && currentNode--"
       variant="flat"
@@ -86,7 +86,7 @@
         border-radius: 12px !important;
         border: 1px solid #dee5f1;
         min-height: 88vh;
-        max-width: 1000px;
+        max-width: 900px;
       "
       class="mx-3 mt-0 pa-0 mb-0"
     >
