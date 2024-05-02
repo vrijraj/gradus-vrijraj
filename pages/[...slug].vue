@@ -34,34 +34,48 @@
     />
 
     <template v-slot:append>
-      <div class="pa-2">
-        <a
-          href="mailto:vrijraj2396@gmail.com"
-          class="mx-4"
-          style="font-size: 80%"
-        >
-          <v-icon>mdi-bug-outline</v-icon> Report a Bug</a
-        >
-
+      <div class="px-4">
         <!-- Author -->
-        <v-list>
-          <v-list-item>
-            <v-list-item-title>{{ metadata.author }}</v-list-item-title>
-            <!-- <v-list-item-subtitle>{{
-              formatDate(metadata.date)
-            }}</v-list-item-subtitle> -->
+        <v-list >
+          <span style="font-size: 90%;">Author</span>
+          <v-list-item class="pa-2" style="background-color: white;border: 1px solid #e0e0e0;border-radius: 10px !important;">
+            <v-list-item-title style="font-size: 95%;">{{ metadata.author }}</v-list-item-title>
+            <v-list-item-subtitle style="font-size: 80%;">
+              <span>Visit Website</span>
+            </v-list-item-subtitle>
             <template v-slot:prepend>
-              <v-avatar size="30">
+              <v-avatar size="40">
                 <v-img
                   src="https://pbs.twimg.com/profile_images/1584518387392139264/6ENtnzmY_400x400.jpg"
                 ></v-img>
               </v-avatar>
             </template>
             <template v-slot:append>
-              <!-- <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn> -->
+              <v-btn icon="mdi-linkedin" size="x-small" variant="text"></v-btn>
+              <v-btn icon="mdi-github" size="x-small" variant="text"></v-btn>
             </template>
           </v-list-item>
         </v-list>
+        <v-sheet class="d-flex mx-0 my-3" style="background-color: #f5f8fc">
+          <v-sheet class="ma-0 pa-0 me-auto align-self-center" style="background-color: #f5f8fc">
+            <a href="http://" target="_blank">
+              <v-img
+              width="130"
+              :src="'/donotremove/build-with-gradus.svg'"
+            ></v-img>
+            </a>
+          </v-sheet>
+
+          <v-sheet class="ma-0 pa-0 align-self-center" style="background-color: #f5f8fc">
+            <a
+              href="mailto:vrijraj2396@gmail.com"
+              class="mx-0"
+              style="font-size: 80%"
+            >
+              <v-icon>mdi-bug-outline</v-icon> Report a Bug</a
+            >
+          </v-sheet>
+        </v-sheet>
       </div>
     </template>
   </v-navigation-drawer>
@@ -80,59 +94,59 @@
       ><v-icon>mdi-arrow-left</v-icon></v-fab
     >
     <v-slide-y-reverse-transition>
-    <v-container
-      fluid
-      style="
-        background-color: white;
-        border-radius: 12px !important;
-        border: 1px solid #dee5f1;
-        min-height: 88vh;
-        max-width: 900px;
-      "
-      class="mx-3 mt-0 pa-0 mb-0"
-      v-show="show"
-    >
-      <div
-        class="pa-md-8 pa-4"
+      <v-container
+        fluid
         style="
-          background-color: #e8f0fe;
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
+          background-color: white;
+          border-radius: 12px !important;
+          border: 1px solid #dee5f1;
+          min-height: 88vh;
+          max-width: 900px;
         "
-        v-if="currentNode == 0"
+        class="mx-3 mt-0 pa-0 mb-0"
+        v-show="show"
       >
-        <v-btn
-          class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-          variant="flat"
-          @click="aiDrawer = !aiDrawer"
-          rounded
-          size="small"
+        <div
+          class="pa-md-8 pa-4"
+          style="
+            background-color: #e8f0fe;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+          "
+          v-if="currentNode == 0"
         >
-          <v-avatar size="x-small">
-            <v-img src="/public/donotremove/ai-logo.svg"></v-img>
-          </v-avatar>
-          AI Chat
-        </v-btn>
+          <v-btn
+            class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
+            variant="flat"
+            @click="aiDrawer = !aiDrawer"
+            rounded
+            size="small"
+          >
+            <v-avatar size="x-small">
+              <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+            </v-avatar>
+            AI Chat
+          </v-btn>
 
-        <p style="font-size: 150%">
-          <b>{{ data.title }}</b>
-        </p>
-        <p style="font-size: 95%">{{ data.description }}</p>
-        <p class="mt-4 mb-0" style="font-size: 95%">
-          <b>Last Updated:</b> {{ formatDate(metadata.date) }}
-        </p>
-        <p class="mt-1" style="font-size: 95%">
-          <b>Written By:</b> {{ metadata.author }}
-        </p>
-        <v-chip
-          size="small"
-          variant="outlined"
-          class="mr-2 mt-3"
-          v-for="(tag, index) in metadata.tags"
-          :key="index"
-          >{{ tag }}</v-chip
-        >
-        <!-- <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
+          <p style="font-size: 150%">
+            <b>{{ data.title }}</b>
+          </p>
+          <p style="font-size: 95%">{{ data.description }}</p>
+          <p class="mt-4 mb-0" style="font-size: 95%">
+            <b>Last Updated:</b> {{ formatDate(metadata.date) }}
+          </p>
+          <p class="mt-1" style="font-size: 95%">
+            <b>Written By:</b> {{ metadata.author }}
+          </p>
+          <v-chip
+            size="small"
+            variant="outlined"
+            class="mr-2 mt-3"
+            v-for="(tag, index) in metadata.tags"
+            :key="index"
+            >{{ tag }}</v-chip
+          >
+          <!-- <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
           <v-list-item>
             <v-list-item-title>{{ metadata.author }}</v-list-item-title>
             <template v-slot:prepend>
@@ -145,45 +159,48 @@
             </template>
           </v-list-item>
         </v-list> -->
-      </div>
-      <!-- Header -->
-      <div
-        class="px-md-8 py-md-3 pa-4"
-        style="
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
-          border-bottom: 1px solid #e0e0e0;
-        "
-        v-if="currentNode != 0"
-      >
-        <p style="font-weight: 400">
-          <span class="mr-1">{{ currentNode + 1 }}.</span>
-          {{ finalData.body.toc[currentNode].title }} (<span><v-icon size="lg" class="mt-n1 mr-1">mdi-clock-fast</v-icon>{{ readTime }} min remaining</span>)
-        </p>
-        
-        <v-btn
-          class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
-          variant="flat"
-          @click="aiDrawer = !aiDrawer"
-          rounded
-          size="small"
-        >
-          <v-avatar size="x-small">
-            <v-img src="/public/donotremove/ai-logo.svg"></v-img>
-          </v-avatar>
-          AI Chat
-        </v-btn>
-      </div>
-      <!-- Header -->
-      <div class="pa-md-8 pa-4">
-        <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
-          <ContentRenderer :value="node">
-            <ContentRendererMarkdown :value="node" />
-          </ContentRenderer>
         </div>
-      </div>
-    </v-container>
-  </v-slide-y-reverse-transition>
+        <!-- Header -->
+        <div
+          class="px-md-8 py-md-3 pa-4"
+          style="
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom: 1px solid #e0e0e0;
+          "
+          v-if="currentNode != 0"
+        >
+          <p style="font-weight: 400">
+            <span class="mr-1">{{ currentNode + 1 }}.</span>
+            {{ finalData.body.toc[currentNode].title }} (<span
+              ><v-icon size="lg" class="mt-n1 mr-1">mdi-clock-fast</v-icon
+              >{{ readTime }} min remaining</span
+            >)
+          </p>
+
+          <v-btn
+            class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
+            variant="flat"
+            @click="aiDrawer = !aiDrawer"
+            rounded
+            size="small"
+          >
+            <v-avatar size="x-small">
+              <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+            </v-avatar>
+            AI Chat
+          </v-btn>
+        </div>
+        <!-- Header -->
+        <div class="pa-md-8 pa-4">
+          <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
+            <ContentRenderer :value="node">
+              <ContentRendererMarkdown :value="node" />
+            </ContentRenderer>
+          </div>
+        </div>
+      </v-container>
+    </v-slide-y-reverse-transition>
 
     <v-fab
       @click="currentNode < groupedContent.length - 1 && currentNode++"
@@ -235,7 +252,7 @@ const router = useRouter();
 const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
-const show = ref(false)
+const show = ref(false);
 
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
@@ -247,7 +264,7 @@ onMounted(() => {
     aiDrawer.value = true;
     stepDrawer.value = true;
     aiDrawerWidth.value = 300;
-    show.value = true
+    show.value = true;
   }
 });
 
@@ -261,7 +278,7 @@ function getCurrentNodeFromUrl() {
 }
 
 const groupedContent = computed(() => {
-  show.value = false
+  show.value = false;
   const sections = [];
   let currentSection = [];
 
@@ -283,7 +300,7 @@ const groupedContent = computed(() => {
 
   if (currentSection.length) sections.push(currentSection);
   // drawer.value = true;
-  show.value = false
+  show.value = false;
   return sections;
 });
 
