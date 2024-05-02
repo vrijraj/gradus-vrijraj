@@ -79,6 +79,7 @@
       class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
       ><v-icon>mdi-arrow-left</v-icon></v-fab
     >
+    <v-slide-y-reverse-transition>
     <v-container
       fluid
       style="
@@ -89,6 +90,7 @@
         max-width: 900px;
       "
       class="mx-3 mt-0 pa-0 mb-0"
+      v-show="show"
     >
       <div
         class="pa-md-8 pa-4"
@@ -156,10 +158,9 @@
       >
         <p style="font-weight: 400">
           <span class="mr-1">{{ currentNode + 1 }}.</span>
-          {{ finalData.body.toc[currentNode].title }}
-          <span>Time to read: {{ readTime }}</span>
+          {{ finalData.body.toc[currentNode].title }} (<span><v-icon size="lg" class="mt-n1 mr-1">mdi-clock-fast</v-icon>{{ readTime }} min remaining</span>)
         </p>
-
+        
         <v-btn
           class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
           variant="flat"
@@ -182,6 +183,7 @@
         </div>
       </div>
     </v-container>
+  </v-slide-y-reverse-transition>
 
     <v-fab
       @click="currentNode < groupedContent.length - 1 && currentNode++"
@@ -233,6 +235,7 @@ const router = useRouter();
 const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
+const show = ref(false)
 
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
@@ -244,6 +247,7 @@ onMounted(() => {
     aiDrawer.value = true;
     stepDrawer.value = true;
     aiDrawerWidth.value = 300;
+    show.value = true
   }
 });
 
@@ -257,6 +261,7 @@ function getCurrentNodeFromUrl() {
 }
 
 const groupedContent = computed(() => {
+  show.value = false
   const sections = [];
   let currentSection = [];
 
@@ -278,6 +283,7 @@ const groupedContent = computed(() => {
 
   if (currentSection.length) sections.push(currentSection);
   // drawer.value = true;
+  show.value = false
   return sections;
 });
 
