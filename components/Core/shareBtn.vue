@@ -7,6 +7,7 @@
     variant="text"
     rounded
     prepend-icon="mdi-share-variant-outline"
+    style="text-transform: capitalize;"
     >Share
   </v-btn>
 

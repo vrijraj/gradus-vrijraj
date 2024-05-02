@@ -34,11 +34,12 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid>
+    <v-container fluid class="py-0">
       <!-- Search Header -->
       <v-row
         justify="center"
         align="center"
+        class="bg-white"
         style="border-bottom: 1px solid #e8f0fe"
       >
         <v-col md="11">
@@ -82,7 +83,7 @@
       <v-row
         justify="center"
         align="center"
-        class="px-0 mx-0 mt-3"
+        class="px-0 mx-0 mt-5"
         v-if="Object.keys(res).length > 0"
       >
         <v-col md="11" class="px-0">
@@ -108,7 +109,7 @@
       <v-row
         justify="center"
         align="center"
-        class="py-0 my-0 mt-3"
+        class="py-0 my-0 mt-5"
         v-if="!Object.keys(res).length || !search.length"
       >
         <v-col md="11" class="py-0 my-0">
@@ -138,6 +139,19 @@
       <!-- All Data -->
     </v-container>
   </v-main>
+  <!-- <v-footer class="bg-white d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex" height="45" style="width: 100%;border-top: 1px solid #e0e0e0;">
+    <div class="d-flex justify-space-between mb-0 " style="width: 100%;">
+      <v-sheet class="ma-0 pa-1 align-self-center">
+      <a href="http://" target="_blank">
+        <v-img width="130" :src="'/donotremove/build-with-gradus.svg'"></v-img>
+      </a>
+      </v-sheet>
+      <v-sheet class="ma-0 pa-1 align-self-center">
+        <NuxtLink style="font-size: 80%" class="ml-5" to='/'>Privacy & Policy</NuxtLink>
+        <NuxtLink style="font-size: 80%" class="ml-5" to='/'>Terms & Conditions</NuxtLink>
+      </v-sheet>
+    </div>
+  </v-footer> -->
 </template>
 
 <script setup>
