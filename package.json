@@ -13,7 +13,7 @@
     "@nuxt-themes/typography": "^1.0.1",
     "@nuxt/content": "^2.12.1",
     "@tailwindcss/typography": "^0.5.12",
-    "lodash.debounce": "^4.0.8",
+    "@vueuse/core": "^10.9.0",
     "nuxt": "^3.11.2",
     "openai": "^4.38.5"
   },

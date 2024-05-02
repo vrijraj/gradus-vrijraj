@@ -157,6 +157,7 @@
         <p style="font-weight: 400">
           <span class="mr-1">{{ currentNode + 1 }}.</span>
           {{ finalData.body.toc[currentNode].title }}
+          <span>Time to read: {{ readTime }}</span>
         </p>
 
         <v-btn
@@ -207,6 +208,7 @@
     style="background-color: #f5f8fc"
   >
     <AIChat :content="finalData.body"></AIChat>
+    <CoreShareBtn />
   </v-navigation-drawer>
   <CoreBottomNav
     :contentLength="groupedContent.length"
@@ -331,22 +333,34 @@ const metadata = computed(() => ({
   description: data.value?.description,
   categories: data.value?.categories,
   slug: data.value?.slug,
-  image: data.value?.image
+  image: data.value?.image,
 }));
 
 useHead({
   meta: [
-    { property: "og:title", content: metadata.value.title + ' - Gradus'},
+    { property: "og:title", content: metadata.value.title + " - Gradus" },
     {
       property: "og:description",
-      content: metadata.value.description
+      content: metadata.value.description,
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: 'https://gradus-app.vercel.app/'+metadata.value._path },
+    {
+      property: "og:url",
+      content: "https://gradus-app.vercel.app/" + metadata.value._path,
+    },
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: metadata.value.image },
-    { hid: 't-type', name: 'twitter:card', content: metadata.value.description },
+    {
+      hid: "t-type",
+      name: "twitter:card",
+      content: metadata.value.description,
+    },
   ],
+});
+
+// Read time per section
+const readTime = computed(() => {
+  return getReadTIme(groupedContent.value[currentNode.value]);
 });
 
 const finalData = computed(() => ({
