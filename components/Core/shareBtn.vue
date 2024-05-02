@@ -7,6 +7,7 @@
     variant="text"
     rounded
     prepend-icon="mdi-share-variant-outline"
+    style="text-transform: capitalize"
     >Share
   </v-btn>
 
@@ -108,16 +109,7 @@ const copyLink = () => {
     });
 };
 
-const linkedinContent = `
-🎉 Exciting News! 🎉 %0A
-I've just published a new codelab. 😃 %23Gradus %0A
-
-If you want to learn through practice, join me in this interactive session! %0A%0A
-
-Check it out here ➡️ ${url.value}
-`;
-
-const whatsappContent = `
+const content = `
 🎉 Exciting News! 🎉
 I've just published a new codelab. 😃 #Gradus
 
@@ -126,20 +118,31 @@ If you want to learn through practice, join me in this interactive session!
 Check it out here ➡️ ${url.value}
 `;
 
+const whatsappContent = `
+Big Announcement Alert!
+
+Breaking News!
+
+I'm thrilled to share that a brand new codelab is now live! Dive into the world of #Gradus and join me for an engaging interactive session where we learn by doing!
+
+Ready to embark on this coding adventure? Don't miss out! Check it out now: 
+${url.value}
+`;
+
 const shareOnWhatsApp = () => {
-  const url = window.location.href;
-  window.open(`https://wa.me/?text=${whatsappContent}`, "_blank");
+  const encodedUrl = encodeURIComponent(whatsappContent);
+  window.open(`https://wa.me/?text=${encodedUrl}`, "_blank");
 };
 
 const shareOnTwitter = () => {
-  const url = window.location.href;
-  window.open(`https://twitter.com/intent/tweet?url=${url}`, "_blank");
+  const encodedUrl = encodeURIComponent(content);
+  window.open(`https://twitter.com/intent/tweet?url=${encodedUrl}`, "_blank");
 };
 
 const shareOnLinkedIn = () => {
-  const url = window.location.href;
+ const encodedUrl = encodeURIComponent(content);
   window.open(
-    `https://www.linkedin.com/feed/?shareActive=true&text=${linkedinContent}`,
+    `https://www.linkedin.com/feed/?shareActive=true&text=${encodedUrl}`,
     "_blank"
   );
 };
