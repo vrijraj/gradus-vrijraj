@@ -37,11 +37,20 @@
     <template v-slot:append>
       <div class="px-4">
         <!-- Author -->
-        <v-list >
-          <span style="font-size: 90%;">Author</span>
-          <v-list-item class="pa-2" style="background-color: white;border: 1px solid #e0e0e0;border-radius: 10px !important;">
-            <v-list-item-title style="font-size: 95%;">{{ metadata.author }}</v-list-item-title>
-            <v-list-item-subtitle style="font-size: 80%;">
+        <v-list>
+          <span style="font-size: 90%">Author</span>
+          <v-list-item
+            class="pa-2"
+            style="
+              background-color: white;
+              border: 1px solid #e0e0e0;
+              border-radius: 10px !important;
+            "
+          >
+            <v-list-item-title style="font-size: 95%">{{
+              metadata.author
+            }}</v-list-item-title>
+            <v-list-item-subtitle style="font-size: 80%">
               <span>Visit Website</span>
             </v-list-item-subtitle>
             <template v-slot:prepend>
@@ -58,16 +67,22 @@
           </v-list-item>
         </v-list>
         <v-sheet class="d-flex mx-0 my-3" style="background-color: #f5f8fc">
-          <v-sheet class="ma-0 pa-0 me-auto align-self-center" style="background-color: #f5f8fc">
+          <v-sheet
+            class="ma-0 pa-0 me-auto align-self-center"
+            style="background-color: #f5f8fc"
+          >
             <a href="http://" target="_blank">
               <v-img
-              width="130"
-              :src="'/donotremove/build-with-gradus.svg'"
-            ></v-img>
+                width="130"
+                :src="'/donotremove/build-with-gradus.svg'"
+              ></v-img>
             </a>
           </v-sheet>
 
-          <v-sheet class="ma-0 pa-0 align-self-center" style="background-color: #f5f8fc">
+          <v-sheet
+            class="ma-0 pa-0 align-self-center"
+            style="background-color: #f5f8fc"
+          >
             <a
               href="mailto:vrijraj2396@gmail.com"
               class="mx-0"
@@ -175,7 +190,7 @@
             <span class="mr-1">{{ currentNode + 1 }}.</span>
             {{ finalData.body.toc[currentNode].title }} (<span
               ><v-icon size="lg" class="mt-n1 mr-1">mdi-clock-fast</v-icon
-              >{{ readTime }} min remaining</span
+              >{{ readTime }} min read</span
             >)
           </p>
 
@@ -228,13 +243,14 @@
     style="background-color: #f5f8fc"
   >
     <AIChat :content="finalData.body"></AIChat>
-    
   </v-navigation-drawer>
   <CoreBottomNav
+    :currentNode="currentNode"
     :contentLength="groupedContent.length"
     class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
-  />
-
+    @currentNodeChanged="(fn) => currentNode = fn()"
+    />
+    
   <v-fab
     class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
     @click="stepDrawer = !stepDrawer"
