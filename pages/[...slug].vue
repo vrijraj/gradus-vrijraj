@@ -37,35 +37,7 @@
     <template v-slot:append>
       <div class="px-4">
         <!-- Author -->
-        <v-list>
-          <span style="font-size: 90%">Author</span>
-          <v-list-item
-            class="pa-2"
-            style="
-              background-color: white;
-              border: 1px solid #e0e0e0;
-              border-radius: 10px !important;
-            "
-          >
-            <v-list-item-title style="font-size: 95%">{{
-              metadata.author
-            }}</v-list-item-title>
-            <v-list-item-subtitle style="font-size: 80%">
-              <span>Visit Website</span>
-            </v-list-item-subtitle>
-            <template v-slot:prepend>
-              <v-avatar size="40">
-                <v-img
-                  src="https://pbs.twimg.com/profile_images/1584518387392139264/6ENtnzmY_400x400.jpg"
-                ></v-img>
-              </v-avatar>
-            </template>
-            <template v-slot:append>
-              <v-btn icon="mdi-linkedin" size="x-small" variant="text"></v-btn>
-              <v-btn icon="mdi-github" size="x-small" variant="text"></v-btn>
-            </template>
-          </v-list-item>
-        </v-list>
+        <CoreAuthorCard :authors="metadata.authors" />
         <v-sheet class="d-flex mx-0 my-3" style="background-color: #f5f8fc">
           <v-sheet
             class="ma-0 pa-0 me-auto align-self-center"
@@ -152,7 +124,9 @@
             <b>Last Updated:</b> {{ formatDate(metadata.date) }}
           </p>
           <p class="mt-1" style="font-size: 95%">
-            <b>Written By:</b> {{ metadata.author }}
+            <b>Written By: </b>
+            <span v-for="(author, i) in metadata.authors">{{ author.name }}<span v-if="i < metadata.authors.length -1">, </span>
+          </span>
           </p>
           <v-chip
             size="small"
@@ -248,9 +222,9 @@
     :currentNode="currentNode"
     :contentLength="groupedContent.length"
     class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
-    @currentNodeChanged="(fn) => currentNode = fn()"
-    />
-    
+    @currentNodeChanged="(fn) => (currentNode = fn())"
+  />
+
   <v-fab
     class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
     @click="stepDrawer = !stepDrawer"
@@ -320,14 +294,26 @@ const groupedContent = computed(() => {
   return sections;
 });
 
+const authorImage = computed(() => {
+  if (data.value?.author?.image) {
+    return data.value?.author?.image;
+  } else {
+    return "/authors/default-avatar-author.jpg";
+  }
+});
+
 //States
 // const currentNode = useCurrentNode();
 watch(
   currentNode,
   (newVal, oldVal) => {
+    show.value = false;
     if (newVal !== oldVal) {
       router.replace({ path: route.fullPath, query: { page: newVal } });
     }
+    setTimeout(() => {
+      show.value = true;
+    }, 350);
   },
   { immediate: true }
 );
@@ -362,7 +348,7 @@ const metadata = computed(() => ({
   _draft: data.value?._draft,
   _partial: true,
   _locale: data.value?._locale,
-  author: data.value?.author,
+  authors: data.value?.authors,
   date: data.value?.date,
   duration: data.value?.duration,
   title: data.value?.title,
@@ -371,7 +357,6 @@ const metadata = computed(() => ({
   slug: data.value?.slug,
   image: data.value?.image,
 }));
-
 
 useHead({
   meta: [
