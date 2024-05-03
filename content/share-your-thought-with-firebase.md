@@ -8,7 +8,7 @@ categories: 'Technology'
 label: 
 duration: 30
 image: '/codelabs/firebase-for-web/hero.png'
-tags: ['Firebase', 'JavaScript']
+tags: ['FIREBASE', 'JAVASCRIPT']
 draft: false
 ---
 
