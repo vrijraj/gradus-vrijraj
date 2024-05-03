@@ -58,9 +58,11 @@
                 label="Search for any topic"
               ></v-text-field>
             </v-col>
-            <v-col md="3" lg="2">
+            <v-col md="3" lg="3">
               <v-select
                 v-model="filter"
+                chips
+                closable-chips
                 label="Choose Topic"
                 density="compact"
                 variant="outlined"
@@ -172,7 +174,7 @@ const query = ref({});
 
 const fetchData = async () => {
   const { data } = await useAsyncData("allData", () =>
-    queryContent().where(query.value).sort({ title: 1 }).find()
+    queryContent().where(query.value).sort({ date: -1 }).find()
   );
 
   res.value = data;

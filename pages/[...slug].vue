@@ -322,7 +322,6 @@ const groupedContent = computed(() => {
 
 //States
 // const currentNode = useCurrentNode();
-
 watch(
   currentNode,
   (newVal, oldVal) => {
@@ -333,6 +332,7 @@ watch(
   { immediate: true }
 );
 
+// GetToc
 const getToc = () => {
   let menu = [];
   data.value?.body?.children.forEach((node) => {
@@ -347,11 +347,8 @@ const getToc = () => {
   return menu;
 };
 
-function formatDate(dateString) {
-  const options = { month: "long", day: "numeric", year: "2-digit" };
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", options);
-}
+// FormatDate
+const formatDate = (dateString) => getFormatedDate(dateString);
 
 // For seo
 const metadata = computed(() => ({
@@ -374,6 +371,7 @@ const metadata = computed(() => ({
   slug: data.value?.slug,
   image: data.value?.image,
 }));
+
 
 useHead({
   meta: [
