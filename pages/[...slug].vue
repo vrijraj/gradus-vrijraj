@@ -281,8 +281,8 @@ onMounted(() => {
     aiDrawer.value = true;
     stepDrawer.value = true;
     aiDrawerWidth.value = 300;
-    show.value = true;
   }
+  show.value = true;
 });
 
 const currentNode = ref(getCurrentNodeFromUrl());
@@ -295,7 +295,6 @@ function getCurrentNodeFromUrl() {
 }
 
 const groupedContent = computed(() => {
-  show.value = false;
   const sections = [];
   let currentSection = [];
 
@@ -317,7 +316,7 @@ const groupedContent = computed(() => {
 
   if (currentSection.length) sections.push(currentSection);
   // drawer.value = true;
-  show.value = false;
+
   return sections;
 });
 
