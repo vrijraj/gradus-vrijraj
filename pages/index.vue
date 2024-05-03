@@ -1,8 +1,8 @@
 <template>
-  <Head>
-    <Title>{{ codeLabData.name }} | Gradus</Title>
-    <Meta name="description" :content="codeLabData.desc" />
-  </Head>
+  <!-- <Head>
+    <Title>{{ config.name }} | Gradus</Title>
+    <Meta name="description" :content="config.desc" />
+  </Head> -->
   <v-app-bar :elevation="0">
     <v-app-bar-title>
       <v-img src="/donotremove/logo.svg" width="120"></v-img>
@@ -16,12 +16,12 @@
             <v-row justify="center" align="center">
               <v-col md="8" cols="12">
                 <h1 style="font-size: xx-large">
-                  Welcome to {{ codeLabData.name }}
+                  Welcome to {{ config.name }}
                 </h1>
                 <p class="mb-3">
-                  {{ codeLabData.dsec }}
+                  {{ config.dsec }}
                 </p>
-                <CoreSocialMedia :social="codeLabData.social" />
+                <CoreSocialMedia :social="config.social" />
               </v-col>
               <v-col md="4" cols="12" class="text-center">
                 <v-img
@@ -186,11 +186,33 @@
 </template>
 
 <script setup>
-import codeLabData from "/assets/data/core.json";
+import { config } from "../assets/config.js";
 import { useDebounce } from "@vueuse/core";
 
+useHead({
+  title: `${config.name} - Gradus`,
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  charset: "utf-8",
+
+  meta: [
+    { name: "description", content: config.desc },
+    { property: "og:title", content: config.name + " - Gradus" },
+    {
+      property: "og:description",
+      content: config.desc,
+    },
+    { property: "og:type", content: "website" },
+    {
+      property: "og:url",
+      content: config.hostUrl,
+    },
+    { property: "og:locale", content: "en_US" },
+    { property: "og:image", content: config.thumbnail },
+  ],
+});
+
 const filter = ref([]);
-const topics = ref(codeLabData.filters);
+const topics = ref(config.filters);
 const search = ref("");
 const debouncedSearch = useDebounce(search, 500);
 const res = ref({});
