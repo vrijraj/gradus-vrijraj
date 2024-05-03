@@ -80,13 +80,25 @@
         </v-col>
       </v-row>
       <!-- Search Header -->
-
       <!-- All Data -->
+      <!-- Loading -->
+      <v-row
+        justify="center"
+        align="center"
+        class="px-0 mx-0 mt-3"
+        v-if="loading"
+      >
+        <v-col md="11" class="px-0">
+          <v-progress-linear indeterminate color="primary"></v-progress-linear>
+        </v-col>
+      </v-row>
+
+      <!-- loading -->
       <v-row
         justify="center"
         align="center"
         class="px-0 mx-0 mt-5"
-        v-if="Object.keys(res).length > 0"
+        v-else-if="res != null && Object.keys(res).length"
       >
         <v-col md="11" class="px-0">
           <v-container fluid class="px-0">
@@ -96,7 +108,7 @@
                 lg="3"
                 sm="4"
                 cols="12"
-                v-for="(article, index) in res.value"
+                v-for="(article, index) in res"
                 :key="index"
               >
                 <CoreLabCard :item="article" />
@@ -105,11 +117,13 @@
           </v-container>
         </v-col>
       </v-row>
+
       <v-row justify="center" align="center" class="px-0 mx-0 mt-3" v-else>
         <v-col md="11" class="px-0">
           <p>Nothing to show!</p>
         </v-col>
       </v-row>
+
       <!-- All Data -->
 
       <!-- All Data -- old -->
@@ -171,16 +185,19 @@ const search = ref("");
 const debouncedSearch = useDebounce(search, 500);
 const res = ref({});
 const query = ref({});
+const loading = ref(false);
 
 const fetchData = async () => {
   const { data } = await useAsyncData("allData", () =>
     queryContent().where(query.value).sort({ date: -1 }).find()
   );
 
-  res.value = data;
+  res.value = data._rawValue;
+  loading.value = false;
 };
 
 watchEffect(async () => {
+  loading.value = true;
   const conditions = [{ draft: false }];
 
   if (debouncedSearch.value.length >= 3) {

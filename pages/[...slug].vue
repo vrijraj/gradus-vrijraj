@@ -325,9 +325,13 @@ const groupedContent = computed(() => {
 watch(
   currentNode,
   (newVal, oldVal) => {
+    show.value = false;
     if (newVal !== oldVal) {
       router.replace({ path: route.fullPath, query: { page: newVal } });
     }
+    setTimeout(() => {
+      show.value = true;
+    }, 350);
   },
   { immediate: true }
 );
