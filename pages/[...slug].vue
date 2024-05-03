@@ -14,7 +14,7 @@
       <v-app-bar-title class="float-right mr-3">
         <CoreShareBtn />
         <v-avatar size="30">
-          <v-img src="/logo.png" width="120"></v-img>
+          <NuxtImg src="/logo.png" width="120" />
         </v-avatar>
       </v-app-bar-title>
     </template>
@@ -44,10 +44,10 @@
             style="background-color: #f5f8fc"
           >
             <a href="http://" target="_blank">
-              <v-img
+              <NuxtImg
                 width="130"
                 :src="'/donotremove/build-with-gradus.svg'"
-              ></v-img>
+              />
             </a>
           </v-sheet>
 
@@ -107,11 +107,12 @@
             class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
             variant="flat"
             @click="aiDrawer = !aiDrawer"
+            v-if="config.config.aiFlag"
             rounded
             size="small"
           >
             <v-avatar size="x-small">
-              <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+              <NuxtImg src="/public/donotremove/ai-logo.svg" />
             </v-avatar>
             AI Chat
           </v-btn>
@@ -125,8 +126,10 @@
           </p>
           <p class="mt-1" style="font-size: 95%">
             <b>Written By: </b>
-            <span v-for="(author, i) in metadata.authors">{{ author.name }}<span v-if="i < metadata.authors.length -1">, </span>
-          </span>
+            <span v-for="(author, i) in metadata.authors"
+              >{{ author.name
+              }}<span v-if="i < metadata.authors.length - 1">, </span>
+            </span>
           </p>
           <v-chip
             size="small"
@@ -141,7 +144,7 @@
             <v-list-item-title>{{ metadata.author }}</v-list-item-title>
             <template v-slot:prepend>
               <v-avatar>
-                <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                <NuxtImg src="https://cdn.vuetifyjs.com/images/john.png"></NuxtImg>
               </v-avatar>
             </template>
             <template v-slot:append>
@@ -174,9 +177,10 @@
             @click="aiDrawer = !aiDrawer"
             rounded
             size="small"
+            v-if="config.config.aiFlag"
           >
             <v-avatar size="x-small">
-              <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+              <NuxtImg src="/public/donotremove/ai-logo.svg" />
             </v-avatar>
             AI Chat
           </v-btn>
@@ -238,13 +242,15 @@
 </template>
 
 <script setup>
+import { config } from "../assets/config.js";
+
 const route = useRoute();
 const router = useRouter();
 const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
 const show = ref(false);
-
+console.log(config);
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
   queryContent(route.path).findOne()
@@ -252,7 +258,7 @@ const { data } = await useAsyncData(`${route.path}`, () =>
 
 onMounted(() => {
   if (window.screen.width > 500) {
-    aiDrawer.value = true;
+    aiDrawer.value = false;
     stepDrawer.value = true;
     aiDrawerWidth.value = 300;
   }

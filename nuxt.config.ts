@@ -18,7 +18,8 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
-    'nuxt-gtag'    
+    "nuxt-gtag",
+    "@nuxt/image",
     //...
   ],
   vite: {
@@ -57,6 +58,6 @@ export default defineNuxtConfig({
     // }
   },
   gtag: {
-    id: 'G-WNF0K83TJ5'
-  }
+    id: "G-WNF0K83TJ5",
+  },
 });
