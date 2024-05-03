@@ -1,22 +1,30 @@
 ---
-title: 'Getting Started with GCP'
-description: 'This CodeLab demonstrates use of Google Cloud Platform'
-slug: 'getting-started-with-gcp'
-author: 'Vrijraj Singh'
+title: "Getting Started with GCP"
+description: "This CodeLab demonstrates use of Google Cloud Platform"
+slug: "getting-started-with-gcp"
+authors:
+  [
+    {
+      name: "Vrijraj Singh",
+      image: "/authors/vrijraj.jpeg",
+      socials: { linkedin: "https//:linkedin.com", github: "", twitter: "" },
+    }
+  ]
 date: 2024-10-23
-categories: 'Technology'
-label: 
+categories: "Technology"
+label:
 duration: 30
-image: '/codelabs/getting-started-with-gcp/hello.png'
-tags: ['GCP']
+image: "/codelabs/getting-started-with-gcp/hello.png"
+tags: ["GCP"]
 draft: false
 ---
 
-# Introduction 
+# Introduction
+
 In this lab session, you'll be leveraging the Gemini API to create practical JavaScript utility tools.
 
 ```js
-let a = 4
+let a = 4;
 ```
 
 :::alert
@@ -25,10 +33,10 @@ asds
 
 > asdas
 
+# Demo
 
-# Demo 
 In this lab session, you'll be leveraging the Gemini API to create practical JavaScript utility tools.
 
+# Resources
 
-# Resources 
 In this lab session, you'll be leveraging the Gemini API to create practical JavaScript utility tools.
