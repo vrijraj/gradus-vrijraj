@@ -5,7 +5,7 @@
   </Head> -->
   <v-app-bar :elevation="0">
     <v-app-bar-title>
-      <v-img src="/donotremove/logo.svg" width="120"></v-img>
+      <NuxtImg src="/donotremove/logo.svg" width="120" />
     </v-app-bar-title>
   </v-app-bar>
   <v-main>
@@ -24,10 +24,10 @@
                 <CoreSocialMedia :social="config.social" />
               </v-col>
               <v-col md="4" cols="12" class="text-center">
-                <v-img
+                <NuxtImg
                   width="70%"
                   :src="'/donotremove/gradus-background.svg'"
-                ></v-img>
+                />
               </v-col>
             </v-row>
           </v-container>
@@ -167,10 +167,10 @@
     <div class="d-flex justify-space-between mb-0" style="width: 100%">
       <v-sheet class="ma-0 pa-1 align-self-center">
         <a href="http://" target="_blank">
-          <v-img
+          <NuxtImg
             width="130"
             :src="'/donotremove/build-with-gradus.svg'"
-          ></v-img>
+          />
         </a>
       </v-sheet>
       <v-sheet class="ma-0 pa-1 align-self-center">

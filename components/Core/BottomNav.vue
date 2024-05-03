@@ -13,7 +13,7 @@
     >
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
-    <v-btn @click="aiDrawer = !aiDrawer">AI Chat</v-btn>
+    <v-btn @click="aiDrawer = !aiDrawer" v-if="config.config.aiFlag">AI Chat</v-btn>
     <v-btn icon @click="$emit('currentNodeChanged', () => {
       if (currentNode < contentLength - 1) {
         return currentNode + 1;
@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+import {config} from '../../assets/config.js';
 const props = defineProps({
   contentLength: Number,
   currentNode: Number,

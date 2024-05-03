@@ -51,10 +51,10 @@
 </template>
 
 <script setup>
+import { config } from "../assets/config.js";
 const props = defineProps({
   content: Object,
 });
-
 
 let loader = ref(false);
 let finalResult = ref([]);
@@ -64,15 +64,19 @@ async function getData() {
   loader.value = true;
 
   try {
-    const resp = await $fetch("api/openai", {
-      method: "POST",
-      body: JSON.stringify({
-        prompt: props.content,
-      }),
-    });
-    console.log(resp.response.content);
-    finalResult.value = resp.response.content;
-    loader.value = false;
+    if (config.config.aiFlag === true) {
+      const resp = await $fetch(`api/${config.config.aiFlagType}`, {
+        method: "POST",
+        body: JSON.stringify({
+          prompt: props.content,
+        }),
+      });
+      finalResult.value = resp.response.content;
+      loader.value = false;
+    } else {
+      finalResult.value = "AI is disabled";
+      loader.value = false;
+    }
   } catch (e) {
     console.log(e);
   }

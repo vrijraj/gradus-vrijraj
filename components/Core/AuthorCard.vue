@@ -18,7 +18,7 @@
       </v-list-item-subtitle>
       <template v-slot:prepend>
         <v-avatar size="40">
-          <v-img :src="authorImage(author)"></v-img>
+          <NuxtImg :src="authorImage(author)" />
         </v-avatar>
       </template>
       <template v-slot:append>
