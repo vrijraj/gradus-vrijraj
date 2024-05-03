@@ -2,7 +2,7 @@
   <NuxtLink :to="item._path">
     <v-card elevation="0" rounded="lg" style="border: 1px solid #dee5f1">
       <v-img height="150" cover :src="item.image"></v-img>
-      <v-card-title>{{ item.title }}</v-card-title>
+      <v-card-title style="font-weight: 500;">{{ item.title }}</v-card-title>
       <v-card-text>
         <p class="mb-2">{{ item.description }}</p>
         <p class="my-5" style="font-size: 85%">Updated: {{ getDate }}</p>

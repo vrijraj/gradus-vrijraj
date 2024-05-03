@@ -160,19 +160,29 @@
       <!-- All Data -->
     </v-container>
   </v-main>
-  <!-- <v-footer class="bg-white d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex" height="45" style="width: 100%;border-top: 1px solid #e0e0e0;">
-    <div class="d-flex justify-space-between mb-0 " style="width: 100%;">
+  <div
+    class="bg-white d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex px-5"
+    style="width: 100%; height: 45px; border-top: 1px solid #e0e0e0"
+  >
+    <div class="d-flex justify-space-between mb-0" style="width: 100%">
       <v-sheet class="ma-0 pa-1 align-self-center">
-      <a href="http://" target="_blank">
-        <v-img width="130" :src="'/donotremove/build-with-gradus.svg'"></v-img>
-      </a>
+        <a href="http://" target="_blank">
+          <v-img
+            width="130"
+            :src="'/donotremove/build-with-gradus.svg'"
+          ></v-img>
+        </a>
       </v-sheet>
       <v-sheet class="ma-0 pa-1 align-self-center">
-        <NuxtLink style="font-size: 80%" class="ml-5" to='/'>Privacy & Policy</NuxtLink>
-        <NuxtLink style="font-size: 80%" class="ml-5" to='/'>Terms & Conditions</NuxtLink>
+        <NuxtLink style="font-size: 80%" class="ml-5" to="/"
+          >Privacy & Policy</NuxtLink
+        >
+        <NuxtLink style="font-size: 80%" class="ml-5" to="/"
+          >Terms & Conditions</NuxtLink
+        >
       </v-sheet>
     </div>
-  </v-footer> -->
+  </div>
 </template>
 
 <script setup>
