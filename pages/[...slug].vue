@@ -240,6 +240,7 @@ const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
 const show = ref(false);
 const appLoading = useAppLoading();
+
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
   queryContent(route.path).findOne()
@@ -268,8 +269,6 @@ const groupedContent = computed(() => {
   const sections = [];
   let currentSection = [];
 
-  // data.value.body.children.find()
-
   let styleEl = data.value.body.children.find((node) => node.tag === "style");
 
   data.value?.body?.children.forEach((node) => {
@@ -285,21 +284,11 @@ const groupedContent = computed(() => {
   });
 
   if (currentSection.length) sections.push(currentSection);
-  // drawer.value = true;
 
   return sections;
 });
 
-const authorImage = computed(() => {
-  if (data.value?.author?.image) {
-    return data.value?.author?.image;
-  } else {
-    return "/authors/default-avatar-author.jpg";
-  }
-});
 
-//States
-// const currentNode = useCurrentNode();
 watch(
   currentNode,
   (newVal, oldVal) => {
