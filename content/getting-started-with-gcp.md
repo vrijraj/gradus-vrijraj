@@ -27,7 +27,18 @@ In this lab session, you'll be leveraging the Gemini API to create practical Jav
 let a = 4;
 ```
 
+::hero
+Default slot text
+
+#description
+This will be rendered inside the `description` slot.
+::
+
 :::alert
+asds
+:::
+
+:::card
 asds
 :::
 

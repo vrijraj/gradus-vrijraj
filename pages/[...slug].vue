@@ -69,7 +69,7 @@
   </v-navigation-drawer>
   <!-- Left Sidebar -->
 
-  <v-main class="d-flex align-center justify-center mt-3 " >
+  <v-main class="d-flex align-center justify-center mt-3">
     <v-fab
       @click="currentNode > 0 && currentNode--"
       variant="flat"
@@ -112,7 +112,7 @@
             size="small"
           >
             <v-avatar size="x-small">
-              <NuxtImg src="/public/donotremove/ai-logo.svg" />
+              <v-img src="/public/donotremove/ai-logo.svg"></v-img>
             </v-avatar>
             AI Chat
           </v-btn>
@@ -152,9 +152,11 @@
         >
           <p style="font-weight: 400">
             <span class="mr-1">{{ currentNode + 1 }}.</span>
-            {{ finalData.body.toc[currentNode].title }} ( <span
+            {{ finalData.body.toc[currentNode].title }} (
+            <span
               ><v-icon size="lg" class="mt-n1 mr-1">mdi-av-timer</v-icon
-              >{{ readTime }} min read </span>)
+              >{{ readTime }} min read </span
+            >)
           </p>
 
           <v-btn
@@ -237,7 +239,6 @@ const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
 const show = ref(false);
-console.log(config);
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
   queryContent(route.path).findOne()

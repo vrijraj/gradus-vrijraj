@@ -5,6 +5,7 @@
     </v-app-bar-title>
   </v-app-bar>
   <v-main>
+    <CoreAppBanner v-if="config.config.banner.status"/>
     <CoreHeroCard/>
     <v-container class="bg-white" fluid style="border-bottom: 1px solid #e8f0fe !important;">
       <v-row

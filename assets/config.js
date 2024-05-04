@@ -13,7 +13,7 @@ export const config = {
   },
   filters: ["FIREBASE", "JAVASCRIPT", "GEMINI", "GCP"],
   config: {
-    aiFlag: false,
+    aiFlag: true,
     aiFlagType: "openai", // openai or gemini
     theme: "light", // dark or light
     banner: {

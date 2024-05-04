@@ -60,6 +60,8 @@ let loader = ref(false);
 let finalResult = ref([]);
 const aiDrawer = useAIChat();
 
+
+
 async function getData() {
   loader.value = true;
 
