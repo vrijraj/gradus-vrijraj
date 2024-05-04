@@ -17,7 +17,7 @@ export const config = {
     aiFlagType: "openai", // openai or gemini
     theme: "light", // dark or light
     banner: {
-      status: true,
+      status: false,
       title: "Banner title",
       content: "Banner content",
       link: "https://vrijraj.xyz/",

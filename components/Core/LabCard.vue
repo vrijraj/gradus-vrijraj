@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="item._path">
+  <NuxtLink :to="item._path" @click="appLoading = true">
     <v-card elevation="0" rounded="lg" style="border: 1px solid #dee5f1">
       <v-img height="150" cover :src="item.image"></v-img>
       <v-card-title style="font-weight: 500;">{{ item.title }}</v-card-title>
@@ -15,7 +15,7 @@
           :key="index"
           >{{ tag }}</v-chip
         >
-        <NuxtLink :to="item._path" class="float-right mt-0 mb-3"
+        <NuxtLink @click="appLoading = true" :to="item._path" class="float-right mt-0 mb-3"
           ><v-btn rounded variant="tonal">Start</v-btn></NuxtLink
         >
       </v-card-text>
@@ -27,6 +27,8 @@
 const props = defineProps({
   item: Object,
 });
+
+const appLoading = useAppLoading();
 
 const getDate = computed(() => {
   return getFormatedDate(props.item.date);

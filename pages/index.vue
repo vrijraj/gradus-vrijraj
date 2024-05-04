@@ -4,7 +4,7 @@
       <NuxtImg src="/donotremove/logo.svg" width="120" />
     </v-app-bar-title>
     <v-progress-linear
-      :active="true"
+      :active="appLoading"
       :indeterminate="true"
       color="primary"
       absolute
@@ -155,6 +155,8 @@ const res = ref({});
 const query = ref({});
 const loading = ref(false);
 
+const appLoading = useAppLoading();
+
 const fetchData = async () => {
   const { data } = await useAsyncData("allData", () =>
     queryContent().where(query.value).sort({ date: -1 }).find()
@@ -162,10 +164,12 @@ const fetchData = async () => {
 
   res.value = data._rawValue;
   loading.value = false;
+  appLoading.value = false;
 };
 
 watchEffect(async () => {
   loading.value = true;
+  appLoading.value = true;
   const conditions = [{ draft: false }];
 
   if (debouncedSearch.value.length >= 3) {

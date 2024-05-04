@@ -7,3 +7,5 @@ export const useIsExpanded = () => useState<boolean>("isExpanded", () => false);
 // export const useFilter = () => useState("filter", () => []);
 
 export const useAIChat = () => useState('aiDrawer', ()=> false)
+
+export const useAppLoading = () => useState('appLoading', ()=> false)
