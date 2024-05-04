@@ -69,7 +69,7 @@
   </v-navigation-drawer>
   <!-- Left Sidebar -->
 
-  <v-main class="d-flex align-center justify-center mx-md-16 mx-0 mt-3" px>
+  <v-main class="d-flex align-center justify-center mt-3 " >
     <v-fab
       @click="currentNode > 0 && currentNode--"
       variant="flat"
@@ -91,7 +91,7 @@
           min-height: 88vh;
           max-width: 900px;
         "
-        class="mx-3 mt-0 pa-0 mb-0"
+        class="mx-0 mt-0 pa-0 mb-0"
         v-show="show"
       >
         <div
@@ -126,8 +126,8 @@
           </p>
           <p class="mt-1" style="font-size: 95%">
             <b>Written By: </b>
-            <span v-for="(author, i) in metadata.authors"
-              >{{ author.name
+            <span v-for="(author, i) in metadata.authors" :key="i">
+              {{ author.name
               }}<span v-if="i < metadata.authors.length - 1">, </span>
             </span>
           </p>
@@ -139,19 +139,6 @@
             :key="index"
             >{{ tag }}</v-chip
           >
-          <!-- <v-list class="px-0" style="width: 200px; background-color: #e8f0fe">
-          <v-list-item>
-            <v-list-item-title>{{ metadata.author }}</v-list-item-title>
-            <template v-slot:prepend>
-              <v-avatar>
-                <NuxtImg src="https://cdn.vuetifyjs.com/images/john.png"></NuxtImg>
-              </v-avatar>
-            </template>
-            <template v-slot:append>
-              <v-btn icon="mdi-menu-down" size="small" variant="text"></v-btn>
-            </template>
-          </v-list-item>
-        </v-list> -->
         </div>
         <!-- Header -->
         <div
@@ -165,10 +152,9 @@
         >
           <p style="font-weight: 400">
             <span class="mr-1">{{ currentNode + 1 }}.</span>
-            {{ finalData.body.toc[currentNode].title }} (<span
-              ><v-icon size="lg" class="mt-n1 mr-1">mdi-clock-fast</v-icon
-              >{{ readTime }} min read</span
-            >)
+            {{ finalData.body.toc[currentNode].title }} ( <span
+              ><v-icon size="lg" class="mt-n1 mr-1">mdi-av-timer</v-icon
+              >{{ readTime }} min read </span>)
           </p>
 
           <v-btn
@@ -215,6 +201,7 @@
     app
     :width="aiDrawerWidth"
     location="right"
+    v-if="config.config.aiFlag"
     elevation="0"
     v-model="aiDrawer"
     class="pa-3"

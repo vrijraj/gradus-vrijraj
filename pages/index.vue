@@ -1,46 +1,15 @@
 <template>
-  <!-- <Head>
-    <Title>{{ config.name }} | Gradus</Title>
-    <Meta name="description" :content="config.desc" />
-  </Head> -->
   <v-app-bar :elevation="0">
     <v-app-bar-title>
       <NuxtImg src="/donotremove/logo.svg" width="120" />
     </v-app-bar-title>
   </v-app-bar>
   <v-main>
-    <v-container fluid style="background-color: #e8f0fe">
-      <v-row justify="center" align="center">
-        <v-col md="11" class="px-0">
-          <v-container fluid>
-            <v-row justify="center" align="center">
-              <v-col md="8" cols="12">
-                <h1 style="font-size: xx-large">
-                  Welcome to {{ config.name }}
-                </h1>
-                <p class="mb-3">
-                  {{ config.dsec }}
-                </p>
-                <CoreSocialMedia :social="config.social" />
-              </v-col>
-              <v-col md="4" cols="12" class="text-center">
-                <NuxtImg
-                  width="70%"
-                  :src="'/donotremove/gradus-background.svg'"
-                />
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container fluid class="py-0">
-      <!-- Search Header -->
+    <CoreHeroCard/>
+    <v-container class="bg-white" fluid style="border-bottom: 1px solid #e8f0fe !important;">
       <v-row
         justify="center"
         align="center"
-        class="bg-white"
-        style="border-bottom: 1px solid #e8f0fe"
       >
         <v-col md="11">
           <v-row>
@@ -79,8 +48,8 @@
           </v-row>
         </v-col>
       </v-row>
-      <!-- Search Header -->
-      <!-- All Data -->
+    </v-container>
+    <v-container fluid class="my-0 py-0">
       <!-- Loading -->
       <v-row
         justify="center"
@@ -89,11 +58,13 @@
         v-if="loading"
       >
         <v-col md="11" class="px-0">
-          <v-progress-linear indeterminate color="primary"></v-progress-linear>
+          <span style="font-size: 80%;">Getting data..</span>
+          <v-progress-linear rounded indeterminate color="primary"></v-progress-linear>
         </v-col>
       </v-row>
-
       <!-- loading -->
+      
+      <!-- Cards -->
       <v-row
         justify="center"
         align="center"
@@ -117,72 +88,24 @@
           </v-container>
         </v-col>
       </v-row>
+      <!-- Cards -->
 
-      <v-row justify="center" align="center" class="px-0 mx-0 mt-3" v-else>
+      <!-- No Data -->
+      <v-row justify="center" align="center" class="mx-0 mt-3" v-else>
         <v-col md="11" class="px-0">
-          <p>Nothing to show!</p>
+          <p>
+            <v-icon class="mt-n1 mr-2">mdi-alert-octagram-outline</v-icon>No
+            Data Found!
+          </p>
         </v-col>
       </v-row>
-
-      <!-- All Data -->
-
-      <!-- All Data -- old -->
-      <!-- <v-row
-        justify="center"
-        align="center"
-        class="py-0 my-0 mt-5"
-        v-if="!Object.keys(res).length || !search.length"
-      >
-        <v-col md="11" class="py-0 my-0">
-          <v-row class="py-0 my-0">
-            <ContentList
-              path="/"
-              :query="{
-                where: query,
-              }"
-            >
-              <template v-slot="{ list }">
-                <v-col
-                  md="3"
-                  lg="3"
-                  sm="4"
-                  cols="12"
-                  v-for="article in list"
-                  :key="article._path"
-                >
-                  <CoreLabCard :item="article" />
-                </v-col>
-              </template>
-            </ContentList>
-          </v-row>
-        </v-col>
-      </v-row> -->
-      <!-- All Data -->
+      <!-- No Data -->
     </v-container>
   </v-main>
-  <div
-    class="bg-white d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex px-5"
-    style="width: 100%; height: 45px; border-top: 1px solid #e0e0e0"
-  >
-    <div class="d-flex justify-space-between mb-0" style="width: 100%">
-      <v-sheet class="ma-0 pa-1 align-self-center">
-        <a href="http://" target="_blank">
-          <NuxtImg
-            width="130"
-            :src="'/donotremove/build-with-gradus.svg'"
-          />
-        </a>
-      </v-sheet>
-      <v-sheet class="ma-0 pa-1 align-self-center">
-        <NuxtLink style="font-size: 80%" class="ml-5" to="/"
-          >Privacy & Policy</NuxtLink
-        >
-        <NuxtLink style="font-size: 80%" class="ml-5" to="/"
-          >Terms & Conditions</NuxtLink
-        >
-      </v-sheet>
-    </div>
-  </div>
+
+  <!-- Footer -->
+  <CoreAppFooter/>
+  <!-- Footer -->
 </template>
 
 <script setup>

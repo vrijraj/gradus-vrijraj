@@ -11,11 +11,11 @@
     >Share
   </v-btn>
 
-  <v-dialog v-model="dialog" rounded max-width="400">
+  <v-dialog v-model="dialog" rounded max-width="500">
     <v-card style="border-radius: 12px !important">
-      <v-card-title class="text-h5"
-        >Share
-
+      <v-card-title class="text-center" style="border-bottom: 1px solid #e0e0e0;font-weight: 400;">
+        <v-icon size="18" class="">mdi-share-variant-outline</v-icon>
+        <span class="ml-1">Share</span>
         <v-btn
           class="float-right"
           icon
@@ -26,35 +26,30 @@
         >
       </v-card-title>
       <v-card-text>
-        <div class="d-flex justify-space-around mb-4">
-          <v-btn @click="shareOnWhatsApp" variant="tonal" size="small" rounded>
-            <template v-slot:prepend>
-              <v-icon large color="green">mdi-whatsapp</v-icon>
-            </template>
-            WhatsApp
+      
+        <div class="mb-4">
+          <p style="font-size: 95%;font-weight: 500;" class="mb-1">Share on</p> 
+          <v-btn @click="shareOnWhatsApp" variant="flat" size="small" class="mr-2" color="#DEE5F1" icon>
+            <v-icon x-large color="#3D3D3D">mdi-whatsapp</v-icon>
           </v-btn>
-          <v-btn @click="shareOnTwitter" variant="tonal" size="small" rounded>
-            <template v-slot:prepend>
-              <v-icon large color="blue">mdi-twitter</v-icon>
-            </template>
-            Twitter/X
+          <v-btn @click="shareOnTwitter" variant="flat" size="small" class="mr-2" color="#DEE5F1" icon>
+            <v-icon x-large color="#3D3D3D">mdi-twitter</v-icon>
           </v-btn>
-          <v-btn @click="shareOnLinkedIn" variant="tonal" size="small" rounded>
-            <template v-slot:prepend>
-              <v-icon large color="blue">mdi-linkedin</v-icon>
-            </template>
-            LinkedIn
+          <v-btn @click="shareOnLinkedIn" variant="flat" size="small" class="mr-2" color="#DEE5F1" icon>
+            <v-icon x-large color="#3D3D3D">mdi-linkedin</v-icon>
           </v-btn>
         </div>
 
-        <span style="font-size: 90%" class="mb-4">Share Link</span>
-        <div class="d-flex align-center justify-space-between mb-4 mt-1">
+        <p style="font-size: 90%;font-weight: 500;" class="mb-2 mt-3">Share Link</p>
+        <div class="d-flex align-center justify-space-between mb-2 mt-1">
           <v-text-field
             variant="outlined"
             v-model="url"
             rounded
             readonly
             outlined
+            bg-color="#F5F8FC"
+            base-color="#DEE5F1"
             density="compact"
           />
           <v-btn
@@ -62,7 +57,9 @@
             @click="copyLink"
             class="mt-n5 ml-3"
             size="small"
-            variant="tonal"
+            color="#F5F8FC"
+            style="border: 1px solid #DEE5F1;"
+            variant="flat"
           >
             <v-icon @click="copyLink">mdi-content-copy</v-icon>
           </v-btn>
@@ -70,8 +67,10 @@
         <!--  -->
         <v-alert
           v-if="alert.show"
-          class="pa-2 mb-4"
+          class="pa-2 mb-4 mt-n4"
           :type="alert.type"
+          variant="outlined"
+          rounded
           dense
           dismissible
         >
