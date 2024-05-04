@@ -239,6 +239,7 @@ const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
 const stepDrawer = ref(false);
 const show = ref(false);
+const appLoading = useAppLoading();
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
   queryContent(route.path).findOne()
@@ -251,6 +252,7 @@ onMounted(() => {
     aiDrawerWidth.value = 300;
   }
   show.value = true;
+  appLoading.value = false;
 });
 
 const currentNode = ref(getCurrentNodeFromUrl());
