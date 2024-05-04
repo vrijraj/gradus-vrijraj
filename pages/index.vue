@@ -59,30 +59,12 @@
       </v-row>
     </v-container>
     <v-container fluid class="my-0 py-0">
-      <!-- Loading -->
-      <v-row
-        justify="center"
-        align="center"
-        class="px-0 mx-0 mt-3"
-        v-if="loading"
-      >
-        <v-col md="11" class="px-0">
-          <span style="font-size: 80%">Getting data..</span>
-          <v-progress-linear
-            rounded
-            indeterminate
-            color="primary"
-          ></v-progress-linear>
-        </v-col>
-      </v-row>
-      <!-- loading -->
-
       <!-- Cards -->
       <v-row
         justify="center"
         align="center"
         class="px-0 mx-0 mt-5"
-        v-else-if="res != null && Object.keys(res).length"
+        v-if="res != null && Object.keys(res).length"
       >
         <v-col md="11" class="px-0">
           <v-container fluid class="px-0">
@@ -153,7 +135,6 @@ const search = ref("");
 const debouncedSearch = useDebounce(search, 500);
 const res = ref({});
 const query = ref({});
-const loading = ref(false);
 
 const appLoading = useAppLoading();
 
@@ -163,12 +144,10 @@ const fetchData = async () => {
   );
 
   res.value = data._rawValue;
-  loading.value = false;
   appLoading.value = false;
 };
 
 watchEffect(async () => {
-  loading.value = true;
   appLoading.value = true;
   const conditions = [{ draft: false }];
 
