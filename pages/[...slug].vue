@@ -1,233 +1,187 @@
 <template>
-  <Head>
-    <Title>{{ metadata.title }} | Gradus</Title>
-    <Meta name="description" :content="metadata.description" />
-  </Head>
-  <v-app-bar :elevation="0" color="" height="60">
-    <template v-slot:prepend>
-      <v-btn to="/" icon size="small"
-        ><v-icon>mdi-keyboard-backspace</v-icon></v-btn
-      >
-    </template>
-    <v-app-bar-title>{{ data.title }}</v-app-bar-title>
-    <template v-slot:append>
-      <v-app-bar-title class="float-right mr-3">
-        <CoreShareBtn />
-        <v-avatar size="30">
-          <NuxtImg src="/logo.png" width="120" />
-        </v-avatar>
-      </v-app-bar-title>
-    </template>
-  </v-app-bar>
-
-  <!-- Left Sidebar -->
-  <v-navigation-drawer
-    floating
-    elevation="0"
-    width="300"
-    v-model="stepDrawer"
-    style="background-color: #f5f8fc"
-  >
-    <SidebarChips
+  <ClientOnly>
+    <CoreAppBar :title="data.title" />
+    <!-- Left Sidebar -->
+    <CoreLeftSideBar
       :toc="finalData.body.toc"
+      :authors="metadata.authors"
+      :stepDrawer="stepDrawer"
       :currentNode="currentNode"
-      @currentNodeChanged="(i) => (currentNode = i)"
-    />
-
-    <template v-slot:append>
-      <div class="px-4">
-        <!-- Author -->
-        <CoreAuthorCard :authors="metadata.authors" />
-        <v-sheet class="d-flex mx-0 my-3" style="background-color: #f5f8fc">
-          <v-sheet
-            class="ma-0 pa-0 me-auto align-self-center"
-            style="background-color: #f5f8fc"
-          >
-            <a href="http://" target="_blank">
-              <NuxtImg
-                width="130"
-                :src="'/donotremove/build-with-gradus.svg'"
-              />
-            </a>
-          </v-sheet>
-
-          <v-sheet
-            class="ma-0 pa-0 align-self-center"
-            style="background-color: #f5f8fc"
-          >
-            <a
-              href="mailto:vrijraj2396@gmail.com"
-              class="mx-0"
-              style="font-size: 80%"
-            >
-              <v-icon>mdi-bug-outline</v-icon> Report a Bug</a
-            >
-          </v-sheet>
-        </v-sheet>
-      </div>
-    </template>
-  </v-navigation-drawer>
-  <!-- Left Sidebar -->
-
-  <v-main class="d-flex align-center justify-center mt-3">
-    <v-fab
-      @click="currentNode > 0 && currentNode--"
-      variant="flat"
-      icon
-      app
-      appear
-      color="#DEE5F1"
-      location="bottom start"
-      class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-      ><v-icon>mdi-arrow-left</v-icon></v-fab
     >
-    <v-slide-y-reverse-transition>
-      <v-container
-        fluid
-        style="
-          background-color: white;
-          border-radius: 12px !important;
-          border: 1px solid #dee5f1;
-          min-height: 88vh;
-          max-width: 900px;
-        "
-        class="mx-0 mt-0 pa-0 mb-0"
-        v-show="show"
+      <SidebarChips
+        :toc="finalData.body.toc"
+        :currentNode="currentNode"
+        @currentNodeChanged="(i) => (currentNode = i)"
+      />
+    </CoreLeftSideBar>
+    <!-- Left Sidebar -->
+
+    <v-main class="d-flex align-center justify-center mt-3">
+      <v-fab
+        @click="currentNode > 0 && currentNode--"
+        variant="flat"
+        icon
+        app
+        appear
+        color="#DEE5F1"
+        location="bottom start"
+        class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
+        ><v-icon>mdi-arrow-left</v-icon></v-fab
       >
-        <div
-          class="pa-md-8 pa-4"
+      <v-slide-y-reverse-transition>
+        <v-container
+          fluid
           style="
-            background-color: #e8f0fe;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            background-color: white;
+            border-radius: 12px !important;
+            border: 1px solid #dee5f1;
+            min-height: 88vh;
+            max-width: 900px;
           "
-          v-if="currentNode == 0"
+          class="mx-0 mt-0 pa-0 mb-0"
+          v-show="show"
         >
-          <v-btn
-            class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-            variant="flat"
-            @click="aiDrawer = !aiDrawer"
-            v-if="config.config.aiFlag"
-            rounded
-            size="small"
+          <div
+            class="pa-md-8 pa-4"
+            style="
+              background-color: #e8f0fe;
+              border-top-left-radius: 12px;
+              border-top-right-radius: 12px;
+            "
+            v-if="currentNode == 0"
           >
-            <v-avatar size="x-small">
-              <v-img src="/public/donotremove/ai-logo.svg"></v-img>
-            </v-avatar>
-            AI Chat
-          </v-btn>
+            <v-btn
+              class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
+              variant="flat"
+              @click="aiDrawer = !aiDrawer"
+              v-if="config.config.aiFlag"
+              rounded
+              size="small"
+            >
+              <v-avatar size="x-small">
+                <v-img src="/public/donotremove/ai-logo.svg"></v-img>
+              </v-avatar>
+              AI Chat
+            </v-btn>
 
-          <p style="font-size: 150%">
-            <b>{{ data.title }}</b>
-          </p>
-          <p style="font-size: 95%">{{ data.description }}</p>
-          <p class="mt-4 mb-0" style="font-size: 95%">
-            <b>Last Updated:</b> {{ formatDate(metadata.date) }}
-          </p>
-          <p class="mt-1" style="font-size: 95%">
-            <b>Written By: </b>
-            <span v-for="(author, i) in metadata.authors" :key="i">
-              {{ author.name
-              }}<span v-if="i < metadata.authors.length - 1">, </span>
-            </span>
-          </p>
-          <v-chip
-            size="small"
-            variant="outlined"
-            class="mr-2 mt-3"
-            v-for="(tag, index) in metadata.tags"
-            :key="index"
-            >{{ tag }}</v-chip
-          >
-        </div>
-        <!-- Header -->
-        <div
-          class="px-md-8 py-md-3 pa-4"
-          style="
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            border-bottom: 1px solid #e0e0e0;
-          "
-          v-if="currentNode != 0"
-        >
-          <p style="font-weight: 400">
-            <span class="mr-1">{{ currentNode + 1 }}.</span>
-            {{ finalData.body.toc[currentNode].title }} (
-            <span
-              ><v-icon size="lg" class="mt-n1 mr-1">mdi-av-timer</v-icon
-              >{{ readTime }} min read </span
-            >)
-          </p>
-
-          <v-btn
-            class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
-            variant="flat"
-            @click="aiDrawer = !aiDrawer"
-            rounded
-            size="small"
-            v-if="config.config.aiFlag"
-          >
-            <v-avatar size="x-small">
-              <NuxtImg src="/public/donotremove/ai-logo.svg" />
-            </v-avatar>
-            AI Chat
-          </v-btn>
-        </div>
-        <!-- Header -->
-        <div class="pa-md-8 pa-4">
-          <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
-            <ContentRenderer :value="node">
-              <ContentRendererMarkdown :value="node" />
-            </ContentRenderer>
+            <p style="font-size: 150%">
+              <b>{{ data.title }}</b>
+            </p>
+            <p style="font-size: 95%">{{ data.description }}</p>
+            <p class="mt-4 mb-0" style="font-size: 95%">
+              <b>Last Updated:</b> {{ formatDate(metadata.date) }}
+            </p>
+            <p class="mt-1" style="font-size: 95%">
+              <b>Written By: </b>
+              <span v-for="(author, i) in metadata.authors" :key="i">
+                {{ author.name
+                }}<span v-if="i < metadata.authors.length - 1">, </span>
+              </span>
+            </p>
+            <v-chip
+              size="small"
+              variant="outlined"
+              class="mr-2 mt-3"
+              v-for="(tag, index) in metadata.tags"
+              :key="index"
+              >{{ tag }}</v-chip
+            >
           </div>
-        </div>
-      </v-container>
-    </v-slide-y-reverse-transition>
+          <!-- Header -->
+          <div
+            class="px-md-8 py-md-3 pa-4"
+            style="
+              border-top-left-radius: 12px;
+              border-top-right-radius: 12px;
+              border-bottom: 1px solid #e0e0e0;
+            "
+            v-if="currentNode != 0"
+          >
+            <p style="font-weight: 400">
+              <span class="mr-1">{{ currentNode + 1 }}.</span>
+              {{ finalData.body.toc[currentNode].title }} (
+              <span
+                ><v-icon size="lg" class="mt-n1 mr-1">mdi-av-timer</v-icon
+                >{{ readTime }} min read </span
+              >)
+            </p>
 
+            <v-btn
+              class="float-right d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex mt-n6"
+              variant="flat"
+              @click="aiDrawer = !aiDrawer"
+              rounded
+              size="small"
+              v-if="config.config.aiFlag"
+            >
+              <v-avatar size="x-small">
+                <NuxtImg src="/public/donotremove/ai-logo.svg" />
+              </v-avatar>
+              AI Chat
+            </v-btn>
+          </div>
+          <!-- Header -->
+          <div class="pa-md-8 pa-4">
+            <div class="" v-for="(node, i) in finalData" :key="`node-${i}`">
+              <ContentRenderer :value="node">
+                <ContentRendererMarkdown :value="node" />
+              </ContentRenderer>
+            </div>
+          </div>
+        </v-container>
+      </v-slide-y-reverse-transition>
+
+      <v-fab
+        @click="currentNode < groupedContent.length - 1 && currentNode++"
+        variant="flat"
+        icon
+        app
+        appear
+        color="#DEE5F1"
+        location="bottom right"
+        :style="aiDrawer ? 'left: 0 !important' : ''"
+        class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
+        ><v-icon>mdi-arrow-right</v-icon></v-fab
+      >
+    </v-main>
+
+    <!-- AI Sidebar -->
+    <v-navigation-drawer
+      floating
+      app
+      :width="aiDrawerWidth"
+      location="right"
+      v-if="config.config.aiFlag"
+      elevation="0"
+      v-model="aiDrawer"
+      class="pa-3"
+      style="background-color: #f5f8fc"
+    >
+      <AIChat :content="finalData.body"></AIChat>
+    </v-navigation-drawer>
+    <!-- AI Sidebar -->
+
+    <!-- Mobile Navbar -->
+    <CoreBottomNav
+      :currentNode="currentNode"
+      :contentLength="groupedContent.length"
+      class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
+      @currentNodeChanged="(fn) => (currentNode = fn())"
+    />
+    <!-- Mobile Navbar -->
+    <!-- Mobile Sidebar toggle -->
     <v-fab
-      @click="currentNode < groupedContent.length - 1 && currentNode++"
-      variant="flat"
-      icon
+      class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
+      @click="stepDrawer = !stepDrawer"
+      icon="mdi-format-list-checks"
+      location="bottom end"
+      size="50"
+      color="#E8F0FE"
       app
       appear
-      color="#DEE5F1"
-      location="bottom right"
-      :style="aiDrawer ? 'left: 0 !important' : ''"
-      class="d-none d-md-flex d-lg-flex d-lg-flex d-xxl-flex"
-      ><v-icon>mdi-arrow-right</v-icon></v-fab
-    >
-  </v-main>
-
-  <v-navigation-drawer
-    floating
-    app
-    :width="aiDrawerWidth"
-    location="right"
-    v-if="config.config.aiFlag"
-    elevation="0"
-    v-model="aiDrawer"
-    class="pa-3"
-    style="background-color: #f5f8fc"
-  >
-    <AIChat :content="finalData.body"></AIChat>
-  </v-navigation-drawer>
-  <CoreBottomNav
-    :currentNode="currentNode"
-    :contentLength="groupedContent.length"
-    class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
-    @currentNodeChanged="(fn) => (currentNode = fn())"
-  />
-
-  <v-fab
-    class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
-    @click="stepDrawer = !stepDrawer"
-    icon="mdi-format-list-checks"
-    location="bottom end"
-    size="50"
-    color="#E8F0FE"
-    app
-    appear
-  ></v-fab>
+    ></v-fab>
+    <!-- Mobile Sidebar toggle -->
+  </ClientOnly>
 </template>
 
 <script setup>
@@ -237,7 +191,7 @@ const route = useRoute();
 const router = useRouter();
 const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
-const stepDrawer = ref(false);
+const stepDrawer = ref(true);
 const show = ref(false);
 const appLoading = useAppLoading();
 
@@ -246,14 +200,21 @@ const { data } = await useAsyncData(`${route.path}`, () =>
   queryContent(route.path).findOne()
 );
 
-onMounted(() => {
+onMounted(async () => {
+  appLoading.value = true;
   if (window.screen.width > 500) {
     aiDrawer.value = false;
     stepDrawer.value = true;
     aiDrawerWidth.value = 300;
   }
+  if (window.screen.width < 500) {
+    aiDrawerWidth.value = window.screen.width;
+  }
   show.value = true;
-  appLoading.value = false;
+
+  setTimeout(() => {
+    appLoading.value = false;
+  }, 800);
 });
 
 const currentNode = ref(getCurrentNodeFromUrl());
@@ -269,7 +230,7 @@ const groupedContent = computed(() => {
   const sections = [];
   let currentSection = [];
 
-  let styleEl = data.value.body.children.find((node) => node.tag === "style");
+  let styleEl = data.value?.body?.children.find((node) => node.tag === "style");
 
   data.value?.body?.children.forEach((node) => {
     if (node.tag === "h1" && currentSection.length) {
@@ -287,7 +248,6 @@ const groupedContent = computed(() => {
 
   return sections;
 });
-
 
 watch(
   currentNode,
@@ -367,6 +327,7 @@ useHead({
 
 // Read time per section
 const readTime = computed(() => {
+  if (!groupedContent.value[currentNode.value]) return 0;
   return getReadTIme(groupedContent.value[currentNode.value]);
 });
 
