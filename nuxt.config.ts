@@ -32,6 +32,7 @@ export default defineNuxtConfig({
   content: {
     documentDriven: true,
     experimental: {
+      clientDb: true,
       search: {
         fields: ["title", "description", "tags"],
       },
@@ -50,9 +51,10 @@ export default defineNuxtConfig({
   },
   extends: "@nuxt-themes/typography",
   nitro: {
-    // prerender: {
-    //   crawlLinks: true,
-    // },
+    prerender: {
+      crawlLinks: true,
+      failOnError: false, 
+    },
     // firebase: {
     //   gen: 2
     // }

@@ -3,15 +3,23 @@
     <v-app-bar-title>
       <NuxtImg src="/donotremove/logo.svg" width="120" />
     </v-app-bar-title>
+    <v-progress-linear
+      :active="true"
+      :indeterminate="true"
+      color="primary"
+      absolute
+      bottom
+    ></v-progress-linear>
   </v-app-bar>
   <v-main>
-    <CoreAppBanner v-if="config.config.banner.status"/>
-    <CoreHeroCard/>
-    <v-container class="bg-white" fluid style="border-bottom: 1px solid #e8f0fe !important;">
-      <v-row
-        justify="center"
-        align="center"
-      >
+    <CoreAppBanner v-if="config.config.banner.status" />
+    <CoreHeroCard />
+    <v-container
+      class="bg-white"
+      fluid
+      style="border-bottom: 1px solid #e8f0fe !important"
+    >
+      <v-row justify="center" align="center">
         <v-col md="11">
           <v-row>
             <v-col md="3" lg="2">
@@ -59,12 +67,16 @@
         v-if="loading"
       >
         <v-col md="11" class="px-0">
-          <span style="font-size: 80%;">Getting data..</span>
-          <v-progress-linear rounded indeterminate color="primary"></v-progress-linear>
+          <span style="font-size: 80%">Getting data..</span>
+          <v-progress-linear
+            rounded
+            indeterminate
+            color="primary"
+          ></v-progress-linear>
         </v-col>
       </v-row>
       <!-- loading -->
-      
+
       <!-- Cards -->
       <v-row
         justify="center"
@@ -105,7 +117,7 @@
   </v-main>
 
   <!-- Footer -->
-  <CoreAppFooter/>
+  <CoreAppFooter />
   <!-- Footer -->
 </template>
 
