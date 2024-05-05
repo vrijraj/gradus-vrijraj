@@ -47,7 +47,7 @@
                   :items="topics"
                   @click:clear="resetData()"
                   @update:modelValue="filterData($event)"
-                  @update:menu="filterData($event)"
+                  @input="filterData($event)"
                   class="custom-bg-color"
                   hide-details
                 ></v-select>
@@ -149,9 +149,13 @@ const fetchData = async () => {
 };
 
 const filterData = (a) => {
-  res.value = actualRes.value.filter((obj) =>
-    a.some((tag) => obj.tags.includes(tag))
-  );
+  if(a.length){
+    res.value = actualRes.value.filter((obj) =>
+      a.some((tag) => obj.tags.includes(tag))
+    );
+  }else{
+    res.value = actualRes.value;
+  }
 };
 
 const resetData = () => {
@@ -165,30 +169,6 @@ const searchData = () => {
     )
   );
 };
-
-// watchEffect(async () => {
-//   console.log('res.value', res.value);
-//   appLoading.value = true;
-//   const conditions = [{ draft: false }];
-
-//   if (debouncedSearch.value.length >= 3) {
-//     conditions.push({
-//       $or: [
-//         { title: { $icontains: debouncedSearch.value } },
-//         { description: { $icontains: debouncedSearch.value } },
-//       ],
-//     });
-
-//     if (filter.value.length) {
-//       conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
-//     }
-//   } else if (filter.value.length) {
-//     conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
-//   }
-
-//   query.value = conditions.length > 1 ? { $and: conditions } : conditions[0];
-//   fetchData();
-// });
 
 fetchData();
 // onMounted(() => {
