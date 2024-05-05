@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   //...
   // target: 'static',
   // ssr: false,
-  // ssr: false,
+  ssr: true,
   build: {
     transpile: ["vuetify"],
   },
@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      failOnError: false, 
+      failOnError: false,
     },
     // firebase: {
     //   gen: 2

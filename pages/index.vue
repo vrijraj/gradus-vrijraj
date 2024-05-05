@@ -51,6 +51,7 @@
         </v-col>
       </v-row>
     </v-container>
+    
     <v-container fluid class="my-0 py-0">
       <!-- Cards -->
       <v-row
@@ -90,6 +91,7 @@
       <!-- No Data -->
     </v-container>
     </ClientOnly>
+
   </v-main>
 
   <!-- Footer -->
