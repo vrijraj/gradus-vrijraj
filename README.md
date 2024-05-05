@@ -15,6 +15,13 @@ An Open source markdown codelab generation tools
 | **Usability** | Any indivisual developer or tech communities can use |
 | **Public shareable URL for Labs** | Labs Public URL for Promotion |
 
+
+## Technology Stack
+
+* [Nuxt 3](https://nuxt.com/)
+* [Vuetify](https://vuetifyjs.com/en/)
+* [Nuxt Content](https://content.nuxt.com/)
+
 Look at the [Content documentation](https://content.nuxt.com/) to learn more.
 
 ## Setup
