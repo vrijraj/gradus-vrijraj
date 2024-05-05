@@ -4,7 +4,6 @@
     app
     elevation="0"
     width="300"
-    v-if="stepDrawer"
     style="background-color: #f5f8fc"
   >
     <slot></slot>
@@ -44,8 +43,7 @@
 
 <script setup>
 defineProps({
-  toc: Object,
   authors: Array,
-  stepDrawer: Boolean,
 });
+const sidebar = useSideBar();
 </script>
