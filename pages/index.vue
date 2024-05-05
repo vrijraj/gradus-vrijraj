@@ -47,6 +47,7 @@
                   :items="topics"
                   @click:clear="resetData()"
                   @update:modelValue="filterData($event)"
+                  @update:menu="filterData($event)"
                   class="custom-bg-color"
                   hide-details
                 ></v-select>

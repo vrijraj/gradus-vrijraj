@@ -3,10 +3,8 @@
     <CoreAppBar :title="data.title" />
     <!-- Left Sidebar -->
     <CoreLeftSideBar
-      :toc="finalData.body.toc"
       :authors="metadata.authors"
-      :stepDrawer="stepDrawer"
-      :currentNode="currentNode"
+      v-model="sidebar"
     >
       <SidebarChips
         :toc="finalData.body.toc"
@@ -172,7 +170,7 @@
     <!-- Mobile Sidebar toggle -->
     <v-fab
       class="d-flex d-md-none d-lg-none d-lg-none d-xxl-none"
-      @click="stepDrawer = !stepDrawer"
+      @click="sidebar = !sidebar"
       icon="mdi-format-list-checks"
       location="bottom end"
       size="50"
@@ -191,9 +189,9 @@ const route = useRoute();
 const router = useRouter();
 const aiDrawer = useAIChat();
 const aiDrawerWidth = ref(400);
-const stepDrawer = ref(true);
 const show = ref(false);
 const appLoading = useAppLoading();
+const sidebar = useSideBar();
 
 // Asynchronous data fetching
 const { data } = await useAsyncData(`${route.path}`, () =>
@@ -204,7 +202,6 @@ onMounted(async () => {
   appLoading.value = true;
   if (window.screen.width > 500) {
     aiDrawer.value = false;
-    stepDrawer.value = true;
     aiDrawerWidth.value = 300;
   }
   if (window.screen.width < 500) {
