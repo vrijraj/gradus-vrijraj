@@ -1,8 +1,9 @@
 export const config = {
   name: "Vrijraj Codelab",
   dsec: "Developer Hub, where you can access labs for various tech stacks to delve into detailed use cases of technologies.",
-  thumbnail: "https://avatars.githubusercontent.com/u/47231894?s=400&u=",
-  hostUrl: "https://gradus-app.vercel.app/",
+  thumbnail: "/donotremove/logo.svg",
+  hostUrl: "https://gradus.dev/",
+  favicon: '/favicon.ico',
   social: {
     linkedin: "https://www.linkedin.com/in/vrijrajsingh/",
     twitter: "https://twitter.com/SVrijraj",

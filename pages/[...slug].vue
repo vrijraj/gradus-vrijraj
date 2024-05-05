@@ -2,10 +2,7 @@
   <ClientOnly>
     <CoreAppBar :title="data.title" />
     <!-- Left Sidebar -->
-    <CoreLeftSideBar
-      :authors="metadata.authors"
-      v-model="sidebar"
-    >
+    <CoreLeftSideBar :authors="metadata.authors" v-model="sidebar">
       <SidebarChips
         :toc="finalData.body.toc"
         :currentNode="currentNode"
@@ -113,7 +110,7 @@
               v-if="config.config.aiFlag"
             >
               <v-avatar size="x-small">
-                <v-img src="/public/donotremove/ai-logo.svg" ></v-img>
+                <v-img src="/public/donotremove/ai-logo.svg"></v-img>
               </v-avatar>
               AI Chat
             </v-btn>
@@ -300,26 +297,48 @@ const metadata = computed(() => ({
   image: data.value?.image,
 }));
 
+
 useHead({
+  title: `${metadata.value.title} - Gradus`,
+  description: metadata.value.description,
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  charset: "utf-8",
   meta: [
-    { property: "og:title", content: metadata.value.title + " - Gradus" },
-    {
-      property: "og:description",
-      content: metadata.value.description,
-    },
-    { property: "og:type", content: "website" },
-    {
-      property: "og:url",
-      content: "https://gradus-app.vercel.app/" + metadata.value._path,
-    },
-    { property: "og:locale", content: "en_US" },
+    { property: "og:title", content: `${metadata.value.title} - Gradus` },
+    { property: "og:description", content: metadata.value.description },
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: `${config.hostUrl}${metadata.value._path}` },
     { property: "og:image", content: metadata.value.image },
-    {
-      hid: "t-type",
-      name: "twitter:card",
-      content: metadata.value.description,
-    },
+    { property: "og:locale", content: metadata.value._locale || "en_US" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: `${metadata.value.title} - Gradus` },
+    { name: "twitter:description", content: metadata.value.description },
+    { name: "twitter:image", content: metadata.value.image },
+    { name: "twitter:url", content: `${config.hostUrl}${metadata.value._path}` },
   ],
+  link: [{ rel: "canonical", href: `${config.hostUrl}${metadata.value._path}` }],
+  script: [
+    {
+      type: 'application/ld+json',
+      json: {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `${config.hostUrl}${metadata.value._path}`
+        },
+        "headline": metadata.value.title,
+        "image": [metadata.value.image],
+        "datePublished": metadata.value.date,
+        "dateModified": metadata.value.date,
+        "author": {
+          "@type": "Person",
+          "name": metadata.value.authors?.join(", "),
+        },
+        "description": metadata.value.description
+      }
+    }
+  ]
 });
 
 // Read time per section
