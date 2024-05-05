@@ -2,11 +2,23 @@
   <div>
     <v-card elevation="0" rounded="lg" style="border: 1px solid #dee5f1">
       <v-img height="150" cover :src="item.image"></v-img>
-      <v-card-title style="font-weight: 500;">{{ item.title }}</v-card-title>
+      <v-card-title style="font-weight: 500">{{ item.title }}</v-card-title>
       <v-card-text>
         <p class="mb-2">{{ item.description }}</p>
-        <p class="my-5" style="font-size: 85%">Updated: {{ getDate }}</p>
 
+        <div class="my-3 mb-4">
+          <v-avatar
+            size="25"
+            :class="index == 0 ? '' : 'ml-n2'"
+            v-for="(author, index) in item.authors"
+            :key="index"
+          >
+            <v-img :alt="author.name" :src="author.image"></v-img>
+          </v-avatar>
+          <p class="ml-2 mb-0" style="font-size: 85%; display: inline">
+            Last Updated: {{ getDate }}
+          </p>
+        </div>
         <v-chip
           size="x-small"
           variant="tonal"
@@ -15,9 +27,15 @@
           :key="index"
           >{{ tag }}</v-chip
         >
-        <!-- <NuxtLink @click="appLoading = true" :to="item._path" class="float-right mt-0 mb-3"> -->
-          <v-btn rounded @click="appLoading = true" :to="item._path" class="float-right mt-0 mb-3" variant="tonal" color="primary">Start</v-btn>
-        <!-- </NuxtLink> -->
+        <v-btn
+          rounded
+          @click="appLoading = true"
+          :to="item._path"
+          class="float-right mt-0 mb-3"
+          variant="tonal"
+          color="primary"
+          >Start</v-btn
+        >
       </v-card-text>
     </v-card>
   </div>
