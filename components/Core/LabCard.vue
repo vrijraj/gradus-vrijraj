@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card elevation="0" rounded="lg" style="border: 1px solid #dee5f1">
+    <v-card elevation="0" rounded="lg" style="border: 1px solid #dee5f1;border-radius: 12px !important;">
       <v-img height="150" cover :src="item.image"></v-img>
       <v-card-title style="font-weight: 500">{{ item.title }}</v-card-title>
       <v-card-text>
