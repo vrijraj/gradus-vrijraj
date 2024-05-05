@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="item._path" @click="appLoading = true">
+  <div>
     <v-card elevation="0" rounded="lg" style="border: 1px solid #dee5f1">
       <v-img height="150" cover :src="item.image"></v-img>
       <v-card-title style="font-weight: 500;">{{ item.title }}</v-card-title>
@@ -20,7 +20,7 @@
         <!-- </NuxtLink> -->
       </v-card-text>
     </v-card>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup>

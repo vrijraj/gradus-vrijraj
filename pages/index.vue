@@ -1,24 +1,15 @@
 <template>
-  <v-app-bar :elevation="0">
-    <v-app-bar-title>
-      <NuxtImg src="/donotremove/logo.svg" width="120" />
-    </v-app-bar-title>
-    <client-only>
-    <v-progress-linear
-      :active="appLoading"
-      :indeterminate="true"
-      color="primary"
-      absolute
-      bottom
-    ></v-progress-linear>
-  </client-only>
-  </v-app-bar>
+  <!-- Header -->
+  <CoreHeader />
+  <!-- Header -->
+
   <v-main>
     <CoreAppBanner v-if="config.config.banner.status" />
     <CoreHeroCard />
+    <ClientOnly>
     <v-container
-      class="bg-white"
       fluid
+      class="bg-white"
       style="border-bottom: 1px solid #e8f0fe !important"
     >
       <v-row justify="center" align="center">
@@ -99,6 +90,7 @@
       </v-row>
       <!-- No Data -->
     </v-container>
+    </ClientOnly>
 
   </v-main>
 
@@ -174,7 +166,7 @@ watchEffect(async () => {
   fetchData();
 });
 
-onMounted(async () => {
+onMounted(() => {
   fetchData();
 });
 </script>
