@@ -127,10 +127,12 @@ useHead({
   title: `${config.name} - Gradus`,
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   charset: "utf-8",
+  canonical: config.hostUrl,
+  favicon: config.favicon,
 
   meta: [
     { name: "description", content: config.desc },
-    { property: "og:title", content: config.name + " - Gradus" },
+    { property: "og:title", content: config.name },
     {
       property: "og:description",
       content: config.desc,
@@ -142,6 +144,27 @@ useHead({
     },
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: config.thumbnail },
+    // twiter
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: config.hostUrl },
+    { name: "twitter:creator", content: config.author },
+    { name: "twitter:title", content: config.name},
+    { name: "twitter:description", content: config.desc },
+    { name: "twitter:image", content: config.thumbnail },
+    // linkedin
+    { name: "linkedin:title", content: config.name},
+    { name: "linkedin:description", content: config.desc },
+    { name: "linkedin:image", content: config.thumbnail },
+    { name: "linkedin:url", content: config.hostUrl },
+    //whatapp
+    { property: "og:site_name", content: config.name},
+    { property: "og:image", content: config.thumbnail },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    // google
+    { itemprop: "name", content: config.name},
+    { itemprop: "description", content: config.desc },
+    { itemprop: "image", content: config.thumbnail },
   ],
 });
 
