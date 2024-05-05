@@ -26,12 +26,14 @@
         <v-btn
           icon="mdi-linkedin"
           size="x-small"
+          target="_blank"
           :href="author.socials.linkedin"
           variant="text"
         ></v-btn>
         <v-btn
           icon="mdi-github"
           size="x-small"
+          target="_blank"
           :href="author.socials.github"
           variant="text"
         ></v-btn>

@@ -22,6 +22,11 @@ draft: false
 # Introduction
 
 In this lab session, you'll be leveraging the Gemini API to create practical JavaScript utility tools.
+## H2 Tags
+### H3 Tags
+#### H4 Tags
+##### H5 Tags
+###### H6 Tags
 
 ```js
 let a = 4;

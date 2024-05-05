@@ -13,31 +13,39 @@ export default defineTheme({
   prose: {
     // This will change the fontSize of the `<ProseH1>` component
     h1: {
-      fontSize: '30px',
+      fontSize: '28px',
       fontWeight: '600',
       margin: '0px 0px 5px 0px'
     },
     h2: {
+      fontSize: '20px',
       margin: '30px 0px 5px 0px'
     },
     h3: {
+      fontSize: '20px',
       margin: '30px 0px 5px 0px'
     },
     h4: {
+      fontSize: '18px',
       margin: '30px 0px 5px 0px'
     },
     h5: {
+      fontSize: '15px',
       margin: '35px 0px 5px 0px',
     },
     h6: {
+      fontSize: '12px',
       margin: '30px 0px 5px 0px'
     },
+    ul: {
+      margin: '4px',
+    },
     li: {
-      margin: '0',
+      margin: '0px',
       fontSize: '100%'
     },
     ol: {
-      margin: '2px',
+      margin: '4px',
       fontSize: '100%',
       li: {
         margin: '3px',

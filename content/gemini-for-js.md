@@ -28,12 +28,12 @@ draft: false
 
 In this lab session, you'll be leveraging the Gemini API to create practical JavaScript utility tools.
 
-##### What you'll do
+## What you'll do
 
 - You'll utilize Google AI Studio to familiarize yourself with the tools for accessing the Gemini model and crafting a utility use case.
 - You'll get the Prompt engineering concept to generate content, aiding in the comprehension of captured information.
 
-##### What you'll learn
+## What you'll learn
 
 - How to use of Google AI Studio.
 - Propmt Engineering.
@@ -51,14 +51,14 @@ It's allows developers to interact with powerful AI models that can generate tex
 
 You can integrates seamlessly with web applications, enabling features like chatbots, interactive content generation, and more.
 
-##### With GenAI you can generate:
+## With GenAI you can generate:
 
 1. Text
 1. Images
 1. Audio
 1. Video
 
-##### How to Access Gemini API
+## How to Access Gemini API
 
 1. You can use [Google AI Studio](https://aistudio.google.com), A browser-based tool that allows developers to prototype and test generative AI models
 1. [Google Cloud Vertex AI ](https://cloud.google.com/vertex-ai)
@@ -74,7 +74,7 @@ You access AI Studio [here](https://aistudio.google.com/).
 
 # Create you First Prompt
 
-##### Follow the Instructions
+## Follow the Instructions
 
 1. Go to `Create new` button and select `Freefrom Prompt`
 1. In the right side, sidebar is for Gemini Model Selection, Number of Token, and other config
@@ -85,7 +85,7 @@ You access AI Studio [here](https://aistudio.google.com/).
 
 > Caution: Using the Google AI SDK for JavaScript directly from a client-side app is recommended for prototyping only. If you plan to enable billing, we strongly recommend that you call the Google AI Gemini API only server-side to keep your API key safe. You risk potentially exposing your API key to malicious actors if you embed your API key directly in your JavaScript app or fetch it remotely at runtime.
 
-#### Initialize the Generative Model
+## Initialize the Generative Model
 
 Before you can make any API calls, you need to import and initialize the Generative Model.
 
@@ -117,7 +117,7 @@ You can get the API Key from AI Studio by clicking on `Get API`
 </html>
 ```
 
-#### Generate text from text-only input
+## Generate text from text-only input
 
 When the prompt input includes only text, use the `gemini-pro` model with the generateContent method to generate text output:
 
