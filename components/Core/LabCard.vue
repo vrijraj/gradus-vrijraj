@@ -15,9 +15,9 @@
           :key="index"
           >{{ tag }}</v-chip
         >
-        <NuxtLink @click="appLoading = true" :to="item._path" class="float-right mt-0 mb-3"
-          ><v-btn rounded variant="tonal">Start</v-btn></NuxtLink
-        >
+        <!-- <NuxtLink @click="appLoading = true" :to="item._path" class="float-right mt-0 mb-3"> -->
+          <v-btn rounded @click="appLoading = true" :to="item._path" class="float-right mt-0 mb-3" variant="tonal" color="primary">Start</v-btn>
+        <!-- </NuxtLink> -->
       </v-card-text>
     </v-card>
   </NuxtLink>
