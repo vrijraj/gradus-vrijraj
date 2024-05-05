@@ -54,7 +54,7 @@ export default defineTheme({
     },
     p: {
       margin: '2px 0',
-      fontSize: '100%'
+      fontSize: '90%'
     },
     img: {
       borderRadius: '12px'

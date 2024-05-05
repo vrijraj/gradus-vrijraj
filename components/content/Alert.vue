@@ -1,12 +1,28 @@
 <template>
-
-  <v-alert color="primary" variant="tonal" style="border-radius: 12px;">
-    <template v-slot:title ><p class="my-0">Outlined Alert</p> </template>
-    <slot style="line-height: 0 !important;" class="my-0" />
+  <v-alert :color="color" variant="tonal" style="border-radius: 12px">
+    <template v-slot:title
+      ><p class="my-0"><slot name="title" /></p>
+    </template>
+    <p style="line-height: 0 !important" class="my-0">
+      <slot name="content" />
+    </p>
   </v-alert>
-
-  <v-card style="background-color: #E6F4EA;border: 1px solid #137333;" elevation="0" class="pa-3">
-   <b>Note:</b>
-    <p style="line-height: normal;padding: 0 !important;"><slot/></p>
-  </v-card>
 </template>
+<script setup>
+const props = defineProps({
+  type: {
+    type: String,
+    default: "primary",
+  },
+});
+const color =
+  props.type === "success"
+    ? "success"
+    : props.type === "error"
+    ? "error"
+    : props.type === "warning"
+    ? "warning"
+    : props.type === "info"
+    ? "info"
+    : "primary";
+</script>

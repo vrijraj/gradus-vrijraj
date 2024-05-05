@@ -1,5 +1,4 @@
 export const getGeminiPrompt = (content: String) => {
-  console.log(content, typeof content);
   const text = `
       You are a Markdown Content Expert.
       Your task is extract content from the markdown file and answers according to user queries.

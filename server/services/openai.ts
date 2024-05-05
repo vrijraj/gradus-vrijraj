@@ -11,7 +11,6 @@ async function fetchOpenAIResponse(prompt: string) {
       messages: [{ role: "user", content: getOpenAIPrompt(JSON.stringify(prompt)) }],
       model: "gpt-3.5-turbo",
     });
-    console.log("OpenAI response:", completion.choices[0].message);
     return completion.choices[0].message;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
