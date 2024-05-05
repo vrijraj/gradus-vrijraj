@@ -3,6 +3,7 @@
     <v-app-bar-title>
       <NuxtImg src="/donotremove/logo.svg" width="120" />
     </v-app-bar-title>
+    <client-only>
     <v-progress-linear
       :active="appLoading"
       :indeterminate="true"
@@ -10,6 +11,7 @@
       absolute
       bottom
     ></v-progress-linear>
+  </client-only>
   </v-app-bar>
   <v-main>
     <CoreAppBanner v-if="config.config.banner.status" />
@@ -58,6 +60,7 @@
         </v-col>
       </v-row>
     </v-container>
+    
     <v-container fluid class="my-0 py-0">
       <!-- Cards -->
       <v-row
@@ -96,6 +99,7 @@
       </v-row>
       <!-- No Data -->
     </v-container>
+
   </v-main>
 
   <!-- Footer -->
