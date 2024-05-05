@@ -6,14 +6,15 @@
   <v-main>
     <CoreAppBanner v-if="config.config.banner.status" />
     <CoreHeroCard />
-    <ClientOnly>
-      <v-container
-        fluid
-        class="bg-white"
-        style="border-bottom: 1px solid #e8f0fe !important"
-      >
-        <v-row justify="center" align="center">
-          <v-col md="11">
+
+    <v-container
+      fluid
+      class="bg-white"
+      style="border-bottom: 1px solid #e8f0fe !important"
+    >
+      <v-row justify="center" align="center">
+        <v-col md="11">
+          <v-container fluid class="pa-0">
             <v-row>
               <v-col md="3" lg="2">
                 <v-text-field
@@ -48,49 +49,49 @@
                 ></v-select>
               </v-col>
             </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
+          </v-container>
+        </v-col>
+      </v-row>
+    </v-container>
+    
+    <v-container fluid class="my-0 py-0">
+      <!-- Cards -->
+      <v-row
+        justify="center"
+        align="center"
+        class="px-0 mx-0 mt-5"
+        v-if="res != null && Object.keys(res).length"
+      >
+        <v-col md="11" class="px-0">
+          <v-container fluid class="px-0">
+            <v-row>
+              <v-col
+                md="3"
+                lg="3"
+                sm="4"
+                cols="12"
+                v-for="(article, index) in res"
+                :key="index"
+              >
+                <CoreLabCard :item="article" />
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-col>
+      </v-row>
+      <!-- Cards -->
 
-      <v-container fluid class="my-0 py-0">
-        <!-- Cards -->
-        <v-row
-          justify="center"
-          align="center"
-          class="px-0 mx-0 mt-5"
-          v-if="res != null && Object.keys(res).length"
-        >
-          <v-col md="11" class="px-0">
-            <v-container fluid class="px-0">
-              <v-row class="">
-                <v-col
-                  md="3"
-                  lg="3"
-                  sm="4"
-                  cols="12"
-                  v-for="(article, index) in res"
-                  :key="index"
-                >
-                  <CoreLabCard :item="article" />
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-col>
-        </v-row>
-        <!-- Cards -->
-
-        <!-- No Data -->
-        <v-row justify="center" align="center" class="mx-0 mt-3" v-else>
-          <v-col md="11" class="px-0">
-            <p>
-              <v-icon class="mt-n1 mr-2">mdi-alert-octagram-outline</v-icon>No
-              Data Found!
-            </p>
-          </v-col>
-        </v-row>
-        <!-- No Data -->
-      </v-container>
-    </ClientOnly>
+      <!-- No Data -->
+      <v-row justify="center" align="center" class="mx-0 mt-3" v-else>
+        <v-col md="11" class="px-0">
+          <p>
+            <v-icon class="mt-n1 mr-2">mdi-alert-octagram-outline</v-icon>No
+            Data Found!
+          </p>
+        </v-col>
+      </v-row>
+      <!-- No Data -->
+    </v-container>
   </v-main>
 
   <!-- Footer -->

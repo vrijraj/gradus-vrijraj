@@ -19,7 +19,7 @@
       <v-app-bar-title class="float-right mr-3">
         <CoreShareBtn />
         <v-avatar size="30">
-          <NuxtImg src="/logo.png" width="120" />
+          <v-img src="/logo.png" width="120" ></v-img>
         </v-avatar>
       </v-app-bar-title>
     </template>

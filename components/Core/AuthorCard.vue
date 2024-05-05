@@ -2,7 +2,8 @@
   <v-list>
     <span style="font-size: 90%">{{ authors.length > 1 ? "Authors" : "Author" }}</span>
     <v-list-item
-      v-for="author in authors"
+      v-for="(author, index) in authors"
+      :key="index"
       class="pa-2 mb-1"
       style="
         background-color: white;
@@ -18,7 +19,7 @@
       </v-list-item-subtitle>
       <template v-slot:prepend>
         <v-avatar size="40">
-          <NuxtImg :src="authorImage(author)" />
+          <v-img :src="authorImage(author)" ></v-img>
         </v-avatar>
       </template>
       <template v-slot:append>
