@@ -11,7 +11,7 @@
     </CoreLeftSideBar>
     <!-- Left Sidebar -->
 
-    <v-main class="d-flex align-center justify-center mt-3">
+    <v-main class="d-flex align-center justify-center mt-3 ">
       <v-fab
         @click="currentNode > 0 && currentNode--"
         variant="flat"
@@ -250,6 +250,10 @@ watch(
     if (newVal !== oldVal) {
       router.replace({ path: route.fullPath, query: { page: newVal } });
     }
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+
     setTimeout(() => {
       show.value = true;
     }, 350);
