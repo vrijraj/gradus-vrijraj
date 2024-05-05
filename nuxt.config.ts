@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   //...
   // target: 'static',
   // ssr: false,
-  ssr: true,
+  // ssr: true,
   build: {
     transpile: ["vuetify"],
   },
