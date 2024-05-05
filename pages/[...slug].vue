@@ -115,7 +115,7 @@
               v-if="config.config.aiFlag"
             >
               <v-avatar size="x-small">
-                <NuxtImg src="/public/donotremove/ai-logo.svg" />
+                <v-img src="/public/donotremove/ai-logo.svg" ></v-img>
               </v-avatar>
               AI Chat
             </v-btn>

@@ -26,7 +26,8 @@
                   bg-color="#E8F0FE"
                   append-inner-icon="mdi-magnify"
                   density="compact"
-                  @click:clear="search = ''"
+                  @click:clear="resetData()"
+                  @input="searchData($event)"
                   label="Search for any topic"
                 ></v-text-field>
               </v-col>
@@ -44,6 +45,8 @@
                   bg-color="#E8F0FE"
                   dense
                   :items="topics"
+                  @click:clear="resetData()"
+                  @update:modelValue="filterData($event)"
                   class="custom-bg-color"
                   hide-details
                 ></v-select>
@@ -53,7 +56,7 @@
         </v-col>
       </v-row>
     </v-container>
-    
+
     <v-container fluid class="my-0 py-0">
       <!-- Cards -->
       <v-row
@@ -130,6 +133,7 @@ const topics = ref(config.filters);
 const search = ref("");
 const debouncedSearch = useDebounce(search, 500);
 const res = ref({});
+const actualRes = ref({});
 const query = ref({});
 
 const appLoading = useAppLoading();
@@ -138,37 +142,57 @@ const fetchData = async () => {
   const { data } = await useAsyncData("allData", () =>
     queryContent().where(query.value).sort({ date: -1 }).find()
   );
-
   res.value = data._rawValue;
+  actualRes.value = data._rawValue;
   appLoading.value = false;
 };
 
-watchEffect(async () => {
-  appLoading.value = true;
-  const conditions = [{ draft: false }];
+const filterData = (a) => {
+  res.value = actualRes.value.filter((obj) =>
+    a.some((tag) => obj.tags.includes(tag))
+  );
+};
 
-  if (debouncedSearch.value.length >= 3) {
-    conditions.push({
-      $or: [
-        { title: { $icontains: debouncedSearch.value } },
-        { description: { $icontains: debouncedSearch.value } },
-      ],
-    });
+const resetData = () => {
+  res.value = actualRes.value;
+};
 
-    if (filter.value.length) {
-      conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
-    }
-  } else if (filter.value.length) {
-    conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
-  }
+const searchData = () => {
+  res.value = actualRes.value.filter((obj) =>
+    Object.values(obj).some(
+      (value) => typeof value === "string" && value.includes(search.value)
+    )
+  );
+};
 
-  query.value = conditions.length > 1 ? { $and: conditions } : conditions[0];
-  fetchData();
-});
+// watchEffect(async () => {
+//   console.log('res.value', res.value);
+//   appLoading.value = true;
+//   const conditions = [{ draft: false }];
 
-onMounted(() => {
-  fetchData();
-});
+//   if (debouncedSearch.value.length >= 3) {
+//     conditions.push({
+//       $or: [
+//         { title: { $icontains: debouncedSearch.value } },
+//         { description: { $icontains: debouncedSearch.value } },
+//       ],
+//     });
+
+//     if (filter.value.length) {
+//       conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
+//     }
+//   } else if (filter.value.length) {
+//     conditions.push({ $or: [{ tags: { $contains: filter.value } }] });
+//   }
+
+//   query.value = conditions.length > 1 ? { $and: conditions } : conditions[0];
+//   fetchData();
+// });
+
+fetchData();
+// onMounted(() => {
+//   fetchData();
+// });
 </script>
 
 <style></style>

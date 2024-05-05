@@ -18,10 +18,10 @@
             style="background-color: #f5f8fc"
           >
             <a href="http://" target="_blank">
-              <NuxtImg
+              <v-img
                 width="130"
                 :src="'/donotremove/build-with-gradus.svg'"
-              />
+              ></v-img>
             </a>
           </v-sheet>
           <v-sheet
