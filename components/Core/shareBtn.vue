@@ -13,7 +13,10 @@
 
   <v-dialog v-model="dialog" rounded max-width="500">
     <v-card style="border-radius: 12px !important">
-      <v-card-title class="text-center" style="border-bottom: 1px solid #e0e0e0;font-weight: 400;">
+      <v-card-title
+        class="text-center"
+        style="border-bottom: 1px solid #e0e0e0; font-weight: 400"
+      >
         <v-icon size="18" class="">mdi-share-variant-outline</v-icon>
         <span class="ml-1">Share</span>
         <v-btn
@@ -26,21 +29,43 @@
         >
       </v-card-title>
       <v-card-text>
-      
         <div class="mb-4">
-          <p style="font-size: 95%;font-weight: 500;" class="mb-1">Share on</p> 
-          <v-btn @click="shareOnWhatsApp" variant="flat" size="small" class="mr-2" color="#DEE5F1" icon>
+          <p style="font-size: 95%; font-weight: 500" class="mb-1">Share on</p>
+          <v-btn
+            @click="shareOnWhatsApp"
+            variant="flat"
+            size="small"
+            class="mr-2"
+            color="#DEE5F1"
+            icon
+          >
             <v-icon x-large color="#3D3D3D">mdi-whatsapp</v-icon>
           </v-btn>
-          <v-btn @click="shareOnTwitter" variant="flat" size="small" class="mr-2" color="#DEE5F1" icon>
+          <v-btn
+            @click="shareOnTwitter"
+            variant="flat"
+            size="small"
+            class="mr-2"
+            color="#DEE5F1"
+            icon
+          >
             <v-icon x-large color="#3D3D3D">mdi-twitter</v-icon>
           </v-btn>
-          <v-btn @click="shareOnLinkedIn" variant="flat" size="small" class="mr-2" color="#DEE5F1" icon>
+          <v-btn
+            @click="shareOnLinkedIn"
+            variant="flat"
+            size="small"
+            class="mr-2"
+            color="#DEE5F1"
+            icon
+          >
             <v-icon x-large color="#3D3D3D">mdi-linkedin</v-icon>
           </v-btn>
         </div>
 
-        <p style="font-size: 90%;font-weight: 500;" class="mb-2 mt-3">Share Link</p>
+        <p style="font-size: 90%; font-weight: 500" class="mb-2 mt-3">
+          Share Link
+        </p>
         <div class="d-flex align-center justify-space-between mb-2 mt-1">
           <v-text-field
             variant="outlined"
@@ -58,7 +83,7 @@
             class="mt-n5 ml-3"
             size="small"
             color="#F5F8FC"
-            style="border: 1px solid #DEE5F1;"
+            style="border: 1px solid #dee5f1"
             variant="flat"
           >
             <v-icon @click="copyLink">mdi-content-copy</v-icon>
@@ -139,7 +164,7 @@ const shareOnTwitter = () => {
 };
 
 const shareOnLinkedIn = () => {
- const encodedUrl = encodeURIComponent(content);
+  const encodedUrl = encodeURIComponent(content);
   window.open(
     `https://www.linkedin.com/feed/?shareActive=true&text=${encodedUrl}`,
     "_blank"

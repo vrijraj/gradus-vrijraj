@@ -9,21 +9,25 @@
 
     <v-container
       fluid
-      class="bg-white"
-      style="border-bottom: 1px solid #e8f0fe !important"
+      style="
+        border-bottom: 1px solid #dee5f1 !important;
+        border-top: 1px solid #dee5f1 !important;
+      "
     >
       <v-row justify="center" align="center">
         <v-col md="11">
           <v-container fluid class="pa-0">
-            <v-row>
-              <v-col md="3" lg="2">
+            <v-row justify="space-between">
+              <v-col md="3" lg="3">
                 <v-text-field
+                  prepend-icon="mdi-card-search-outline"
                   v-model="search"
                   hide-details="auto"
                   rounded
                   variant="outlined"
                   clearable
                   bg-color="#E8F0FE"
+                  base-color="#DEE5F1"
                   append-inner-icon="mdi-magnify"
                   density="compact"
                   @click:clear="resetData()"
@@ -34,7 +38,7 @@
               <v-col md="3" lg="3">
                 <v-select
                   v-model="filter"
-                  chips
+                  prepend-icon="mdi-filter-outline"
                   closable-chips
                   label="Choose Topic"
                   density="compact"
@@ -43,14 +47,26 @@
                   rounded
                   multiple
                   bg-color="#E8F0FE"
+                  base-color="#DEE5F1"
                   dense
                   :items="topics"
                   @click:clear="resetData()"
                   @update:modelValue="filterData($event)"
                   @input="filterData($event)"
-                  class="custom-bg-color"
                   hide-details
-                ></v-select>
+                >
+                  <template v-slot:selection="{ item, index }">
+                    <v-chip v-if="index < 1">
+                      <span>{{ item.title }}</span>
+                    </v-chip>
+                    <span
+                      v-if="index === 1"
+                      class="text-grey text-caption align-self-center"
+                    >
+                      (+{{ filter.length - 1 }} others)
+                    </span>
+                  </template>
+                </v-select>
               </v-col>
             </v-row>
           </v-container>
@@ -149,11 +165,11 @@ const fetchData = async () => {
 };
 
 const filterData = (a) => {
-  if(a.length){
+  if (a.length) {
     res.value = actualRes.value.filter((obj) =>
       a.some((tag) => obj.tags.includes(tag))
     );
-  }else{
+  } else {
     res.value = actualRes.value;
   }
 };
