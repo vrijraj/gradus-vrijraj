@@ -184,6 +184,9 @@ onMounted(() => {
   if (window.innerWidth < 600) {
     prependIconFilter.value = "";
     prependIconSearch.value = "";
+  } else {
+    prependIconFilter.value = "mdi-filter-outline";
+    prependIconSearch.value = "mdi-card-search-outline";
   }
 });
 

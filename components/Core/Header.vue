@@ -1,7 +1,9 @@
 <template>
   <v-app-bar :elevation="0">
     <v-app-bar-title>
-      <NuxtImg src="/donotremove/logo.svg" width="120" />
+      <NuxtLink to="/">
+        <NuxtImg src="/donotremove/logo.svg" width="120" />
+      </NuxtLink>
     </v-app-bar-title>
     <ClientOnly>
       <v-progress-linear
