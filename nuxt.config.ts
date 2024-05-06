@@ -1,10 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
-  //...
-  // target: 'static',
-  // ssr: false,
-  // ssr: true,
   build: {
     transpile: ["vuetify"],
   },
@@ -60,6 +56,6 @@ export default defineNuxtConfig({
     // }
   },
   gtag: {
-    id: "G-WNF0K83TJ5",
+    id: "G-JC8BJZ2R1G",
   },
 });

@@ -1,6 +1,8 @@
 <template>
   <v-list>
-    <span style="font-size: 90%">{{ authors.length > 1 ? "Authors" : "Author" }}</span>
+    <span style="font-size: 90%">{{
+      authors.length > 1 ? "Authors" : "Author"
+    }}</span>
     <v-list-item
       v-for="(author, index) in authors"
       :key="index"
@@ -15,11 +17,14 @@
         author.name
       }}</v-list-item-title>
       <v-list-item-subtitle style="font-size: 80%">
-        <span>Visit Website</span>
+        <!-- <span>Visit Website</span> -->
+        <NuxtLink target="_blank" :to="author.socials.web"
+          >visit website</NuxtLink
+        >
       </v-list-item-subtitle>
       <template v-slot:prepend>
         <v-avatar size="40">
-          <v-img :src="authorImage(author)" ></v-img>
+          <v-img :src="authorImage(author)"></v-img>
         </v-avatar>
       </template>
       <template v-slot:append>
@@ -48,9 +53,9 @@ defineProps({
 
 function authorImage(author) {
   if (author.image) {
-	return author.image;
+    return author.image;
   } else {
-	return "/authors/default-avatar-author.jpg";
+    return "/authors/default-avatar-author.jpg";
   }
 }
 </script>

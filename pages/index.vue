@@ -130,7 +130,6 @@ useHead({
   canonical: config.hostUrl,
   favicon: config.favicon,
   keywords: config.seo.keywords,
-  image: config.thumbnail,
   author: config.seo.author,
   meta: [
     { name: "description", content: config.desc },
