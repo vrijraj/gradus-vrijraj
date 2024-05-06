@@ -17,9 +17,8 @@
         author.name
       }}</v-list-item-title>
       <v-list-item-subtitle style="font-size: 80%">
-        <!-- <span>Visit Website</span> -->
         <NuxtLink target="_blank" :to="author.socials.web"
-          >visit website</NuxtLink
+          >Visit website</NuxtLink
         >
       </v-list-item-subtitle>
       <template v-slot:prepend>
