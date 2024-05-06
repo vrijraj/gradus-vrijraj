@@ -29,6 +29,12 @@ Ensure you have the following installed:
 > [!IMPORTANT]
 > **Note on AI Features:** Currently, AI features are only supported in SSR deployments.
 
+# Contributors
+
+## Maintainers:
+1. [Vrijraj Singh](https://vrijraj.xyz/)
+1. [Abhinav Verma](https://github.com/abhinavv9)
+1. [Shivam Singh](https://shivam.live/) 
 
 # Contribution
 
