@@ -129,7 +129,7 @@ useSeoMeta({
   description: config.dsec,
   keywords: config.seo.keywords,
   author: config.seo.author,
-  creator: 'Gradus',
+  creator: "Gradus",
   viewport: "width=device-width, initial-scale=1.0",
   ogTitle: config.name,
   ogDescription: config.dsec,
@@ -166,6 +166,7 @@ onMounted(() => {
 });
 
 const fetchData = async () => {
+  query.value = { draft: false };
   const { data } = await useAsyncData("allData", () =>
     queryContent().where(query.value).sort({ date: -1 }).find()
   );
