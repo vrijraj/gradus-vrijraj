@@ -19,7 +19,7 @@ date: 2024-04-25
 categories: 'Technology'
 duration: 30
 image: '/codelabs/gemini-for-js/gemini.png'
-tags: ['Gemini', 'JavaScript']
+tags: ['GEMINI', 'JAVASCRIPT']
 draft: false
 ---
 

@@ -12,7 +12,7 @@ export const config = {
     youtube: "",
     web: "https://vrijraj.xyz/",
   },
-  filters: ["GRADUS", "WEB"],
+  filters: ["GRADUS", "GEMINI", "JAVASCRIPT"],
   config: {
     aiFlag: false,
     aiFlagType: "openai", // openai or gemini
