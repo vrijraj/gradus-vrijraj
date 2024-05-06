@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site":"vrijraj-gradus",
     "public": ".output/public",
     "cleanUrls": true,
     "ignore": [
