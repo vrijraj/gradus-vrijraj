@@ -51,9 +51,9 @@ Awesome! We greatly appreciate contributions of all kinds. To make the process s
 
 # List Your Project
 
-You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://link-url-here.org) to share more about what you’ve built.
+You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://bit.ly/gradus-directory) to share more about what you’ve built.
 
-## View codelabs Built with Gradus
+## View codelabs Build with Gradus
 
 1. [Vrijraj Codelabs](https://codelab.vrijraj.xyz)
 

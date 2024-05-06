@@ -56,7 +56,7 @@
                   hide-details
                 >
                   <template v-slot:selection="{ item, index }">
-                    <v-chip v-if="index < 1">
+                    <v-chip size="small" v-if="index < 1">
                       <span>{{ item.title }}</span>
                     </v-chip>
                     <span

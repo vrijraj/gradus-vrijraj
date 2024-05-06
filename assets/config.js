@@ -18,10 +18,10 @@ export const config = {
     aiFlagType: "openai", // openai or gemini
     theme: "light", // dark or light
     banner: {
-      status: false,
-      title: "Banner title",
-      content: "Banner content",
-      link: "https://vrijraj.xyz/",
+      status: true,
+      title: "We're at Product Hunt 🚀",
+      content: "Show some ❤️ and support the Gradus",
+      link: "https://www.producthunt.com/",
     },
   },
   seo: {

@@ -25,7 +25,7 @@ authors:
         }
     }
   ]
-date: 2024-5-06
+date: 2024-05-07
 categories: "Technology"
 duration: 30
 image: "/codelabs/getting-started-with-gradus/hero.png"
@@ -56,11 +56,12 @@ Awesome! Contributions of all kinds are greatly appreciated. To help smoothen th
 
 Ensure you have the following installed:
 
-- Node.js (version 18 or later)
-- NUXT 3 (a modern Vue.js framework)
-- Vuetify 3 (a Vue UI Library)
+- [Node.js](https://nodejs.org/en) (version 18 or later)
+- [Nuxt 3](https://nuxt.com/) (a modern Vue.js framework)
+- [Vuetify](https://vuetifyjs.com/en/) (a Vue UI Library)
+- [Nuxt Content](https://content.nuxt.com/)
 
-## Installing GRADUS
+## Installing Gradus
 
 Follow these steps to set up the GRADUS project on your local machine:
 
@@ -361,7 +362,7 @@ Awesome! We greatly appreciate contributions of all kinds. To make the process s
 
 # List Your Project
 
-You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://link-url-here.org) to share more about what you’ve built.
+You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://bit.ly/gradus-directory) to share more about what you’ve built.
 
 # Future Roadmap
 
