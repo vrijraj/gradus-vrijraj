@@ -16,7 +16,7 @@
             class="ma-0 pa-0 me-auto align-self-center"
             style="background-color: #f5f8fc"
           >
-            <a href="http://" target="_blank">
+            <a href="https://github.com/oss-labs/gradus" target="_blank">
               <v-img
                 width="130"
                 :src="'/donotremove/build-with-gradus.svg'"

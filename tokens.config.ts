@@ -19,7 +19,7 @@ export default defineTheme({
     },
     h2: {
       fontSize: '20px',
-      margin: '30px 0px 5px 0px'
+      margin: '30px 0px 10px 0px'
     },
     h3: {
       fontSize: '20px',
@@ -38,23 +38,28 @@ export default defineTheme({
       margin: '30px 0px 5px 0px'
     },
     ul: {
+      fontSize: '90%',
       margin: '4px',
+      li: {
+        margin: '2px',
+        fontSize: '90%',
+      }
     },
     li: {
       margin: '0px',
-      fontSize: '100%'
+      fontSize: '90%'
     },
     ol: {
       margin: '4px',
-      fontSize: '100%',
+      fontSize: '90%',
       li: {
-        margin: '3px',
-        fontSize: '100%'
+        margin: '2px',
+        fontSize: '90%'
       }
     },
     p: {
       margin: '2px 0',
-      fontSize: '90%'
+      // fontSize: '90%'
     },
     img: {
       borderRadius: '12px'

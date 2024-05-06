@@ -6,8 +6,15 @@
   >
     <v-row justify="center" align="center">
       <v-col md="6" cols="3">
-        <a href="http://" target="_blank" class="mt-3 mb-0">
-          <NuxtImg style="width: 15vh;" :src="'/donotremove/build-with-gradus.svg'" />
+        <a
+          href="https://github.com/oss-labs/gradus"
+          target="_blank"
+          class="mt-3 mb-0"
+        >
+          <NuxtImg
+            style="width: 15vh"
+            :src="'/donotremove/build-with-gradus.svg'"
+          />
         </a>
       </v-col>
       <v-col md="6" cols="9" class="text-right">
