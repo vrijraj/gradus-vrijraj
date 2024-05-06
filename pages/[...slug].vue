@@ -11,7 +11,7 @@
     </CoreLeftSideBar>
     <!-- Left Sidebar -->
 
-    <v-main class="d-flex align-center justify-center mt-3 ">
+    <v-main class="d-flex align-center justify-center mt-3">
       <v-fab
         @click="currentNode > 0 && currentNode--"
         variant="flat"
@@ -33,7 +33,7 @@
             min-height: 88vh;
             max-width: 900px;
           "
-          class="mx-0 mt-0 pa-0 mb-0"
+          class="mx-2 mt-0 pa-0 mb-0"
           v-show="show"
         >
           <div
@@ -250,7 +250,7 @@ watch(
     if (newVal !== oldVal) {
       router.replace({ path: route.fullPath, query: { page: newVal } });
     }
-    
+
     // Scroll to top
     // window.scrollTo(0, 0);
 
@@ -301,48 +301,53 @@ const metadata = computed(() => ({
   image: data.value?.image,
 }));
 
-
-useHead({
+useSeoMeta({
+  contentType: "text/html; charset=utf-8",
   title: `${metadata.value.title} - Gradus`,
   description: metadata.value.description,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  keywords: config.seo.keywords,
+  author: config.seo.author,
+  creator: "Gradus",
   charset: "utf-8",
-  meta: [
-    { property: "og:title", content: `${metadata.value.title} - Gradus` },
-    { property: "og:description", content: metadata.value.description },
-    { property: "og:type", content: "article" },
-    { property: "og:url", content: `${config.hostUrl}${metadata.value._path}` },
-    { property: "og:image", content: metadata.value.image },
-    { property: "og:locale", content: metadata.value._locale || "en_US" },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: `${metadata.value.title} - Gradus` },
-    { name: "twitter:description", content: metadata.value.description },
-    { name: "twitter:image", content: metadata.value.image },
-    { name: "twitter:url", content: `${config.hostUrl}${metadata.value._path}` },
+  viewport: "width=device-width, initial-scale=1.0",
+  ogTitle: `${metadata.value.title} - Gradus`,
+  ogDescription: metadata.value.description,
+  ogImage: metadata.value.image,
+  ogImageUrl: metadata.value.image,
+  ogUrl: `${config.hostUrl}${metadata.value._path}`,
+  ogType: "website",
+  twitterTitle: `${metadata.value.title} - Gradus`,
+  twitterDescription: metadata.value.description,
+  twitterImage: metadata.value.image,
+  twitterCard: "summary_large_image",
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: `${config.hostUrl}${metadata.value._path}` },
   ],
-  link: [{ rel: "canonical", href: `${config.hostUrl}${metadata.value._path}` }],
   script: [
     {
-      type: 'application/ld+json',
+      type: "application/ld+json",
       json: {
         "@context": "http://schema.org",
         "@type": "Article",
-        "mainEntityOfPage": {
+        mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `${config.hostUrl}${metadata.value._path}`
+          "@id": `${config.hostUrl}${metadata.value._path}`,
         },
-        "headline": metadata.value.title,
-        "image": [metadata.value.image],
-        "datePublished": metadata.value.date,
-        "dateModified": metadata.value.date,
-        "author": {
+        headline: metadata.value.title,
+        image: [metadata.value.image],
+        datePublished: metadata.value.date,
+        dateModified: metadata.value.date,
+        author: {
           "@type": "Person",
-          "name": metadata.value.authors?.join(", "),
+          name: metadata.value.authors?.join(", "),
         },
-        "description": metadata.value.description
-      }
-    }
-  ]
+        description: metadata.value.description,
+      },
+    },
+  ],
 });
 
 // Read time per section

@@ -1,8 +1,8 @@
 export const config = {
   name: "Gradus Codelab",
   dsec: "Developer Hub, where you can access labs for various tech stacks to delve into detailed use cases of technologies.",
-  thumbnail: "/donotremove/gradus-social.jpg",
-  hostUrl: "https://gradus.dev/",
+  thumbnail: "/donotremove/gradus-social.png",
+  hostUrl: "https://trygradus.web.app/",
   favicon: "/favicon.ico",
   social: {
     linkedin: "https://www.linkedin.com/in/trygradus/",
@@ -14,7 +14,7 @@ export const config = {
   },
   filters: ["GRADUS", "WEB"],
   config: {
-    aiFlag: true,
+    aiFlag: false,
     aiFlagType: "openai", // openai or gemini
     theme: "light", // dark or light
     banner: {
@@ -25,13 +25,7 @@ export const config = {
     },
   },
   seo: {
-    keywords: [
-      "Gradus Codelab",
-      "Gradus",
-      "Codelab",
-      "oss-lab",
-      "oss",
-    ],
+    keywords: 'Gradus Codelab, Gradus, Codelab, oss-lab, oss',
     author: "Oss Labs",
   },
 };

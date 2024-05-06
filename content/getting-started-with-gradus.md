@@ -12,18 +12,18 @@ authors:
           linkedin: "https://www.linkedin.com/in/vrijrajsingh/",
           github: "https://github.com/vrijraj",
           web: "https://vrijraj.xyz",
-        },
+        }
     },
     {
       name: "Abhinav Verma",
-      image: "/authors/abhinav.png",
+      image: "/authors/abhinav.jpg",
       socials:
         {
-          linkedin: "https//www:linkedin.com/in/abhinavv9",
+          linkedin: "https://www:linkedin.com/in/abhinavv9",
           github: "https://github.com/abhinavv9",
           web: "https://sudoboink.me",
-        },
-    },
+        }
+    }
   ]
 date: 2024-5-06
 categories: "Technology"
@@ -357,7 +357,7 @@ Awesome! We greatly appreciate contributions of all kinds. To make the process s
 - **Commit Management:** Squash your commits to keep the history clean.
 - **Code Quality:** Lint your code with eslint, using the provided configuration, to maintain code quality.
 - **Tests:** Include updates or additions to tests relevant to your changes.
-- **Branch Policy:** Make pull requests against the `develop` branch. Pull requests to other branches will be rejected unless specified by the maintainers.
+- **Branch Policy:** Make pull requests against the `dev-contribution` branch. Pull requests to other branches will be rejected unless specified by the maintainers.
 
 # List Your Project
 
@@ -373,5 +373,8 @@ Our future enhancements include exciting features such as:
 - **AI Integration:** Implementing AI to enhance functionality and user experience.
 
 # Team and Support
+
+:::g-team
+:::
 
 If you encounter any issues or have queries, post them in the issues section. Our dedicated team will strive to address your concerns within 10-12 hours.

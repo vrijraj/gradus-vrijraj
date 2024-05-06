@@ -121,58 +121,32 @@
 
 <script setup>
 import { config } from "../assets/config.js";
-import { useDebounce } from "@vueuse/core";
+// import { useDebounce } from "@vueuse/core";
 
-useHead({
-  title: `${config.name} - Gradus`,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-  charset: "utf-8",
-  canonical: config.hostUrl,
-  favicon: config.favicon,
+useSeoMeta({
+  contentType: "text/html; charset=utf-8",
+  title: config.name,
+  description: config.dsec,
   keywords: config.seo.keywords,
   author: config.seo.author,
-  meta: [
-    { name: "description", content: config.desc },
-    { property: "og:title", content: config.name },
-    {
-      property: "og:description",
-      content: config.desc,
-    },
-    { property: "og:type", content: "website" },
-    {
-      property: "og:url",
-      content: config.hostUrl,
-    },
-    { property: "og:locale", content: "en_US" },
-    { property: "og:image", content: config.thumbnail },
-    // twiter
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:site", content: config.hostUrl },
-    { name: "twitter:creator", content: config.author },
-    { name: "twitter:title", content: config.name },
-    { name: "twitter:description", content: config.desc },
-    { name: "twitter:image", content: config.thumbnail },
-    // linkedin
-    { name: "linkedin:title", content: config.name },
-    { name: "linkedin:description", content: config.desc },
-    { name: "linkedin:image", content: config.thumbnail },
-    { name: "linkedin:url", content: config.hostUrl },
-    //whatapp
-    { property: "og:site_name", content: config.name },
-    { property: "og:image", content: config.thumbnail },
-    { property: "og:image:width", content: "1200" },
-    { property: "og:image:height", content: "630" },
-    // google
-    { itemprop: "name", content: config.name },
-    { itemprop: "description", content: config.desc },
-    { itemprop: "image", content: config.thumbnail },
-  ],
+  creator: 'Gradus',
+  viewport: "width=device-width, initial-scale=1.0",
+  ogTitle: config.name,
+  ogDescription: config.dsec,
+  ogImage: config.thumbnail,
+  ogImageUrl: config.thumbnail,
+  ogUrl: config.hostUrl,
+  ogType: "website",
+  twitterTitle: config.name,
+  twitterDescription: config.dsec,
+  twitterImage: config.thumbnail,
+  twitterCard: "summary_large_image",
 });
 
 const filter = ref([]);
 const topics = ref(config.filters);
 const search = ref("");
-const debouncedSearch = useDebounce(search, 500);
+// const debouncedSearch = useDebounce(search, 500);
 const res = ref({});
 const actualRes = ref({});
 const query = ref({});

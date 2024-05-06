@@ -18,12 +18,12 @@
         </a>
       </v-col>
       <v-col md="6" cols="9" class="text-right">
-        <NuxtLink style="font-size: 80%" class="ml-5" to="/"
-          >Privacy & Policy</NuxtLink
+        <NuxtLink style="font-size: 80%" class="ml-5" to="/about"
+          >About</NuxtLink
         >
-        <NuxtLink style="font-size: 80%" class="ml-5" to="/"
+        <!-- <NuxtLink style="font-size: 80%" class="ml-5" to="/"
           >Terms & Conditions</NuxtLink
-        >
+        > -->
       </v-col>
     </v-row>
   </v-container>

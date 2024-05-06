@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Vrijraj Singh",
+        "img": "vrijraj.jpeg",
+        "social": {
+            "linkedin": "https://www.linkedin.com/in/vrijrajsingh/",
+            "twitter": "https://twitter.com/SVrijraj",
+            "github": "https://github.com/vrijraj",
+            "website": "https://vrijraj.xyz/"
+        }
+    },
+    {
+        "name": "Shivam Singh",
+        "img": "shivam.jpg",
+        "social": {
+            "linkedin": "https://www.linkedin.com/in/s-shivam/",
+            "twitter": "https://twitter.com/Shivamc504?t=Vc1j2jeHDLkS1-cSM1LSkg&s=09",
+            "github": "",
+            "website": "https://shivam.live/"
+        }
+    },
+    {
+        "name": "Abhinav Verma",
+        "img": "abhinav.jpg",
+        "social": {
+            "linkedin": "https://www.linkedin.com/in/abhinavv9/",
+            "twitter": "https://twitter.com/sudoboink",
+            "github": "https://github.com/abhinavv9",
+            "website": "https://www.sudoboink.me/"
+        }
+    }
+]
