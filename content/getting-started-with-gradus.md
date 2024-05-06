@@ -30,7 +30,7 @@ categories: "Technology"
 duration: 30
 image: "/codelabs/getting-started-with-gradus/hero.png"
 tags: ["GRADUS"]
-draft: false
+draft: true
 ---
 
 # Introduction

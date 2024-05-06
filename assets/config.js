@@ -1,16 +1,16 @@
 export const config = {
-  name: "Gradus Codelab",
+  name: "Vrijraj Codelab",
   dsec: "Developer Hub, where you can access labs for various tech stacks to delve into detailed use cases of technologies.",
   thumbnail: "/donotremove/gradus-social.png",
-  hostUrl: "https://trygradus.web.app/",
+  hostUrl: "https://gradus.vrijraj.xyz/",
   favicon: "/favicon.ico",
   social: {
-    linkedin: "https://www.linkedin.com/in/trygradus/",
-    twitter: "https://twitter.com/trygradus",
-    instagram: "https://www.instagram.com/trygradus/",
-    github: "https://github.com/oss-labs/gradus",
+    linkedin: "https://www.linkedin.com/in/vrijrajsingh/",
+    twitter: "https://twitter.com/SVrijraj",
+    instagram: "https://www.instagram.com/vrijraj.singh/",
+    github: "https://github.com/vrijraj",
     youtube: "",
-    web: "https://trygradus.web.app/",
+    web: "https://vrijraj.xyz/",
   },
   filters: ["GRADUS", "WEB"],
   config: {
@@ -18,7 +18,7 @@ export const config = {
     aiFlagType: "openai", // openai or gemini
     theme: "light", // dark or light
     banner: {
-      status: true,
+      status: false,
       title: "We're at Product Hunt 🚀",
       content: "Show some ❤️ and support the Gradus",
       link: "https://www.producthunt.com/",
@@ -26,6 +26,6 @@ export const config = {
   },
   seo: {
     keywords: 'Gradus Codelab, Gradus, Codelab, oss-lab, oss',
-    author: "Oss Labs",
+    author: "Vrijraj Singh",
   },
 };
