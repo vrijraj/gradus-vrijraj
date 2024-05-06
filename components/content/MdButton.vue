@@ -1,5 +1,5 @@
 <template>
-  <v-btn :variant="type" :color="color">
+  <v-btn :variant="type" :color="color" :href="link" target="_blank" >
     <slot />
   </v-btn>
 </template>
@@ -14,6 +14,10 @@ defineProps({
     type: String,
     default: "primary",
   },
+  link:{
+    type: String,
+    default:''
+  }
 });
 
 </script>

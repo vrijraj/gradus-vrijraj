@@ -275,7 +275,7 @@ This is content
 :::
 
 ```md
-:::md-alert{type="success"}
+:::md-alert{type="success" }
 #title
 This is the title
 #content
@@ -296,12 +296,12 @@ This is the content
 
 - **Example:**
 
-:::md-button{type="tonal" color="primary"}
+:::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
 Click me!
 :::
 
 ```md
-:::md-button{type="tonal" color="primary"}
+:::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
 Click me!
 :::
 ```
