@@ -70,7 +70,7 @@
           size="small"
           target="_blank"
           class="mr-2 mb-2"
-          >{{item.name}}</v-chip
+          >{{ item.name }}</v-chip
         >
       </v-col>
     </v-row>

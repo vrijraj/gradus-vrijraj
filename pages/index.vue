@@ -133,13 +133,12 @@ useSeoMeta({
   viewport: "width=device-width, initial-scale=1.0",
   ogTitle: config.name,
   ogDescription: config.dsec,
-  ogImage: config.thumbnail,
-  ogImageUrl: config.thumbnail,
+  ogImage: `${config.hostUrl}${config.thumbnail}?auto=format&fit=crop&frame=1&h=512&w=1024`,
   ogUrl: config.hostUrl,
   ogType: "website",
   twitterTitle: config.name,
   twitterDescription: config.dsec,
-  twitterImage: config.thumbnail,
+  twitterImage: `${config.hostUrl}${config.thumbnail}?auto=format&fit=crop&frame=1&h=512&w=1024`,
   twitterCard: "summary_large_image",
 });
 
@@ -177,9 +176,13 @@ const fetchData = async () => {
 
 const filterData = (a) => {
   if (a.length) {
-    res.value = actualRes.value.filter((obj) =>
-      a.some((tag) => obj.tags.includes(tag))
-    );
+    const upperCaseTags = a.map((tag) => tag.toUpperCase());
+
+    res.value = actualRes.value.filter((obj) => {
+      return obj.tags.some((objTag) =>
+        upperCaseTags.includes(objTag.toUpperCase())
+      );
+    });
   } else {
     res.value = actualRes.value;
   }
