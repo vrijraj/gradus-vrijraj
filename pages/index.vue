@@ -177,9 +177,13 @@ const fetchData = async () => {
 
 const filterData = (a) => {
   if (a.length) {
-    res.value = actualRes.value.filter((obj) =>
-      a.some((tag) => obj.tags.includes(tag))
-    );
+    const upperCaseTags = a.map((tag) => tag.toUpperCase());
+
+    res.value = actualRes.value.filter((obj) => {
+      return obj.tags.some((objTag) =>
+        upperCaseTags.includes(objTag.toUpperCase())
+      );
+    });
   } else {
     res.value = actualRes.value;
   }
