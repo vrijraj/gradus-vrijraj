@@ -37,6 +37,8 @@ draft: false
 
 Gradus is an open-source tool that enables you to create codelabs using both markdown and rich markdown components. It offers the flexibility to operate either server-side or client-side, depending on your preference. Additionally, Gradus is experimenting with AI-enabled features to enhance its capabilities.
 
+<img src="/codelabs/getting-started-with-gradus/hero.png" alt="hero">
+
 ## Features
 
 - Gradus is user-friendly, allowing you to effortlessly create codelabs with markdown and its rich components.
@@ -57,15 +59,19 @@ Awesome! Contributions of all kinds are greatly appreciated. To help smoothen th
 Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/en) (version 18 or later)
-- [Nuxt 3](https://nuxt.com/) (a modern Vue.js framework)
+<!-- - [Nuxt 3](https://nuxt.com/) (a modern Vue.js framework)
 - [Vuetify](https://vuetifyjs.com/en/) (a Vue UI Library)
-- [Nuxt Content](https://content.nuxt.com/)
+- [Nuxt Content](https://content.nuxt.com/) -->
 
 ## Installing Gradus
 
 Follow these steps to set up the GRADUS project on your local machine:
 
-1. **Fork and Clone the Repository:** Start by forking [this repository](https://github.com/oss-labs/gradus) and then clone it to your local machine.
+1. **Fork and Clone the Repository:** Start by forking [this repository](https://github.com/oss-labs/gradus) from GitHub and then clone it to your local machine.  
+<!-- :::md-button{type="tonal" color="primary" link="https://github.com/oss-labs/gradus"}
+<img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="github" width="20"/>
+::: -->
+
 2. **Install Dependencies:** Navigate to the project directory and run the following command to install all the required dependencies.
   ```bash
 npm install
@@ -74,18 +80,35 @@ npm install
 ```bash
 npm run dev
 ```
-4. **Prepare for Production:** When you're ready to build for production, use the following command. This will create a `./output` directory containing the production build of your project.
+
+
+:::md-alert{type="success"}
+#title
+✨ Your development server should be up and running at [localhost:300](http://localhost:3000/).
+
+:::
+
+<br>
+
+:::md-alert{type="failure"}
+#title
+Note:
+#content
+In case localhost:3000 is pre-occupied it will automtically be mapped to another port visible in terminal while running the project. 
+:::
+4. **Setup Complete:** Your setup is now complete, and you're ready to start using GRADUS!
+
+<br>
+
+5. **Prepare for Production:** When you're ready to build for production, use the following command. This will create a `./output` directory containing the production build of your project.
 ```bash
 npx nuxi generate
 ```
-5. **Setup Complete:** Your setup is now complete, and you're ready to start using GRADUS!
+<!-- Learn more about production deployment [here](/getting-started-with-gradus?page=6) -->
+
 
 # Customization
-
-To personalize your GRADUS setup, modify the following files:
-
-1. **Project Meta Information:** Navigate to `assets/config.js` to customize your codelab’s metadata, such as the project name, description, and social media links, along with SEO and AI-related settings.
-2. **Images:** Upload thumbnail images and favicon to the `public` directory.
+Gradus is highly customizeable, you can customize ever aspect of it according to your needs.
 
 ## Project Structure Overview
 
@@ -117,6 +140,14 @@ Here’s a breakdown of the project's file structure:
 
 
 ```
+<br>
+
+#### Following files can be modified to make Gradus truly yours:
+
+1. **Project Meta Information:** Navigate to `assets/config.js` to customize your codelab’s metadata, such as the project name, description, and social media links, along with SEO and AI-related settings.
+2. **Images:** Upload thumbnail images and favicon to the `public` directory.
+
+
 
 # Configuration
 
@@ -150,15 +181,15 @@ To leverage AI functionalities within your project:
 
   1. Go to the `config.js` file.
   2. Set `aiFlag` to `true` to enable AI features.
-  3. Adjust `aiFlagType` to specify the type of AI you want to activate (openai, gemini).
+  3. Adjust `aiFlagType` to specify the type of AI you want to activate ([openai](https://platform.openai.com/api-keys) or [gemini](https://aistudio.google.com/)).
   4. Create a `.env` file in the project root to securely store API keys.
 
 - **Environment File Setup:** Provide your API keys in the `.env` file as follows:
 
-```
-OPENAI_API_KEY="YOUR-API-KEY"
-GEMINI_API_KEY="YOUR-API-KEY"
-```
+  ```
+  OPENAI_API_KEY="YOUR-API-KEY"
+  GEMINI_API_KEY="YOUR-API-KEY"
+  ```
 
 # Create Your First Codelab
 
@@ -177,6 +208,7 @@ Metadata plays a vital role not only in informing users about your codelab but a
 - **Syntax:** Insert the following JavaScript object at the top of your Markdown file to include metadata:
 
 ```js
+---
 title: "Share Your Thought with Firebase";
 description: "This Codelab demonstrates the use of Firebase for web developers.";
 slug: "share-your-thought-with-firebase";
@@ -197,7 +229,9 @@ categories: "Setup";
 image: "/codelabs/getting-started-with-gradus/hero.png";
 tags: ["GRADUS"];
 draft: false;
+---
 ```
+
 
 - **Details Explained:**
   - `title`: The name of your codelab.
@@ -241,15 +275,20 @@ We currently support specific custom components in markdown such as `md-alert` a
 
 To incorporate markdown components into your document, use the custom component syntax `:::<md-component>:::`.
 
-### Examples
+### Alert
 
 For adding an alert message:
 
 ```md
 :::md-alert
+#content
 This is an alert
 :::
 ```
+:::md-alert
+#content
+This is an alert
+:::
 
 #### Customization
 
@@ -264,15 +303,7 @@ Customizing these components allows you to tailor their appearance and behavior 
 
 - **Example:**
 
-:::md-alert{type="success"}
 
-#title
-This is titile
-
-#content
-This is content
-
-:::
 
 ```md
 :::md-alert{type="success" }
@@ -283,8 +314,25 @@ This is the content
 :::
 ```
 
+:::md-alert{type="success"}
+
+#title
+This is titile
+
+#content
+This is content
+
+:::
+
 <br>
 
+
+
+<br>
+
+### Button
+
+For adding a button.
 - **Customize `md-button`**
 - **Purpose:** Adjust the look and functionality of buttons.
 - **Properties:**
@@ -292,19 +340,16 @@ This is the content
   - **color:** Sets the button color (e.g., primary, secondary).
   - **text:** Specifies the text displayed on the button.
 
-<br>
-
-- **Example:**
-
-:::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
-Click me!
-:::
-
 ```md
 :::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
 Click me!
 :::
 ```
+
+
+:::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
+Click me!
+:::
 
 # Deployment
 
