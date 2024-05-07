@@ -133,13 +133,13 @@ useSeoMeta({
   viewport: "width=device-width, initial-scale=1.0",
   ogTitle: config.name,
   ogDescription: config.dsec,
-  ogImage: config.thumbnail,
-  ogImageUrl: "/public/donotremove/gradus-social.png",
+  ogImage: "https://trygradus.web.app/donotremove/gradus-social.png?auto=format&fit=crop&frame=1&h=512&w=1024",
+  ogImageUrl: "https://trygradus.web.app/donotremove/gradus-social.png?auto=format&fit=crop&frame=1&h=512&w=1024",
   ogUrl: config.hostUrl,
   ogType: "website",
   twitterTitle: config.name,
   twitterDescription: config.dsec,
-  twitterImage: "/public/donotremove/gradus-social.png",
+  twitterImage: "https://trygradus.web.app/donotremove/gradus-social.png?auto=format&fit=crop&frame=1&h=512&w=1024",
   twitterCard: "summary_large_image",
 });
 
