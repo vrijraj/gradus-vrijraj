@@ -61,7 +61,7 @@
 
       <v-col md="12" sm="12" cols="12">
         <p style="font-size: 20px" class="mb-2 mt-4">Thanks to our contributors</p>
-        <v-chip v-for="(item, index) in contributors" :key="index" :href="item.link" size="small" target="_blank" class="mr-2 mb-2">Sonakshi Panday</v-chip>
+        <v-chip v-for="(item, index) in contributors" :key="index" :href="item.link" size="small" target="_blank" class="mr-2 mb-2">{{item.name}}</v-chip>
       </v-col>
     </v-row>
   </v-container>
