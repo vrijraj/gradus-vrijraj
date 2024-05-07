@@ -21,7 +21,7 @@ export const config = {
       status: false,
       title: "We're at Product Hunt 🚀",
       content: "Show some ❤️ and support the Gradus",
-      link: "https://www.producthunt.com/",
+      link: "https://www.producthunt.com/products/gradus",
     },
   },
   seo: {
