@@ -134,12 +134,12 @@ useSeoMeta({
   ogTitle: config.name,
   ogDescription: config.dsec,
   ogImage: config.thumbnail,
-  ogImageUrl: config.thumbnail,
+  ogImageUrl: "/public/donotremove/gradus-social.png",
   ogUrl: config.hostUrl,
   ogType: "website",
   twitterTitle: config.name,
   twitterDescription: config.dsec,
-  twitterImage: config.thumbnail,
+  twitterImage: "/public/donotremove/gradus-social.png",
   twitterCard: "summary_large_image",
 });
 
