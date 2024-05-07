@@ -1,7 +1,7 @@
 export const config = {
   name: "Vrijraj Codelab",
   dsec: "Developer Hub, where you can access labs for various tech stacks to delve into detailed use cases of technologies.",
-  thumbnail: "/donotremove/gradus-social.png",
+  thumbnail: "donotremove/gradus-social.png",
   hostUrl: "https://gradus.vrijraj.xyz/",
   favicon: "/favicon.ico",
   social: {
