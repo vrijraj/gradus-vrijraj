@@ -336,9 +336,10 @@ For adding a button.
 - **Customize `md-button`**
 - **Purpose:** Adjust the look and functionality of buttons.
 - **Properties:**
-  - **type:** Defines the button style (e.g., outline, tonal, plain).
+  - **type:** Defines the button style (e.g. `elevated`, `flat`, `tonal`, `outlined`, `text`, `plain`).
   - **color:** Sets the button color (e.g., primary, secondary).
   - **text:** Specifies the text displayed on the button.
+  - **link:** Specifies the link for the action on the button.
 
 ```md
 :::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
@@ -350,6 +351,7 @@ Click me!
 :::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
 Click me!
 :::
+
 
 # Deployment
 
