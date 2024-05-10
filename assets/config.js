@@ -14,7 +14,7 @@ export const config = {
   },
   filters: ["GRADUS", "WEB"],
   config: {
-    aiFlag: true,
+    aiFlag: false,
     aiFlagType: "gemini", // openai or gemini
     theme: "light", // dark or light
     banner: {
