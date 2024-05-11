@@ -58,7 +58,7 @@ Awesome! Contributions of all kinds are greatly appreciated. To help smoothen th
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/en) (version 18 or later)
+- [Node.js](https://nodejs.org/en){:target="_blank"} (version 18 or later)
 <!-- - [Nuxt 3](https://nuxt.com/) (a modern Vue.js framework)
 - [Vuetify](https://vuetifyjs.com/en/) (a Vue UI Library)
 - [Nuxt Content](https://content.nuxt.com/) -->
@@ -67,7 +67,7 @@ Ensure you have the following installed:
 
 Follow these steps to set up the GRADUS project on your local machine:
 
-1. **Fork and Clone the Repository:** Start by forking [this repository](https://github.com/oss-labs/gradus) from GitHub and then clone it to your local machine.  
+1. **Fork and Clone the Repository:** Start by forking [this repository](https://github.com/oss-labs/gradus){:target="_blank"} from GitHub and then clone it to your local machine.  
 <!-- :::md-button{type="tonal" color="primary" link="https://github.com/oss-labs/gradus"}
 <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="github" width="20"/>
 ::: -->
@@ -181,7 +181,7 @@ To leverage AI functionalities within your project:
 
   1. Go to the `config.js` file.
   2. Set `aiFlag` to `true` to enable AI features.
-  3. Adjust `aiFlagType` to specify the type of AI you want to activate ([openai](https://platform.openai.com/api-keys) or [gemini](https://aistudio.google.com/)).
+  3. Adjust `aiFlagType` to specify the type of AI you want to activate ([openai](https://platform.openai.com/api-keys){:target="_blank"} or [gemini](https://aistudio.google.com/)){:target="_blank"}.
   4. Create a `.env` file in the project root to securely store API keys.
 
 - **Environment File Setup:** Provide your API keys in the `.env` file as follows:
@@ -409,7 +409,7 @@ Awesome! We greatly appreciate contributions of all kinds. To make the process s
 
 # List Your Project
 
-You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://bit.ly/gradus-directory) to share more about what you’ve built.
+You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://bit.ly/gradus-directory){:target="_blank"} to share more about what you’ve built.
 
 # Future Roadmap
 
