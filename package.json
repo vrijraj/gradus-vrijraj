@@ -2,10 +2,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preBuild": "node scripts/index.js",
+    "build": "npm run preBuild && nuxt build",
+    "dev": "npm run preBuild && nuxt dev",
+    "generate": "npm run preBuild && nuxt generate",
+    "preview": "npm run preBuild && nuxt preview",
+    "staticbuild": "npm run preBuild && npx nuxi generate"
   },
   "dependencies": {
     "@google/generative-ai": "^0.8.0",
