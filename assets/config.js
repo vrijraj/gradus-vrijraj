@@ -12,7 +12,6 @@ export const config = {
     youtube: "",
     web: "https://trygradus.web.app/",
   },
-  filters: ["GRADUS", "WEB"],
   config: {
     aiFlag: false,
     aiFlagType: "gemini", // openai or gemini

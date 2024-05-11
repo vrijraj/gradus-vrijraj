@@ -29,7 +29,7 @@ date: 2024-05-07
 categories: "Technology"
 duration: 30
 image: "/codelabs/getting-started-with-gradus/hero.png"
-tags: ["GRADUS"]
+tags: ["GRADUS", "WEB", "SETUP"]
 draft: false
 ---
 
@@ -102,7 +102,7 @@ In case localhost:3000 is pre-occupied it will automtically be mapped to another
 
 5. **Prepare for Production:** When you're ready to build for production, use the following command. This will create a `./output` directory containing the production build of your project.
 ```bash
-npx nuxi generate
+npm run staticbuild
 ```
 <!-- Learn more about production deployment [here](/getting-started-with-gradus?page=6) -->
 
@@ -258,14 +258,6 @@ Introduce the goals and background of your codelab here.
 List resources or additional reading materials here.
 ```
 
-## Important Note on Tags
-
-<br>
-
-:::md-alert{type="error"}
-#content
-Make sure to add tags in `/assets/config.js` file (case sensitive) for the filtering to work correctly in your codelab.
-:::
 
 # Markdown Components
 
@@ -380,7 +372,7 @@ Server Side Rendering (SSR) enhances SEO and improves performance for users by s
 Static Site Generation (SSG) offers fast loading times and reliable performance by generating HTML files at build time, which can be hosted on any static hosting service.
 
 - **How to Generate Static Code:**
-  - Execute the command `npx nuxi generate`. This command will produce a fully static version of your site, which can be deployed without needing a server.
+  - Execute the command `npm run staticbuild`. This command will produce a fully static version of your site, which can be deployed without needing a server.
 - **Hosting Options:**
   - **Firebase:** Ideal for hosting static files with benefits like integrated security features and easy scaling.
   - **GitHub Pages:** A straightforward option for hosting static websites, especially if your project is already managed in a GitHub repository.
