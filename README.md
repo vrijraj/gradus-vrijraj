@@ -34,7 +34,8 @@ Ensure you have the following installed:
 ## Maintainers:
 1. [Vrijraj Singh](https://vrijraj.xyz/)
 1. [Abhinav Verma](https://github.com/abhinavv9)
-1. [Shivam Singh](https://shivam.live/) 
+1. [Shivam Singh](https://shivam.live/)
+1. [Bharat Agarwal](https://github.com/agarwalbharat)
 
 # Contribution
 
