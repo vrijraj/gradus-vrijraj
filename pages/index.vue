@@ -121,6 +121,8 @@
 
 <script setup>
 import { config } from "../assets/config.js";
+import topicFilters from "../assets/topic_filter.json";
+
 // import { useDebounce } from "@vueuse/core";
 
 useSeoMeta({
@@ -143,7 +145,7 @@ useSeoMeta({
 });
 
 const filter = ref([]);
-const topics = ref(config.filters);
+const topics = ref(topicFilters);
 const search = ref("");
 // const debouncedSearch = useDebounce(search, 500);
 const res = ref({});

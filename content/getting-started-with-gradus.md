@@ -29,7 +29,7 @@ date: 2024-05-07
 categories: "Technology"
 duration: 30
 image: "/codelabs/getting-started-with-gradus/hero.png"
-tags: ["GRADUS"]
+tags: ["GRADUS", "WEB", "SETUP"]
 draft: false
 ---
 
@@ -58,7 +58,7 @@ Awesome! Contributions of all kinds are greatly appreciated. To help smoothen th
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/en) (version 18 or later)
+- [Node.js](https://nodejs.org/en){:target="_blank"} (version 18 or later)
 <!-- - [Nuxt 3](https://nuxt.com/) (a modern Vue.js framework)
 - [Vuetify](https://vuetifyjs.com/en/) (a Vue UI Library)
 - [Nuxt Content](https://content.nuxt.com/) -->
@@ -67,7 +67,7 @@ Ensure you have the following installed:
 
 Follow these steps to set up the GRADUS project on your local machine:
 
-1. **Fork and Clone the Repository:** Start by forking [this repository](https://github.com/oss-labs/gradus) from GitHub and then clone it to your local machine.  
+1. **Fork and Clone the Repository:** Start by forking [this repository](https://github.com/oss-labs/gradus){:target="_blank"} from GitHub and then clone it to your local machine.  
 <!-- :::md-button{type="tonal" color="primary" link="https://github.com/oss-labs/gradus"}
 <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="github" width="20"/>
 ::: -->
@@ -102,7 +102,7 @@ In case localhost:3000 is pre-occupied it will automtically be mapped to another
 
 5. **Prepare for Production:** When you're ready to build for production, use the following command. This will create a `./output` directory containing the production build of your project.
 ```bash
-npx nuxi generate
+npm run staticbuild
 ```
 <!-- Learn more about production deployment [here](/getting-started-with-gradus?page=6) -->
 
@@ -181,7 +181,7 @@ To leverage AI functionalities within your project:
 
   1. Go to the `config.js` file.
   2. Set `aiFlag` to `true` to enable AI features.
-  3. Adjust `aiFlagType` to specify the type of AI you want to activate ([openai](https://platform.openai.com/api-keys) or [gemini](https://aistudio.google.com/)).
+  3. Adjust `aiFlagType` to specify the type of AI you want to activate ([openai](https://platform.openai.com/api-keys){:target="_blank"} or [gemini](https://aistudio.google.com/)){:target="_blank"}.
   4. Create a `.env` file in the project root to securely store API keys.
 
 - **Environment File Setup:** Provide your API keys in the `.env` file as follows:
@@ -258,14 +258,6 @@ Introduce the goals and background of your codelab here.
 List resources or additional reading materials here.
 ```
 
-## Important Note on Tags
-
-<br>
-
-:::md-alert{type="error"}
-#content
-Make sure to add tags in `/assets/config.js` file (case sensitive) for the filtering to work correctly in your codelab.
-:::
 
 # Markdown Components
 
@@ -336,9 +328,10 @@ For adding a button.
 - **Customize `md-button`**
 - **Purpose:** Adjust the look and functionality of buttons.
 - **Properties:**
-  - **type:** Defines the button style (e.g., outline, tonal, plain).
+  - **type:** Defines the button style (e.g. `elevated`, `flat`, `tonal`, `outlined`, `text`, `plain`).
   - **color:** Sets the button color (e.g., primary, secondary).
   - **text:** Specifies the text displayed on the button.
+  - **link:** Specifies the link for the action on the button.
 
 ```md
 :::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
@@ -350,6 +343,7 @@ Click me!
 :::md-button{type="tonal" color="primary" link="https://trygradus.web.app/"}
 Click me!
 :::
+
 
 # Deployment
 
@@ -378,7 +372,7 @@ Server Side Rendering (SSR) enhances SEO and improves performance for users by s
 Static Site Generation (SSG) offers fast loading times and reliable performance by generating HTML files at build time, which can be hosted on any static hosting service.
 
 - **How to Generate Static Code:**
-  - Execute the command `npx nuxi generate`. This command will produce a fully static version of your site, which can be deployed without needing a server.
+  - Execute the command `npm run staticbuild`. This command will produce a fully static version of your site, which can be deployed without needing a server.
 - **Hosting Options:**
   - **Firebase:** Ideal for hosting static files with benefits like integrated security features and easy scaling.
   - **GitHub Pages:** A straightforward option for hosting static websites, especially if your project is already managed in a GitHub repository.
@@ -407,7 +401,7 @@ Awesome! We greatly appreciate contributions of all kinds. To make the process s
 
 # List Your Project
 
-You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://bit.ly/gradus-directory) to share more about what you’ve built.
+You can highlight your project in the `readme.md` file and also fill out the provided [Google form](https://bit.ly/gradus-directory){:target="_blank"} to share more about what you’ve built.
 
 # Future Roadmap
 

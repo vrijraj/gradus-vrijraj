@@ -1,4 +1,4 @@
-![Alt text](/public/donotremove/gradus-social.png "Gradus")
+<img src="public/donotremove/gradus-social.png" style="border-radius: 8px"/>
 
 # Gradus
 Gradus is an open-source tool that enables you to create codelabs using both markdown and rich markdown components. It offers the flexibility to operate either server-side or client-side, depending on your preference. Additionally, Gradus is experimenting with AI-enabled features to enhance its capabilities.
@@ -62,8 +62,9 @@ You can highlight your project in the `readme.md` file and also fill out the pro
 ## View codelabs Build with Gradus
 
 1. [Vrijraj Codelabs](https://codelab.vrijraj.xyz)
-2. [Nishant Codelabs](https://codelab.nishants.me/)
-3. [GDG Prayagraj](https://codelab-gdgprayagraj.web.app)
+1. [Nishant Codelabs](https://codelab.nishants.me/)
+1. [GDG Baku](https://codelabs.gdgbaku.az/)
+1. [GDG Prayagraj](https://codelab-gdgprayagraj.web.app)
 
 
 

@@ -12,10 +12,9 @@ export const config = {
     youtube: "",
     web: "https://vrijraj.xyz/",
   },
-  filters: ["GRADUS", "GEMINI", "JAVASCRIPT"],
   config: {
     aiFlag: false,
-    aiFlagType: "openai", // openai or gemini
+    aiFlagType: "gemini", // openai or gemini
     theme: "light", // dark or light
     banner: {
       status: false,
