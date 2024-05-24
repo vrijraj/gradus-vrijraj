@@ -24,7 +24,7 @@ export const config = {
     },
   },
   seo: {
-    keywords: 'Gradus Codelab, Gradus, Codelab, oss-lab, oss',
+    keywords: 'Gradus Codelab, Gradus, Codelab, oss-lab, oss, vrijraj labs, vrijraj codelabs, vrijraj, gradus vrijraj',
     author: "Vrijraj Singh",
   },
 };

@@ -15,7 +15,7 @@ authors:
         }
     },
   ]
-date: 2024-04-25
+date: 2024-05-08
 categories: 'Technology'
 duration: 30
 image: '/codelabs/gemini-for-js/gemini.png'
