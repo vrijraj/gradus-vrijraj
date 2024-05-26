@@ -6,7 +6,11 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   devtools: { enabled: false },
-
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/urls',
+    ]
+  },
   modules: [
     "@nuxt/content",
     (_options, nuxt) => {
@@ -17,6 +21,7 @@ export default defineNuxtConfig({
     },
     "nuxt-gtag",
     "@nuxt/image",
+    "@nuxtjs/sitemap",
     //...
   ],
   vite: {
