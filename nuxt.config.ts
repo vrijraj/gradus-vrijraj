@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   site: {
-    url: config.hostUrl,
+    url: "https://gradus.dev",
   },
   devtools: { enabled: false },
   modules: [

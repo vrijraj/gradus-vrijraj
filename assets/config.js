@@ -2,7 +2,7 @@ export const config = {
   name: "Gradus Codelab",
   dsec: "Developer Hub, where you can access labs for various tech stacks to delve into detailed use cases of technologies.",
   thumbnail: "donotremove/gradus-social.png",
-  hostUrl: "https://trygradus.web.app/",
+  hostUrl: "https://gradus.dev",
   favicon: "/favicon.ico",
   social: {
     linkedin: "https://www.linkedin.com/in/trygradus/",
@@ -10,7 +10,7 @@ export const config = {
     instagram: "https://www.instagram.com/trygradus/",
     github: "https://github.com/oss-labs/gradus",
     youtube: "",
-    web: "https://trygradus.web.app/",
+    web: "https://grauds.dev",
   },
   config: {
     aiFlag: false,
