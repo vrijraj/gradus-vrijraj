@@ -6,11 +6,6 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   devtools: { enabled: false },
-  sitemap: {
-    sources: [
-      '/api/__sitemap__/urls',
-    ]
-  },
   modules: [
     "@nuxt/content",
     (_options, nuxt) => {
@@ -21,7 +16,6 @@ export default defineNuxtConfig({
     },
     "nuxt-gtag",
     "@nuxt/image",
-    "@nuxtjs/sitemap",
     //...
   ],
   vite: {
@@ -56,6 +50,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
+      routes: ["/sitemap.xml"],
     },
     // firebase: {
     //   gen: 2
