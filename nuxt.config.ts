@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     },
     "nuxt-gtag",
     "@nuxt/image",
-    "@nuxtjs/sitemap",
     //...
   ],
   vite: {
