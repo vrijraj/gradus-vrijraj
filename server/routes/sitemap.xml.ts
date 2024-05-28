@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   // Fetch all documents
   const docs = await serverQueryContent(event).find()
   const sitemap = new SitemapStream({
-    hostname: 'https://trygradus--pr61-fix-sitemap-sfayeo2j.web.app/'
+    hostname: 'https://localhost:3000'
   })
 
   for (const doc of docs) {
