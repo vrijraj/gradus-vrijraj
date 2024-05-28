@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+import { config } from "./assets/config";
 export default defineNuxtConfig({
   ssr: true,
   build: {
     transpile: ["vuetify"],
+  },
+  site: {
+    url: config.hostUrl,
   },
   devtools: { enabled: false },
   modules: [
@@ -16,6 +20,7 @@ export default defineNuxtConfig({
     },
     "nuxt-gtag",
     "@nuxt/image",
+    "@nuxtjs/sitemap",
     //...
   ],
   vite: {
