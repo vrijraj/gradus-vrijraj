@@ -10,7 +10,7 @@ export const config = {
     instagram: "https://www.instagram.com/vrijraj.singh/",
     github: "https://github.com/vrijraj",
     youtube: "",
-    web: "https://vrijraj.xyz/",
+    web: "https://vrijraj.xyz/"
   },
   config: {
     aiFlag: false,

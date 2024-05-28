@@ -1,16 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+import { config } from "./assets/config";
 export default defineNuxtConfig({
   ssr: true,
   build: {
     transpile: ["vuetify"],
   },
-  devtools: { enabled: false },
-  sitemap: {
-    sources: [
-      '/api/__sitemap__/urls',
-    ]
+  site: {
+    url: "https://gradus.vrijraj.xyz/",
   },
+  devtools: { enabled: false },
   modules: [
     "@nuxt/content",
     (_options, nuxt) => {
@@ -56,6 +55,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
+      routes: ["/sitemap.xml"],
     },
     // firebase: {
     //   gen: 2
