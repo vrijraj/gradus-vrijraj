@@ -21,6 +21,17 @@ export default defineNuxtConfig({
     "nuxt-gtag",
     "@nuxt/image",
     "@nuxtjs/sitemap",
+    [
+      "@nuxtjs/robots",
+      {
+        rules: [
+          { UserAgent: "*" },
+          { Disallow: "" },
+          { BlankLine: true },
+          { Sitemap: `${config.hostUrl}sitemap.xml` },
+        ],
+      },
+    ],
     //...
   ],
   vite: {
