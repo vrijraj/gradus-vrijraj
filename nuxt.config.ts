@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   site: {
-    url: "https://gradus.dev",
+    url: config.hostUrl,
   },
   devtools: { enabled: false },
   modules: [
@@ -55,7 +55,6 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
-      routes: ["/sitemap.xml"],
     },
     // firebase: {
     //   gen: 2
